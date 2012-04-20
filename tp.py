@@ -1,6 +1,6 @@
 # coding: utf8
 
-from datetime import datetime 
+from datetime import datetime
 
 class User:
     """Represents a registered user."""
@@ -25,16 +25,16 @@ class DayOfWeek:
         return datetime.weekday() == self.day_ordinal
 
     day_names = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo"]
-    
-DayOfWeek.days_of_week = [DayOfWeek(name, number) for name, number in 
+
+DayOfWeek.days_of_week = [DayOfWeek(name, number) for name, number in
     zip(DayOfWeek.day_names, range(6))]
-    
+
 
 
 class EventOccurrence:
     def take_place_at(self, date_time):
         raise NotImplementedError()
-        
+
 class SingleTimeOccurrence:
     def __init__(self, datetime):
         self.daytime = datetime
@@ -50,7 +50,7 @@ class WeeklyEventOccurrence(EventOccurrence):
 
     def take_place_at(self, datetime):
         return any(day_of_week.same_day(datetime) for day_of_week in self.days_of_week)
-        
+
 
 class PhisicalEvent:
     def __init__(self, place, occurrence):
@@ -85,7 +85,7 @@ class JourneyStop(PhisicalEvent):
     def __init__(self, place, ocurrence, passenger):
         PhisicalEvent.__init__(self, place, ocurrence)
         self.passenger = passenger
-        
+
 class JourneyStopForBoarding(JourneyStop):
     pass
 

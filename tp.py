@@ -35,6 +35,12 @@ class EventOccurrence:
     def take_place_at(self, date_time):
         raise NotImplementedError()
         
+class SingleTimeOccurrence:
+    def __init__(self, datetime):
+        self.daytime = datetime
+    def take_place_at(self, datetime):
+        return self.datetime == datetime
+
 
 class WeeklyEventOccurrence(EventOccurrence):
     #TODO: Arreglar lo del departure_time y arrival_time

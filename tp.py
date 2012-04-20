@@ -32,7 +32,7 @@ DayOfWeek.days_of_week = [DayOfWeek(name, number) for name, number in
 
 
 class EventOccurrence:
-    def happens_at(self, date_time):
+    def take_place_at(self, date_time):
         raise NotImplementedError()
         
 
@@ -43,7 +43,7 @@ class WeeklyEventOccurrence:
         self.departure_time = departure_time
         self.arrival_time = arrival_time
 
-    def happens_at(self, datetime):
+    def take_place_at(self, datetime):
         return self.day_of_week.same_day(datetime)
         
 
@@ -92,7 +92,7 @@ class JourneyOrganizer:
         self.offers = filter_by_date(offers)
 
     def filter_by_date(self, events):
-        return [event for event in events if event.ocurrence.happens_at(self.date)]
+        return [event for event in events if event.ocurrence.take_place_at(self.date)]
 
     def organize(self):
         pass

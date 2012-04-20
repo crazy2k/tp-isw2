@@ -43,12 +43,12 @@ class SingleTimeOccurrence:
 
 
 class WeeklyEventOccurrence(EventOccurrence):
-    def __init__(self, time, day_of_week):
-        self.day_of_week = day_of_week
+    def __init__(self, time, days_of_week):
+        self.days_of_week = days_of_week
         self.time = time
 
     def take_place_at(self, datetime):
-        return self.day_of_week.same_day(datetime)
+        return any(day_of_week.same_day(datetime) for day_of_week in self.days_of_week)
         
 
 class PhisicalEvent:

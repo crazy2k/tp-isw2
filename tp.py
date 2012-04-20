@@ -35,14 +35,15 @@ DayOfWeek.days_of_week = [DayOfWeek(name, number) for name, number in
 
 
 class EventOccurrence:
-    def takes_place_at(self, date_time):
+    #TODO: se entiende que hay connotacion temporal?
+    def is_happening_at(self, date_time):
         raise NotImplementedError()
 
 class SingleTimeOccurrence:
     def __init__(self, datetime):
         self.daytime = datetime
 
-    def takes_place_at(self, datetime):
+    def is_happening_at(self, datetime):
         return self.datetime == datetime
 
 
@@ -51,7 +52,7 @@ class WeeklyEventOccurrence(EventOccurrence):
         self.days_of_week = days_of_week
         self.time = time
 
-    def takes_place_at(self, datetime):
+    def is_happening_at(self, datetime):
         return any(day_of_week.same_day(datetime) for day_of_week in self.days_of_week)
 
 
@@ -60,6 +61,11 @@ class PhisicalEvent:
         self.place = place
         self.occurrence = occurrence
 
+    def takes_place_at(self, place):
+        return self.place == place
+
+    def is_happening_at(self, datetime):
+        return self.occurrence.is_happening_at?(datetime)
 
 class CommuteRequest:
     #TODO: ¿La vuelta del trabajo, importa?
@@ -103,7 +109,7 @@ class JourneyOrganizer:
         self.offers = filter_by_date(offers)
 
     def filter_by_date(self, events):
-        return [event for event in events if event.ocurrence.takes_place_at(self.date)]
+        return [event for event in events if event.ocurrence.is_happening_at(self.date)]
 
     def organize(self):
         pass

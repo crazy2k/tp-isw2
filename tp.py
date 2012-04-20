@@ -75,7 +75,7 @@ class CommuteRequest:
         self.arrival = arrival
 
 
-class CommuteOffer:
+class CommuteOffer:#TODO: TransportOffer?
     def __init__(self, driver, departure, arrival, passenger_capacity):
         self.driver = driver
         self.passengers_capacity = passengers_capacity

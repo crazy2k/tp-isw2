@@ -71,7 +71,6 @@ class CommuteOffer:
         self.driver = driver
         self.departure = departure
         self.arrival = arrival
-        self.occurrence = occurrence
         self.passengers_capacity = passengers_capacity
 
 

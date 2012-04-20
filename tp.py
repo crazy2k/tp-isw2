@@ -69,9 +69,9 @@ class CommuteRequest:
 class CommuteOffer:
     def __init__(self, driver, departure, arrival, passenger_capacity):
         self.driver = driver
+        self.passengers_capacity = passengers_capacity
         self.departure = departure
         self.arrival = arrival
-        self.passengers_capacity = passengers_capacity
 
 
 class Journey:
@@ -93,8 +93,9 @@ class JourneyStopForDischarging(JourneyStop):
     pass
 
 class JourneyOrganizer:
-    def __init__(self, date, requests, offers):
+    def __init__(self, date, tolerance, requests, offers):
         self.date = date
+        self.tolerance = tolerance #Late tolerance as a lapse of time (some minutes/hours)
         self.requests = filter_by_date(requests)
         self.offers = filter_by_date(offers)
 

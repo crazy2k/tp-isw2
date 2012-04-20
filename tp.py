@@ -48,6 +48,7 @@ class WeeklyEventOccurrence(EventOccurrence):
         
 
 class CommuteOffer:
+    #TODO: Generalizar partida y arribo como pares 'lugar'-'ocurrencia en el tiempo'
     def __init__(self, driver, origin, destination, occurrence, passenger_capacity):
 
         self.driver = driver

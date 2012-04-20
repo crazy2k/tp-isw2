@@ -43,11 +43,9 @@ class SingleTimeOccurrence:
 
 
 class WeeklyEventOccurrence(EventOccurrence):
-    #TODO: Arreglar lo del departure_time y arrival_time
-    def __init__(self, departure_time, arrival_time, day_of_week):
+    def __init__(self, time, day_of_week):
         self.day_of_week = day_of_week
-        self.departure_time = departure_time
-        self.arrival_time = arrival_time
+        self.time = time
 
     def take_place_at(self, datetime):
         return self.day_of_week.same_day(datetime)

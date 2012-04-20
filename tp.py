@@ -66,23 +66,23 @@ class CommuteRequest:
         self.occurrence = occurrence
 
 
-class Commute:
+class Journey:
     def __init__(self, accepted_offer, date, stops):
         self.accepted_offer = accepted_offer
         self.date = date
         self.stops = stops
 
 
-class CommuteStop:
+class JourneyStop:
     def __init__(self, place, time, passenger):
         self.place = place
         self.time = time
         self.passenger = passenger
         
-class CommuteStopDeparture(CommuteStop):
+class JourneyStopForDeparture(CommuteStop):
     pass
 
-class CommuteStopEntrance(CommuteStop):
+class JourneyStopForEntrance(CommuteStop):
     pass
 
 class JourneyOrganizer:

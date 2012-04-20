@@ -36,7 +36,7 @@ class EventOccurrence:
         raise NotImplementedError()
         
 
-class WeeklyEventOccurrence:
+class WeeklyEventOccurrence(EventOccurrence):
     #TODO: Arreglar lo del departure_time y arrival_time
     def __init__(self, departure_time, arrival_time, day_of_week):
         self.day_of_week = day_of_week

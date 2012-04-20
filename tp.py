@@ -38,6 +38,7 @@ class EventOccurrence:
 class SingleTimeOccurrence:
     def __init__(self, datetime):
         self.daytime = datetime
+
     def take_place_at(self, datetime):
         return self.datetime == datetime
 
@@ -52,29 +53,26 @@ class WeeklyEventOccurrence(EventOccurrence):
         
 
 class PhisicalEvent:
-    def __init__(place, occurrence)
+    def __init__(self, place, occurrence):
         self.place = place
-        self.ocurrence = ocurrence
-
-
-class CommuteOffer:
-    #TODO: Generalizar partida y arribo como pares 'lugar'-'ocurrencia en el tiempo'
-    def __init__(self, driver, origin, destination, occurrence, passenger_capacity):
-
-        self.driver = driver
-        self.origin = origin
-        self.destination = destination
         self.occurrence = occurrence
-        self.passengers_capacity = passengers_capacity
 
 
 class CommuteRequest:
-    def __init__(self, passenger, origin, destination, occurrence):
-
+    #TODO: ¿La vuelta del trabajo, importa?
+    def __init__(self, passenger, departure, arrival):
         self.passenger = passenger
-        self.origin = origin
-        self.destination = destination
+        self.departure = departure
+        self.arrival = arrival
+
+
+class CommuteOffer:
+    def __init__(self, driver, departure, arrival, passenger_capacity):
+        self.driver = driver
+        self.departure = departure
+        self.arrival = arrival
         self.occurrence = occurrence
+        self.passengers_capacity = passengers_capacity
 
 
 class Journey:
@@ -84,16 +82,15 @@ class Journey:
         self.stops = stops
 
 
-class JourneyStop:
-    def __init__(self, place, time, passenger):
-        self.place = place
-        self.time = time
+class JourneyStop(PhisicalEvent):
+    def __init__(self, place, ocurrence, passenger):
+        PhisicalEvent.__init__(self, place, ocurrence)
         self.passenger = passenger
         
-class JourneyStopForDeparture(CommuteStop):
+class JourneyStopForDeparture(JourneyStop):
     pass
 
-class JourneyStopForEntrance(CommuteStop):
+class JourneyStopForEntrance(JourneyStop):
     pass
 
 class JourneyOrganizer:

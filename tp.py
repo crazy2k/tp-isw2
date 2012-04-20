@@ -14,15 +14,18 @@ class Place:
         pass
 
 class DayOfWeek:
-    def __init__(self, name, day_ordinal):
+    def __init__(self, name, ordinal):
         self.name = name
-        self.day_ordinal = name
+        self.ordinal = name
 
     def __repr__(self):
         return self.name
 
+    def __lt__(self, other_day):
+        return self.ordinal < other_week_day.ordinal
+
     def same_day(self, datetime):
-        return datetime.weekday() == self.day_ordinal
+        return datetime.weekday() == self.ordinal
 
     day_names = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo"]
 

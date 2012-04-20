@@ -87,10 +87,10 @@ class JourneyStop(PhisicalEvent):
         PhisicalEvent.__init__(self, place, ocurrence)
         self.passenger = passenger
         
-class JourneyStopForDeparture(JourneyStop):
+class JourneyStopForBoarding(JourneyStop):
     pass
 
-class JourneyStopForEntrance(JourneyStop):
+class JourneyStopForDischarging(JourneyStop):
     pass
 
 class JourneyOrganizer:

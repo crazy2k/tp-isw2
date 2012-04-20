@@ -51,6 +51,12 @@ class WeeklyEventOccurrence(EventOccurrence):
         return self.day_of_week.same_day(datetime)
         
 
+class PhisicalEvent:
+    def __init__(place, occurrence)
+        self.place = place
+        self.ocurrence = ocurrence
+
+
 class CommuteOffer:
     #TODO: Generalizar partida y arribo como pares 'lugar'-'ocurrencia en el tiempo'
     def __init__(self, driver, origin, destination, occurrence, passenger_capacity):

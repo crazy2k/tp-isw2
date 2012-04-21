@@ -28,8 +28,8 @@ class DayOfWeek:
     def __lt__(self, other_week_day):
         return self.ordinal < other_week_day.ordinal
 
-    def same_day(self, datetime):
-        return datetime.weekday() == self.ordinal
+    def same_day(self, adatetime):
+        return adatetime.weekday() == self.ordinal
 
 DayOfWeek.days_of_week = tuple(DayOfWeek(name, number) for number, name in
     enumerate(DayOfWeek.day_names))

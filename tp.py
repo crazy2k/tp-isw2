@@ -16,6 +16,8 @@ class Place:
 
 
 class DayOfWeek:
+    day_names = ("Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo")
+
     def __init__(self, name, ordinal):
         self.name = name
         self.ordinal = ordinal
@@ -29,9 +31,9 @@ class DayOfWeek:
     def same_day(self, datetime):
         return datetime.weekday() == self.ordinal
 
-    day_names = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo"]
+DayOfWeek.days_of_week = tuple(DayOfWeek(name, number) for number, name in
+    enumerate(DayOfWeek.day_names))
 
-DayOfWeek.days_of_week = [DayOfWeek(name, number) for number, name in enumerate(DayOfWeek.day_names)]
 
 
 

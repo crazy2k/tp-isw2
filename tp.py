@@ -8,10 +8,12 @@ class User:
         self.name = name
         self.email = email
 
+
 class Place:
     def distance_to(self, place):
         """Returns distance between two places in meters"""
         pass
+
 
 class DayOfWeek:
     def __init__(self, name, ordinal):
@@ -94,11 +96,14 @@ class JourneyStop(PhisicalEvent):
         super().__init__(place, ocurrence)
         self.passenger = passenger
 
+
 class JourneyStopForBoarding(JourneyStop):
     pass
 
+
 class JourneyStopForDischarging(JourneyStop):
     pass
+
 
 class JourneyOrganizer:
     def __init__(self, date, tolerance, requests, offers):

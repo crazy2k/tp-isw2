@@ -92,9 +92,10 @@ class Journey:
         self.stops = stops
 
 
-class JourneyStop(ScheduledEvent):
-    def __init__(self, place, ocurrence, passenger):
-        super().__init__(place, ocurrence)
+class JourneyStop:
+    def __init__(self, place, datetime, passenger):
+        self.place = place
+        self.datetime = datetime
         self.passenger = passenger
 
 

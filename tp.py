@@ -47,10 +47,10 @@ class SingleTimeTemporality(Temporality):
     def is_happening_at(self, adatetime):
         return self.datetime == adatetime
 
-class RepetiveTemporality(Temporality):
+class RepetitiveTemporality(Temporality):
     pass
 
-class WeeklyTemporality(RepetiveTemporality):
+class WeeklyTemporality(RepetitiveTemporality):
     def __init__(self, time, days_of_week):
         self.days_of_week = days_of_week
         self.time = time

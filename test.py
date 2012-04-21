@@ -53,12 +53,19 @@ class CommuterRegistrationTest(unittest.TestCase):
 
     def test_register_a_request_for_commuting(self):
         """
-        Como usuario quiero registrar que
-            todos Lunes, Marter y Miercoles, salgo de mi casa a las 8:00AM y tengo que llegar a mi trabajo a las 9:00AM
-            y los Jueves y viernes salgo de la casa de mi novia a las 8:30AM y tengo que llegar a mi trabajo a las 9:30AM
+        Como empleado quiero registrar que
+            todos los Lunes, Martes y Miercoles, salgo de mi casa a las 8:00 AM y tengo que llegar a mi trabajo a las 9:00 AM
+            y los Jueves y Viernes salgo de la casa de mi novia a las 8:30 AM y tengo que llegar a mi trabajo a las 9:30 AM
         """
+        pass
 
     def test_register_a_request_for_commuting_with_a_car_offer(self):
+        """
+        Como vendedor de autopartes quiero registrar que
+            todos los Lunes, Miercoles y Viernes salgo de mi casa a las 7:00 AM y tengo que llegar a mi oficina en el centro a las 9:00 AM
+            y los Martes y Jueves salgo de casa a las 8:00 AM y tengo que llegar al taller en Chararita a las 10:00 AM
+            y quiero aclarar que los Miercoles dispongo de un auto con 4 asientos extra
+        """
         pass
 
 

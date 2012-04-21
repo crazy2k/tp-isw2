@@ -57,10 +57,10 @@ class WeeklyPeriodicity(Periodicity):
         return any(day_of_week.same_day(adatetime) for day_of_week in self.days_of_week)
 
 
-class PhisicalEvent:
-    def __init__(self, place, occurrence):
+class ScheduledEvent:
+    def __init__(self, place, periodicity):
         self.place = place
-        self.occurrence = occurrence
+        self.periodicity = periodicity
 
     def takes_place_at(self, place):
         return self.place == place
@@ -92,7 +92,7 @@ class Journey:
         self.stops = stops
 
 
-class JourneyStop(PhisicalEvent):
+class JourneyStop(ScheduledEvent):
     def __init__(self, place, ocurrence, passenger):
         super().__init__(place, ocurrence)
         self.passenger = passenger

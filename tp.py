@@ -35,14 +35,12 @@ DayOfWeek.days_of_week = tuple(DayOfWeek(name, number) for number, name in
     enumerate(DayOfWeek.day_names))
 
 
-
-
-class EventOccurrence:
-    #TODO: se entiende que hay connotacion temporal?
+class Periodicity:
     def is_happening_at(self, date_time):
         raise NotImplementedError()
 
-class SingleTimeOccurrence:
+
+class SingleTimePeriodicity(Periodicity):
     def __init__(self, datetime):
         self.daytime = datetime
 
@@ -50,7 +48,7 @@ class SingleTimeOccurrence:
         return self.datetime == datetime
 
 
-class WeeklyEventOccurrence(EventOccurrence):
+class WeeklyPeriodicity(Periodicity):
     def __init__(self, time, days_of_week):
         self.days_of_week = days_of_week
         self.time = time

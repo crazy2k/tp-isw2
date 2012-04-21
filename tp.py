@@ -21,7 +21,7 @@ class DayOfWeek:
     def __repr__(self):
         return self.name
 
-    def __lt__(self, other_day):
+    def __lt__(self, other_week_day):
         return self.ordinal < other_week_day.ordinal
 
     def same_day(self, datetime):

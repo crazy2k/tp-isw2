@@ -16,7 +16,7 @@ class Place:
 class DayOfWeek:
     def __init__(self, name, ordinal):
         self.name = name
-        self.ordinal = name
+        self.ordinal = ordinal
 
     def __repr__(self):
         return self.name
@@ -29,8 +29,7 @@ class DayOfWeek:
 
     day_names = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo"]
 
-DayOfWeek.days_of_week = [DayOfWeek(name, number) for name, number in
-    zip(DayOfWeek.day_names, range(6))]
+DayOfWeek.days_of_week = [DayOfWeek(name, number) for number, name in enumerate(DayOfWeek.day_names)]
 
 
 

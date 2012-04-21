@@ -38,7 +38,7 @@ class JourneyStopForBoardingTests(JourneyStopTests):
         self.assertEqual(self.occurrence, stop_for_boarding.occurrence)
         self.assertEqual(self.passenger, stop_for_boarding.passenger)
 
-class JourneyStopForDischarging(JourneyStopTests):
+class JourneyStopForDischargingTests(JourneyStopTests):
     def test_init(self):
         stop_for_discharging = JourneyStopForDischarging(self.place, self.occurrence, self.passenger)
 

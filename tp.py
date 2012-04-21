@@ -92,7 +92,7 @@ class Journey:
 
 class JourneyStop(PhisicalEvent):
     def __init__(self, place, ocurrence, passenger):
-        PhisicalEvent.__init__(self, place, ocurrence)
+        super().__init__(place, ocurrence)
         self.passenger = passenger
 
 class JourneyStopForBoarding(JourneyStop):

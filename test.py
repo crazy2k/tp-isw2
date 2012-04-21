@@ -46,6 +46,16 @@ class JourneyStopForDischargingTests(JourneyStopTests):
         self.assertEqual(self.when, stop_for_discharging.datetime)
         self.assertEqual(self.passenger, stop_for_discharging.passenger)
 
+class CommuterRegistrationTest(unittest.TestCase):
+    def setUp(self):
+        self.user = User("Pablo", "pablo@pablo.com")
+
+    def test_register_a_request_for_commuting(self):
+        pass
+
+    def test_register_a_request_for_commuting_with_a_car_offer(self):
+        pass
+
 
 if __name__ == "__main__":
     unittest.main()

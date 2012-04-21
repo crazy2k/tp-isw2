@@ -65,7 +65,7 @@ class PhisicalEvent:
         return self.place == place
 
     def is_happening_at(self, datetime):
-        return self.occurrence.is_happening_at?(datetime)
+        return self.occurrence.is_happening_at(datetime)
 
 class CommuteRequest:
     #TODO: ¿La vuelta del trabajo, importa?

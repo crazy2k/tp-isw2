@@ -26,24 +26,24 @@ class DayOfWeekTests(unittest.TestCase):
 
 class JourneyStopTests(unittest.TestCase):
     def setUp(self):
-        self.place = Place()
-        self.occurrence = SingleTimeOccurrence(datetime.now)
+        self.where = Place()
+        self.when = datetime.now
         self.passenger = User("Pablo", "pablo@pablo.com")
 
 class JourneyStopForBoardingTests(JourneyStopTests):
     def test_init(self):
-        stop_for_boarding = JourneyStopForBoarding(self.place, self.occurrence, self.passenger)
+        stop_for_boarding = JourneyStopForBoarding(self.where, self.when, self.passenger)
 
-        self.assertEqual(self.place, stop_for_boarding.place)
-        self.assertEqual(self.occurrence, stop_for_boarding.occurrence)
+        self.assertEqual(self.where, stop_for_boarding.place)
+        self.assertEqual(self.when, stop_for_boarding.datetime)
         self.assertEqual(self.passenger, stop_for_boarding.passenger)
 
 class JourneyStopForDischargingTests(JourneyStopTests):
     def test_init(self):
-        stop_for_discharging = JourneyStopForDischarging(self.place, self.occurrence, self.passenger)
+        stop_for_discharging = JourneyStopForDischarging(self.where, self.when, self.passenger)
 
-        self.assertEqual(self.place, stop_for_discharging.place)
-        self.assertEqual(self.occurrence, stop_for_discharging.occurrence)
+        self.assertEqual(self.where, stop_for_discharging.place)
+        self.assertEqual(self.when, stop_for_discharging.datetime)
         self.assertEqual(self.passenger, stop_for_discharging.passenger)
 
 

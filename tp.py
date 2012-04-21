@@ -44,8 +44,8 @@ class SingleTimePeriodicity(Periodicity):
     def __init__(self, datetime):
         self.daytime = datetime
 
-    def is_happening_at(self, datetime):
-        return self.datetime == datetime
+    def is_happening_at(self, adatetime):
+        return self.datetime == adatetime
 
 
 class WeeklyPeriodicity(Periodicity):
@@ -53,8 +53,8 @@ class WeeklyPeriodicity(Periodicity):
         self.days_of_week = days_of_week
         self.time = time
 
-    def is_happening_at(self, datetime):
-        return any(day_of_week.same_day(datetime) for day_of_week in self.days_of_week)
+    def is_happening_at(self, adatetime):
+        return any(day_of_week.same_day(adatetime) for day_of_week in self.days_of_week)
 
 
 class PhisicalEvent:
@@ -65,8 +65,9 @@ class PhisicalEvent:
     def takes_place_at(self, place):
         return self.place == place
 
-    def is_happening_at(self, datetime):
-        return self.occurrence.is_happening_at(datetime)
+    def is_happening_at(self, adatetime):
+        return self.periodicity.is_happening_at(adatetime)
+
 
 class CommuteRequest:
     #TODO: ¿La vuelta del trabajo, importa?

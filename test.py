@@ -30,12 +30,21 @@ class JourneyStopTests(unittest.TestCase):
         self.occurrence = SingleTimeOccurrence(datetime.now)
         self.passenger = User("Pablo", "pablo@pablo.com")
 
+class JourneyStopForBoardingTests(JourneyStopTests):
     def test_init(self):
-        stop = JourneyStop(self.place, self.occurrence, self.passenger)
+        stop_for_boarding = JourneyStopForBoarding(self.place, self.occurrence, self.passenger)
 
-        self.assertEqual(self.place, stop.place)
-        self.assertEqual(self.occurrence, stop.occurrence)
-        self.assertEqual(self.passenger, stop.passenger)
+        self.assertEqual(self.place, stop_for_boarding.place)
+        self.assertEqual(self.occurrence, stop_for_boarding.occurrence)
+        self.assertEqual(self.passenger, stop_for_boarding.passenger)
+
+class JourneyStopForDischarging(JourneyStopTests):
+    def test_init(self):
+        stop_for_discharging = JourneyStopForDischarging(self.place, self.occurrence, self.passenger)
+
+        self.assertEqual(self.place, stop_for_discharging.place)
+        self.assertEqual(self.occurrence, stop_for_discharging.occurrence)
+        self.assertEqual(self.passenger, stop_for_discharging.passenger)
 
 
 if __name__ == "__main__":

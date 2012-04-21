@@ -11,6 +11,19 @@ class UserTests(unittest.TestCase):
         self.assertEqual("Pablo", user.name)
         self.assertEqual("pablo@pablo.com", user.email)
 
+class DayOfWeekTests(unittest.TestCase):
+    def test_init(self):
+        lunes = DayOfWeek("Lunes", 0)
+
+        self.assertEqual("Lunes", lunes.name)
+        self.assertEqual(0, lunes.ordinal)
+
+    def test_lt(self):
+        lunes = DayOfWeek("Lunes", 0)
+        martes = DayOfWeek("Martes", 1)
+
+        self.assertTrue(lunes < martes)
+
 class JourneyStopTests(unittest.TestCase):
     def setUp(self):
         self.place = Place()

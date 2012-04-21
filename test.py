@@ -50,8 +50,13 @@ class CommuterRegistrationTest(unittest.TestCase):
     def setUp(self):
         self.user = User("Pablo", "pablo@pablo.com")
 
+
     def test_register_a_request_for_commuting(self):
-        pass
+        """
+        Como usuario quiero registrar que
+            todos Lunes, Marter y Miercoles, salgo de mi casa a las 8:00AM y tengo que llegar a mi trabajo a las 9:00AM
+            y los Jueves y viernes salgo de la casa de mi novia a las 8:30AM y tengo que llegar a mi trabajo a las 9:30AM
+        """
 
     def test_register_a_request_for_commuting_with_a_car_offer(self):
         pass

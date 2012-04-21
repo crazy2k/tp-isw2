@@ -35,20 +35,22 @@ DayOfWeek.days_of_week = tuple(DayOfWeek(name, number) for number, name in
     enumerate(DayOfWeek.day_names))
 
 
-class Periodicity:
+class Temporality:
     def is_happening_at(self, date_time):
         raise NotImplementedError()
 
 
-class SingleTimePeriodicity(Periodicity):
+class SingleTimeTemporality(Temporality):
     def __init__(self, datetime):
         self.daytime = datetime
 
     def is_happening_at(self, adatetime):
         return self.datetime == adatetime
 
+class RepetiveTemporality(Temporality):
+    pass
 
-class WeeklyPeriodicity(Periodicity):
+class WeeklyTemporality(RepetiveTemporality):
     def __init__(self, time, days_of_week):
         self.days_of_week = days_of_week
         self.time = time
@@ -58,15 +60,15 @@ class WeeklyPeriodicity(Periodicity):
 
 
 class ScheduledEvent:
-    def __init__(self, place, periodicity):
+    def __init__(self, place, temporality):
         self.place = place
-        self.periodicity = periodicity
+        self.temporality = temporality
 
     def takes_place_at(self, place):
         return self.place == place
 
     def is_happening_at(self, adatetime):
-        return self.periodicity.is_happening_at(adatetime)
+        return self.temporality.is_happening_at(adatetime)
 
 
 class CommuteRequest:

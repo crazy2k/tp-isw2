@@ -60,17 +60,19 @@ Sprint Backlog
 --------------
 
 == ===================================================================
-ID Criterio de aceptación                                                   
+ID Criterios de aceptación                                                   
 == ===================================================================
-1  El usuario puede registrarse ingresando nombre, mail y contraseña.
-   El sistema rechaza el registro de usuarios si los datos ingresados 
-   son inválidos.
-   El usuario puede crear un pedido de viaje ingresando lugar, día y 
-   horario de salida, así como lugar, día y horario de llegada.
+1  - El usuario puede registrarse ingresando nombre, mail y 
+     contraseña.
+   - El sistema rechaza el registro de usuarios si los datos 
+     ingresados son inválidos.
+   - El usuario puede crear un pedido de viaje ingresando lugar, día y 
+     horario de salida, así como lugar, día y horario de llegada.
 -- -------------------------------------------------------------------
-2  El usuario puede registrarse ingresando nombre, mail y contraseña.
-   El sistema rechaza el registro de usuarios si los datos ingresados 
-   son inválidos.
-   El usuario puede crear una oferta de viaje indicando que dispone de 
-   auto e ingresar lugar, día y horario de salida y de llegada.
+2  - El usuario puede registrarse ingresando nombre, mail y 
+     contraseña.
+   - El sistema rechaza el registro de usuarios si los datos 
+     ingresados son inválidos.
+   - El usuario puede crear una oferta de viaje indicando que dispone 
+     de auto e ingresar lugar, día y horario de salida y de llegada.
 == ===================================================================

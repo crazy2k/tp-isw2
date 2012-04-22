@@ -124,6 +124,13 @@ class JourneyOrganizer:
         pass
 
 class Notification:
+    pass
+
+class UnsuccesfulMatchNotification(Notification):
+    def __init__(self, request):
+        self.request = request
+
+class SuccesfulMatchNotification(Notification):
     def __init__(self, request, journey, journey_stop):
         self.request = request
         self.journey = journey

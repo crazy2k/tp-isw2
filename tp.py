@@ -12,8 +12,10 @@ class User:
 class Place:
     def distance_to(self, place):
         """Returns distance between two places in meters"""
-        pass
+        raise NotImplementedError()
 
+class Address(Place):
+    pass
 
 class DayOfWeek:
     day_names = ("Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo")
@@ -71,7 +73,7 @@ class ScheduledEvent:
         return self.temporality.is_happening_at(adatetime)
 
 
-class CommuteRequest:
+class JourneyRequest:
     #TODO: ¿La vuelta del trabajo, importa?
     def __init__(self, passenger, departure, arrival):
         self.passenger = passenger
@@ -79,7 +81,7 @@ class CommuteRequest:
         self.arrival = arrival
 
 
-class CommuteOffer:#TODO: TransportOffer?
+class JourneyOffer:#TODO: TransportOffer?
     def __init__(self, driver, departure, arrival, passenger_capacity):
         self.driver = driver
         self.passengers_capacity = passengers_capacity
@@ -121,3 +123,11 @@ class JourneyOrganizer:
 
     def organize(self):
         pass
+
+class Notification:
+    pass
+
+
+class NotificationSender:
+	def send_mail(notification):
+		pass

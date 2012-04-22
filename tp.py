@@ -117,7 +117,7 @@ class JourneyOrganizer:
         self.offers = filter_by_date(offers)
 
     def filter_by_date(self, schedulables):
-        return [schedulable for schedulable in schedulables if event.timetable.is_happening_at(self.date)]
+        return [schedulable for schedulable in schedulables if schedulable.timetable.is_during_this_date(self.date)]
 
     def organize(self):
         pass

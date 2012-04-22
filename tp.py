@@ -95,10 +95,10 @@ class Journey:
 
 
 class JourneyStop:
-    def __init__(self, place, datetime, passenger):
+    def __init__(self, place, datetime, passengers):
         self.place = place
         self.datetime = datetime
-        self.passenger = passenger
+        self.passengers = passengers
 
 
 class JourneyStopForBoarding(JourneyStop):

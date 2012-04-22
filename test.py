@@ -28,23 +28,23 @@ class JourneyStopTests(unittest.TestCase):
     def setUp(self):
         self.where = Place()
         self.when = datetime.now
-        self.passenger = User("Pablo", "pablo@pablo.com")
+        self.passengers = [User("Pablo", "pablo@pablo.com")]
 
 class JourneyStopForBoardingTests(JourneyStopTests):
     def test_init(self):
-        stop_for_boarding = JourneyStopForBoarding(self.where, self.when, self.passenger)
+        stop_for_boarding = JourneyStopForBoarding(self.where, self.when, self.passengers)
 
         self.assertEqual(self.where, stop_for_boarding.place)
         self.assertEqual(self.when, stop_for_boarding.datetime)
-        self.assertEqual(self.passenger, stop_for_boarding.passenger)
+        self.assertEqual(self.passengers, stop_for_boarding.passengers)
 
 class JourneyStopForDischargingTests(JourneyStopTests):
     def test_init(self):
-        stop_for_discharging = JourneyStopForDischarging(self.where, self.when, self.passenger)
+        stop_for_discharging = JourneyStopForDischarging(self.where, self.when, self.passengers)
 
         self.assertEqual(self.where, stop_for_discharging.place)
         self.assertEqual(self.when, stop_for_discharging.datetime)
-        self.assertEqual(self.passenger, stop_for_discharging.passenger)
+        self.assertEqual(self.passengers, stop_for_discharging.passengers)
 
 class CommuterRegistrationTest(unittest.TestCase):
     def setUp(self):

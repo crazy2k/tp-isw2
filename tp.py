@@ -124,7 +124,10 @@ class JourneyOrganizer:
         pass
 
 class Notification:
-    pass
+    def __init__(self, request, journey, journey_stop):
+        self.request = request
+        self.journey = journey
+        self.journey_stop = journey_stop
 
 
 class NotificationSender:

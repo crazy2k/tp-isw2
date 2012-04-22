@@ -127,5 +127,5 @@ class Notification:
 
 
 class NotificationSender:
-	def send_mail(notification):
-		pass
+    def send_mail(notification):
+        pass

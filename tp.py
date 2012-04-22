@@ -77,8 +77,9 @@ class JourneyRequest:
         self.destination = destination
         self.timetable = timetable
 
-
-class JourneyOffer:#TODO: TransportOffer?
+# TODO: ¿Crear siempre una JourneyRequest por cada JourneyOffer asi el usuario q ofrece su auto tambien
+#       es tenido en cuenta para otras ofertas de auto que no sean iniciadas por el?
+class JourneyOffer:
     def __init__(self, driver, origin, destination, timetable, passenger_capacity):
         self.driver = driver
         self.origin = origin

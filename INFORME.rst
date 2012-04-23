@@ -29,7 +29,7 @@ ID Item                                                   Prority Value Effort
 == ====================================================== ======= ===== ======
 
 Justificación de los values
----------------------------------------
+---------------------------
 
 Consideramos que la decisión acerca de los valores de los ítems del
 Product Backlog es responsabidad del Product Owner.
@@ -37,7 +37,7 @@ Ante la ausencia de esta información para este trabajo elegimos valores
 que nos parecieron razonables poniéndonos en ese papel.
 
 Justificación de los efforts
----------------------------------------
+----------------------------
 
 Consideramos que la user story con menor esfuerzo asociado es la #5
 ya que sólo implica poder consultar los resultados de la estrategia

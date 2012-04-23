@@ -1,0 +1,27 @@
+set terminal png enhanced size 1024,768
+
+
+# Para que gnuplot haga la "interpolacion lineal" entre los puntos que estan en
+# los .out
+set style data linespoints
+
+# Hacer que el en el eje X aparezcan solo numeros enteros
+# Esto lo hacemos haciendo que el incremento sea siempre 1
+set xtics 1
+
+
+set output "plot/burndown-product-ideal.png"
+set title "Product Burndown"
+set ylabel "Story points"
+set xlabel "Sprints"
+# Sin referencia (title ""), simplemente el grafico
+plot 'data/burndown-product-ideal.out' title ""
+
+
+set output "plot/burndown-sprint.png"
+set title "Task burndown"
+set ylabel "Total horas restantes"
+set xlabel "Días"
+plot 'data/burndown-sprint-ideal.out' using 1:2 title "Ideal/Teórico", \
+       'data/burndown-sprint-real.out' title "Real/En la práctica"
+

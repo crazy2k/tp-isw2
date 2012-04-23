@@ -4,7 +4,7 @@ Product Backlog
 == ====================================================== ===== ======
 ID Item                                                   Value Effort
 == ====================================================== ===== ======
-1  Como usuario sin auto quiero poder registrarme para    8	    5
+1  Como usuario sin auto quiero poder registrarme para    8	5
    poder viajar al trabajo.
 -- ------------------------------------------------------ ----- ------
 2  Como usuario con auto quiero registrarme para dejar mi 7     3

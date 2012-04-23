@@ -77,7 +77,7 @@ class JourneyRequest:
         self.destination = destination
         self.timetable = timetable
 
-    def plausible_offers(offers)
+    def plausible_offers(offers):
         return [offer for offer in offers if offer.satisfies(request)]
 
 # TODO: ¿Crear siempre una JourneyRequest por cada JourneyOffer asi el usuario q ofrece su auto tambien
@@ -90,10 +90,10 @@ class JourneyOffer:
         self.timetable = timetable
         self.passengers_capacity = passengers_capacity
 
-    def satisfies request
+    def satisfies(request):
         return self.is_on_its_way(request.origin) and offer.is_on_its_way(request.destination)
 
-    def is_on_its_way place #TODO
+    def is_on_its_way(place): #TODO
         pass
 
 
@@ -129,7 +129,7 @@ class JourneyOrganizer:
     def filter_by_date(self, schedulables):
         return [schedulable for schedulable in schedulables if schedulable.timetable.is_during_this_date(self.date)]
 
-    def plausible_offers_for request
+    def plausible_offers_for(request):
         return [offer for offer in self.offers if offer.satisfies(request)]
 
     def organize(self):

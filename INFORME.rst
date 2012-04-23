@@ -99,6 +99,70 @@ a reducir un poco la estimacion de la misma.
 Sprint Backlog
 --------------
 
+Tareas asociadas a stories:
+
+Story 1
+
+Task #1
+   Description: investigar tecnología conveniente para la interfaz de usuario.
+   Status: Not Yet Started
+   Original Estimate: 4 horas
+   Remaining Estimate: 4 horas
+   Time Spent: 4 horas
+
+Task #2
+   Description: usuario puede loggearse en el sistema.
+   Status: Not Yet Started
+   Original Estimate: 8 horas
+   Remaining Estimate: 8 horas
+   Time Spent: 8 horas
+
+Task #3
+   Description: usuario puede indicar que tiene un auto
+   Status: Not Yet Started
+   Original Estimate:
+   Remaining Estimate:
+   Time Spent: 
+   
+Task #4
+   Description: usuario puede ingresar lugar de salida.
+   Status: Not Yet Started
+   Original Estimate: 4 horas
+   Remaining Estimate: 4 horas
+   Time Spent: 4 horas
+
+Task #5
+   Description: usuario puede ingresar fecha y hora de salida.
+   Status: Not Yet Started
+   Original Estimate: 4 horas
+   Remaining Estimate: 4 horas
+   Time Spent: 4 horas
+
+Task #6
+   Description: usuario puede ingresar lugar de llegada.
+   Status: Not Yet Started
+   Original Estimate: 4 horas
+   Remaining Estimate: 4 horas
+   Time Spent: 4 horas
+
+Task #7
+   Description: usuario puede ingresar fecha y hora de llegada.
+   Status: Not Yet Started
+   Original Estimate: 4 horas
+   Remaining Estimate: 4 horas
+   Time Spent: 4 horas
+   
+Task #8
+   Description: al guardar el pedido, los datos son preservados
+   Status: Not Yet Started
+   Original Estimate: 4 horas
+   Remaining Estimate: 4 horas
+   Time Spent: 4 horas
+   
+Story 2
+
+?? 
+
 == ===================================================================
 ID Criterios de aceptación
 == ===================================================================

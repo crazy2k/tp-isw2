@@ -131,8 +131,8 @@ Task #5
    Description: se crean las entidades necesarias para crear una nueva oferta de viaje
    Status: Not Yet Started
    Original Estimate: 8 horas
-   Remaining Estimate: 8 horas
-   Time Spent: 0 horas
+   Remaining Estimate: 4 horas
+   Time Spent: 4 horas
 
 Task #6
    Description: preservar los datos de la oferta generada
@@ -169,8 +169,8 @@ Task #4
    Description: se crean las entidades necesarias para crear un nuevo pedido de viaje
    Status: Not Yet Started
    Original Estimate: 8 horas
-   Remaining Estimate: 8 horas
-   Time Spent: 0 horas
+   Remaining Estimate: 4 horas
+   Time Spent: 4 horas
 
 Task #5
    Description: preservar los datos del pedido generado

@@ -4,17 +4,20 @@ Product Backlog
 == ====================================================== ===== ======
 ID Item                                                   Value Effort
 == ====================================================== ===== ======
-1  Como usuario sin auto quiero poder registrarme para    8	5
+1  Como usuario sin auto quiero poder registrarme para    30	8
    poder viajar al trabajo.
 -- ------------------------------------------------------ ----- ------
-2  Como usuario con auto quiero registrarme para dejar mi 7     3
+2  Como usuario con auto quiero registrarme para dejar mi 20    5
    auto a disposición para posibles viajes.
 -- ------------------------------------------------------ ----- ------
-3  Como usuario registrado quiero poder pedirle al        9     8
+3  Como usuario quiero poder dar de alta mi cuente en el  15    1
+   sistema para luego poder registrar mis futuros viajes.
+-- ------------------------------------------------------ ----- ------
+4  Como usuario registrado quiero poder pedirle al        10    13
    sistema los detalles sobre el viaje que me fue
    asignado.
 -- ------------------------------------------------------ ----- ------
-4  Como usuario registrado quiero recibir notificaciones  6     1
+5  Como usuario registrado quiero recibir notificaciones  8     3
    para conocer los detalles sobre el viaje que me fue
    asignado.
 == ====================================================== ===== ======

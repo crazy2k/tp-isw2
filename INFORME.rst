@@ -43,9 +43,10 @@ Consideramos que la user story con menor esfuerzo asociado es la #5
 ya que sólo implica poder consultar los resultados de la estrategia
 utilizada por el organizador de viajes; el algoritmo utilizado para la misma
 está ya contemplado por el ítem #4, de mayor prioridad, por lo que no sería
-necesario tenerlo en cuenta para este punto. En cuanto a la interfaz de usuario,
-todos los pormenores de la misma ya estarían previamente resueltos en las
-distintas stories que hacen uso de la misma.
+necesario tenerlo en cuenta para este punto. 
+En cuanto a la interfaz de usuario, todos los pormenores de la
+misma ya estarían  previamente resueltos en las distintas stories que 
+hacen uso de la misma.
 
 A partir de esa user story, basamos el resto de las estimaciones en
 forma relativa, usando Fibonacci.
@@ -88,6 +89,8 @@ Además, funcionalidades que esperamos en esta story se verán resueltas en
 la story #2, dado que resolveremos el ingreso de los datos de viajes y un 
 algoritmo de matching entre viajes ofertados y requeridos muy simple. Esto 
 nos inclinó a reducir un poco la estimación de la misma.
+
+Se puede ver el estado del comienzo del proyecto en el product burndown chart.
 
 
 Sprint Backlog
@@ -178,6 +181,8 @@ Task #5
    Original Estimate: 6 horas
    Remaining Estimate: 6 horas
    Time Spent: 0 horas
+
+Se puede apreciar el progreso hasta ahora alcanzado en el task burndown chart.
 
    
 == ===================================================================

@@ -89,7 +89,7 @@ ID Criterios de aceptación
    - El usuario puede crear una oferta de viaje indicando que dispone
      de auto e ingresar lugar, día y horario de salida y de llegada.
 -- -------------------------------------------------------------------
-2  - El usuario puede registrarse ingresando nombre, email y
+3  - El usuario puede registrarse ingresando nombre, email y
      contraseña.
    - El sistema rechaza el registro de usuarios si los datos
      ingresados son inválidos.

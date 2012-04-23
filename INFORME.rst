@@ -33,28 +33,40 @@ que nos parecieron razonables poniéndonos en ese papel.
 Justificación del por qué de los effort
 ---------------------------------------
 
-Consideramos que la user story con menor esfuerzo asociado es la cuarta
-dado que sólo implica notificar al cliente la información previamente 
-computada.
+Consideramos que la user story con menor esfuerzo asociado es la tercera
+ya que sólo implica agregar un usuario, el cual requiere pocos datos y 
+validaciones muy simples. Luego al ser una tarea de menor prioridad las 
+dificultades que conllevarian implementar la interfaz grafica ya se deberian
+haber encarado en la primer story amortizando las demás.
+
 A partir de esa user story, basamos el resto de las estimaciones en 
 forma relativa, usando Fibonacci.
 
+La segunda user story que requeriría menor esfuerzo asociado es la #5
+dado que sólo implica notificar al cliente la información previamente 
+computada. Es algo mas costosa que la primera ya que además sería 
+necesario realizar un poco de investigación con respecto a las APIs de SMTP
+disponibles o sobre el protocolo de notificacion a utilizar que resulte 
+más conveniente.
+
 Con respecto a la primera y la segunda story, dado que estas son muy
-similares en esfuerzo y ambas necesitan de una tarea de invertigación, 
+similares en esfuerzo y ambas necesitan de una tarea de investigación, 
 decidimos agregar mayor esfuerzo a la que tiene mayor valor para el 
-Product Owner, y estas sería la que incluye esa tarea de investigación.
+Product Owner, por ende la que se encararia primero, y como consecuencia
+de lo anterior, esta sería la que conlleve la investigacion necesaria.
 Dicha tarea de investigación incluye averiguar acerca de tecnologías 
-para la interfaz gráfica de la aplicación.
-Además, ambas stories incluyen la registración del usuario, por lo que 
-la story de mayor esfuerzo y mayor prioridad sería la encargada de 
+para la interfaz gráfica para la aplicación, sean web o para algun otro
+tipo de plataforma.
+Además, ambas stories incluyen el login del usuario en el sistema, por 
+lo que la story de mayor esfuerzo y mayor prioridad sería la encargada de
 realizar dicha tarea.
 
-Con respecto a la tercera user story, ésta es la que incluye mayor 
+Con respecto a la user story #4, ésta es la que incluye mayor 
 desarrollo y mayores resultados. Es la que incluye el algortimo de 
 matching entre pedidos y ofertas de viaje y mayor visibilidad para el 
 Product Owner.
 
-Elegimos para este sprint la primera y segunda story, no sólo por el 
+Elegimos para este sprint la primera, segunda y tercer story, no sólo por el 
 valor o el esfuerzo de las mismas, sino también por un tema de 
 dependecias. Es decir, la tercera story es preferente hacerla una vez que 
 estén finalizadas la primera y la segunda.

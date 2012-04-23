@@ -1,26 +1,26 @@
 Product Backlog
 ---------------
 
-== ====================================================== ===== ======
-ID Item                                                   Value Effort
-== ====================================================== ===== ======
-1  Como usuario sin auto quiero poder registrarme para    30	8
-   poder viajar al trabajo.
--- ------------------------------------------------------ ----- ------
-2  Como usuario con auto quiero registrarme para dejar mi 20    5
+== ====================================================== ======= ===== ======
+ID Item                                                   Prority Value Effort
+== ====================================================== ======= ===== ======
+1  Como usuario con auto quiero registrarme para dejar mi 1       30    5
    auto a disposición para posibles viajes.
--- ------------------------------------------------------ ----- ------
-3  Como usuario quiero poder dar de alta mi cuenta en el  15    1
+-- ------------------------------------------------------ ------- ----- ------
+2  Como usuario sin auto quiero poder registrarme para    2       20    8
+   poder viajar al trabajo.
+-- ------------------------------------------------------ ------- ----- ------
+3  Como usuario quiero poder dar de alta mi cuenta en el  3       15    1
    sistema para luego poder registrar mis futuros viajes.
--- ------------------------------------------------------ ----- ------
-4  Como usuario registrado quiero poder pedirle al        10    13
+-- ------------------------------------------------------ ------- ----- ------
+4  Como usuario registrado quiero poder pedirle al        4       10    13
    sistema los detalles sobre el viaje que me fue
    asignado.
--- ------------------------------------------------------ ----- ------
-5  Como usuario registrado quiero recibir notificaciones  8     3
+-- ------------------------------------------------------ ------- ----- ------
+5  Como usuario registrado quiero recibir notificaciones  5       8     3
    para conocer los detalles sobre el viaje que me fue
    asignado.
-== ====================================================== ===== ======
+== ====================================================== ======= ===== ======
 
 Justificación del por qué de los values
 ---------------------------------------

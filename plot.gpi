@@ -8,7 +8,7 @@ set style data linespoints
 
 set output "plot/burndown-product-ideal.png"
 set title "Product Burndown"
-set ylabel "Semanas"
+set ylabel "Story points"
 set xlabel "Sprints"
 # Sin referencia (title ""), simplemente el grafico
 plot 'data/burndown-product-ideal.out' title ""

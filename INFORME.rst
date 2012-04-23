@@ -63,8 +63,8 @@ con respecto a las APIs de SMTP disponibles o sobre el protocolo de
 notificacion a utilizar que resulte más conveniente.
 
 Con respecto a la primera y la segunda story, estas son muy
-similares en esfuerzo y ambas necesitan algun tipo tarea de investigación.
-Decidimos encarar primero la que posía mayor valor para el Product Owner,
+similares en esfuerzo y ambas necesitan algún tipo tarea de investigación.
+Decidimos encarar primero la que poseía mayor valor para el Product Owner,
 es decir la #1, y como consecuencia de lo anterior, esta sería la que conlleve la
 investigacion necesaria para la interfaz grafica requerida en ambas stories y en
 otras subsiguentes. Esta story ademas conlleva algo de trabajo aparte de la
@@ -72,10 +72,13 @@ investigación ya que requiere que el usuario pueda hacer login (en la #2 tambie
 y poder ingresar cierta cantidad de datos que luego quedan guardados en el sistema.
 Para la #2, la investigacion de interfaz puede ser pasada por alto, pero requiere
 tambien ingresar otros tipos de datos aparte, y que el usuario pueda visualizar
-la informacion de la ofertas que le sean utiles. Esto representa en si realizar
-parte de la estragía de matching entre ofertas para lo cual cierta investigacion es
-seguramente requerida y es el punto de partida para luego completar el algoritmo
-de matching optimo entre ofertas y pedidos de transporte.
+la informacion de la ofertas que le sean útiles. Esto representa en si realizar
+parte de la estragia de matching entre ofertas y pedidos para lo cual cierta
+investigacion es seguramente requerida, para determinar que estrategias son
+convenientes para agrupar ofertas y es el punto de partida para luego completar
+el algoritmo de matching optimo entre ofrecimientos y pedidos de transporte.
+Según lo dicho estas 2 stories son considerablemente más dificiles de realizar que
+las hasta ahora analizadas.
 
 Dicha tarea de investigación incluye averiguar acerca de tecnologías
 para la interfaz gráfica para la aplicación, sean web o para algun otro

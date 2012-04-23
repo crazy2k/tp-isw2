@@ -164,3 +164,42 @@ de la story que incluia el desarrollo del algoritmo de matcheo disminuyó un poc
 Satisfechos con esta nueva disposición de stories decidimos incluir esta nueva story
 junto con la que permitia registar un auto para dispoción del sistema (la de mayor
 importancia), e iniciar el primer sprint.
+
+
+Diseño
+------
+
+Con respecto al diseño se tomaron distintas desiciones con el fin de mantenerlo lo
+mas flexible que sea posible y abierto a nuevas desiciones y cambios sobre
+distintos ejes.
+Se consideraron distintas estrategias para representar los distintos y puntos de
+partida de los viajes de los usuarios, como representarlos mediantes coordenadas,
+dividir todo el territorio disponible en zonas chicas e indivisibles o usar
+direcciones de calles reales las cuales podrian ser ubicadas gracias a un
+servicio interno. Para que ninguna de estas posibilidades quede descartada de
+entrada se incluyo la clase Place, la cual responde a un protocolo que permite
+conocer la distancia entre cualquier par de puntos, independientemente de la
+implementacion suyancete por lo que si se utiliza una clase Address la cual consulte
+con un servicio web externo, podria cambiarse a cualquier otra implementacion
+que respete es protocolo sin problemas.
+Se decidió ademas representar el pedido de viaje (JourneyRequest) y el ofrecimiento
+de auto (JourneyOffer) mediante clases diferentes ya que poseian atributos en
+comun pero el protocolo y comportamiento que manifestaban era más bien diferente.
+En ambas hay un lugar destino otro origin y un horario, este ultimo se representa
+con la clase Timetable.
+La clase Timetimable, representa la frecuenta y las circunstancias temporales en
+las que se realiza el viaje (o potencialmente algun otro evento). Como queriamos
+dejar abierto que pudiesen especificar cosas como "todos los Lunes las 8 AM", o
+"de luens a jueves a las 8:30 AM y los viernes a las 9:00 AM", esta clase permite
+modelar distintas maneras de organizar los horarios de viajes, desde un horario y dia
+fijos, hasta otros repetivos, que se cumplan semanalmente como los ya dados por
+ejemplo.
+Finalmente las otras 2 clase importantes que vale la pena aclarar son
+JourneyOrganizer, junto con Journey y JourneyStop. La primera recibe como entrada
+un conjunto de pedidos y ofertas para un dia determinado y tiene que ser capaz de,
+organizar los distintos viajes posibles de forma optima segun algun criterio
+determinado. Los viajes producidos se reprensentan con la clase Journey, la cual
+especifica una fecha especifica más quien sera el encardo de aportar el transporte
+para ese viaje especifico. Luego las JourneyStops, representan los puntos intermedios
+del viaje donde deben subir o bajar los distintos pasajeros, permitiendo que los
+viajes puedan ser diagramados con mucha flexibilidad.

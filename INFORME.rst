@@ -4,11 +4,11 @@ Product Backlog
 == ====================================================== ======= ===== ======
 ID Item                                                   Prority Value Effort
 == ====================================================== ======= ===== ======
-1  Como usuario con auto quiero registrarme para dejar mi 1       50    8
-   auto a disposición para posibles viajes.
+1  Como usuario con auto quiero ingresar datos para       1       50    8
+   ofrecer posibles viajes que realizaré con él.
 -- ------------------------------------------------------ ------- ----- ------
-2  Como usuario sin auto quiero poder ingresar mis datos  2       40    8
-   para poder conocer que ofertas de viaje safisfacen mis
+2  Como usuario sin auto quiero ingresar datos para       2       40    8
+   conocer qué ofertas de viaje safisfacen mis
    requisitos.
 -- ------------------------------------------------------ ------- ----- ------
 3  Como usuario quiero poder dar de alta mi cuenta en el  3       35    3

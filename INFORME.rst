@@ -99,6 +99,70 @@ a reducir un poco la estimacion de la misma.
 Sprint Backlog
 --------------
 
+Tareas asociadas a stories:
+
+Story 1
+
+Task #1
+   Description: investigar tecnología conveniente para la interfaz de usuario.
+   Status: Not Yet Started
+   Original Estimate: 4 horas
+   Remaining Estimate: 4 horas
+   Time Spent: 4 horas
+
+Task #2
+   Description: usuario puede loggearse en el sistema.
+   Status: Not Yet Started
+   Original Estimate: 8 horas
+   Remaining Estimate: 8 horas
+   Time Spent: 8 horas
+
+Task #3
+   Description: usuario puede indicar que tiene un auto
+   Status: Not Yet Started
+   Original Estimate:
+   Remaining Estimate:
+   Time Spent: 
+   
+Task #4
+   Description: usuario puede ingresar lugar de salida.
+   Status: Not Yet Started
+   Original Estimate: 4 horas
+   Remaining Estimate: 4 horas
+   Time Spent: 4 horas
+
+Task #5
+   Description: usuario puede ingresar fecha y hora de salida.
+   Status: Not Yet Started
+   Original Estimate: 4 horas
+   Remaining Estimate: 4 horas
+   Time Spent: 4 horas
+
+Task #6
+   Description: usuario puede ingresar lugar de llegada.
+   Status: Not Yet Started
+   Original Estimate: 4 horas
+   Remaining Estimate: 4 horas
+   Time Spent: 4 horas
+
+Task #7
+   Description: usuario puede ingresar fecha y hora de llegada.
+   Status: Not Yet Started
+   Original Estimate: 4 horas
+   Remaining Estimate: 4 horas
+   Time Spent: 4 horas
+   
+Task #8
+   Description: al guardar el pedido, los datos son preservados
+   Status: Not Yet Started
+   Original Estimate: 4 horas
+   Remaining Estimate: 4 horas
+   Time Spent: 4 horas
+   
+Story 2
+
+?? 
+
 == ===================================================================
 ID Criterios de aceptación
 == ===================================================================
@@ -164,3 +228,42 @@ de la story que incluia el desarrollo del algoritmo de matcheo disminuyó un poc
 Satisfechos con esta nueva disposición de stories decidimos incluir esta nueva story
 junto con la que permitia registar un auto para dispoción del sistema (la de mayor
 importancia), e iniciar el primer sprint.
+
+
+Diseño
+------
+
+Con respecto al diseño se tomaron distintas decisiones con el fin de mantenerlo lo
+más flexible que sea posible y abierto a nuevas decisiones y cambios sobre
+distintos ejes.
+Se consideraron distintas estrategias para representar los distintos y puntos de
+partida de los viajes de los usuarios, como representarlos mediantes coordenadas,
+dividir todo el territorio disponible en zonas chicas e indivisibles o usar
+direcciones de calles reales las cuales podrian ser ubicadas gracias a un
+servicio interno. Para que ninguna de estas posibilidades quede descartada de
+entrada se incluyo la clase Place, la cual responde a un protocolo que permite
+conocer la distancia entre cualquier par de puntos, independientemente de la
+implementación subyacete por lo que si se utiliza una clase Address la cual consulte
+con un servicio web externo, podría cambiarse por cualquier otra implementación
+que respete el mismo protocolo sin problemas.
+Se decidió ademas representar el pedido de viaje (JourneyRequest) y el ofrecimiento
+de auto (JourneyOffer) mediante clases diferentes ya que poseian atributos en
+común pero el protocolo y comportamiento que manifestaban era más bien diferente.
+En ambas hay un lugar destino otro origen y un horario, este último se representa
+con la clase Timetable.
+La clase Timetimable, representa la frecuenta y las circunstancias temporales en
+las que se realiza el viaje (o potencialmente algún otro evento). Como queriamos
+dejar abierto que se pudiesen especificar rutinas como "todos los Lunes las 8 AM",
+o "de Lunes a Jueves a las 8:30 AM y los Viernes a las 9:00 AM", esta clase permite
+modelar distintas maneras de organizar los horarios de viajes, desde un horario
+y día fijos, hasta otros repetivos, que se cumplan semanalmente como los ya dados
+como ejemplo.
+Finalmente las otras 3 clase importantes que vale la pena aclarar son
+JourneyOrganizer, junto con Journey y JourneyStop. La primera recibe como entrada
+un conjunto de pedidos y ofertas para un día determinado y tiene que ser capaz de,
+organizar los distintos viajes posibles de forma optima segun algún criterio
+determinado. Los viajes producidos se reprensentan con la clase Journey, la cual
+comprende una fecha especifica para el viaje más quien sera el encargado de aportar
+el transporte necesario para ese viaje especifico. Luego las JourneyStops,
+representan los puntos intermedios del viaje donde deben subir o bajar los distintos
+pasajeros, permitiendo que los viajes puedan ser diagramados con mucha flexibilidad.

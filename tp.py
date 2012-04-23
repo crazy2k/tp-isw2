@@ -136,17 +136,24 @@ class JourneyOrganizer:
         pass
 
 class Notification:
-    pass
+    def content(self):
+        raise NotImplementedError()
 
 class UnsuccesfulMatchNotification(Notification):
     def __init__(self, request):
         self.request = request
+
+    def content(self):
+        pass
 
 class SuccesfulMatchNotification(Notification):
     def __init__(self, request, journey, journey_stop):
         self.request = request
         self.journey = journey
         self.journey_stop = journey_stop
+
+    def content(self):
+        pass
 
 
 class NotificationSender:

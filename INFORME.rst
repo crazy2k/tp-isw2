@@ -10,7 +10,7 @@ ID Item                                                   Value Effort
 2  Como usuario con auto quiero registrarme para dejar mi 20    5
    auto a disposición para posibles viajes.
 -- ------------------------------------------------------ ----- ------
-3  Como usuario quiero poder dar de alta mi cuente en el  15    1
+3  Como usuario quiero poder dar de alta mi cuenta en el  15    1
    sistema para luego poder registrar mis futuros viajes.
 -- ------------------------------------------------------ ----- ------
 4  Como usuario registrado quiero poder pedirle al        10    13

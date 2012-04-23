@@ -17,7 +17,7 @@ ID Item                                                   Prority Value Effort
 -- ------------------------------------------------------ ------- ----- ------
 4  Como usuario sin auto quiero que al ingresar mis datos 4       30    8
    estos queden registrados para que se me asigne
-   semanalmente el viaje óptimo de forma automatica.
+   semanalmente el viaje óptimo de forma automática.
 -- ------------------------------------------------------ ------- ----- ------
 5  Como usuario registrado quiero poder consultar en el   5       20    1
    sistema los detalles sobre el viaje que me fue
@@ -42,127 +42,144 @@ Justificación de los efforts
 Consideramos que la user story con menor esfuerzo asociado es la #5
 ya que sólo implica poder consultar los resultados de la estrategia
 utilizada por el organizador de viajes; el algoritmo utilizado para la misma
-esta ya contemplado por el item #4, de mayor prioridad, por lo que no seria
+está ya contemplado por el ítem #4, de mayor prioridad, por lo que no sería
 necesario tenerlo en cuenta para este punto. En cuanto a la interfaz de usuario,
 todos los pormenores de la misma ya estarían previamente resueltos en las
-distintas stories que hacen uso de la misma y tienen mayor prioridad.
+distintas stories que hacen uso de la misma.
 
 A partir de esa user story, basamos el resto de las estimaciones en
 forma relativa, usando Fibonacci.
 
-Las siguientes users story que requerirían menor esfuerzo asociado son la #6
-y la #3.
-La #3 ya que sólo implicaría poder registrar un usuario, lo cual requiere
-ingresar pocos datos y realizar validaciones muy simples; y al ser una tarea
-de menor prioridad las dificultades que conllevarian implementar la interfaz
-grafica ya se deberian haber encarado en la primer story amortizando las demás.
-La #6 dado que sólo implica notificar al cliente la información previamente
-computada. La estimación asignada es algo mayor que la mínima ya que implica
-algo de riesgo, dado que sería necesario realizar un poco de investigación
-con respecto a las APIs de SMTP disponibles o sobre el protocolo de
-notificacion a utilizar que resulte más conveniente.
+Luego, las demás users stories que requerirían menor esfuerzo asociado son la #6
+y la #3:
+  La #3 sólo implicaría poder registrar un usuario, lo cual requiere
+  ingresar pocos datos y realizar validaciones muy simples. 
+  Esta tarea sólo conllevarían implementar la interfaz de usuario, dado que en la
+  #1 se amortizó gran parte de su peso.
 
-Con respecto a la primera y la segunda story, estas son muy
-similares en esfuerzo y ambas necesitan algún tipo tarea de investigación.
+  La #6 sólo implicaría notificar al cliente la información previamente
+  computada. La estimación asignada es algo mayor que la mínima dado que sería 
+  necesario realizar un poco de investigación con respecto a las APIs de SMTP 
+  disponibles o sobre el protocolo de notificación a utilizar que resulte 
+  más conveniente.
+
+La #1 y la #2 story son muy similares en esfuerzo y ambas necesitan algún tipo tarea
+de investigación.
 Decidimos encarar primero la que poseía mayor valor para el Product Owner,
 es decir la #1, y como consecuencia de lo anterior, esta sería la que conlleve la
-investigacion necesaria para la interfaz grafica requerida en ambas stories y en
-otras subsiguentes. Esta story ademas conlleva algo de trabajo aparte de la
-investigación ya que requiere que el usuario pueda hacer login (en la #2 tambien),
-y poder ingresar cierta cantidad de datos que luego quedan guardados en el sistema.
-Para la #2, la investigacion de interfaz puede ser pasada por alto, pero requiere
-tambien ingresar otros tipos de datos aparte, y que el usuario pueda visualizar
-la informacion de la ofertas que le sean útiles. Esto representa en si realizar
-parte de la estragia de matching entre ofertas y pedidos para lo cual cierta
-investigacion es seguramente requerida, para determinar que estrategias son
-convenientes para agrupar ofertas y es el punto de partida para luego completar
-el algoritmo de matching optimo entre ofrecimientos y pedidos de transporte.
-Según lo dicho estas 2 stories son considerablemente más dificiles de realizar que
-las hasta ahora analizadas.
+investigación necesaria para la interfaz gráfica requerida en ambas stories y en
+otras subsiguentes. 
+De modo de equiparar los efforts de ambas stories, y como ambas conllevan algo de 
+trabajo para permitir que el usuario pueda hacer login, se decidió agregar esta 
+tarea, a la story #2.
 
 Dicha tarea de investigación incluye averiguar acerca de tecnologías
-para la interfaz gráfica para la aplicación, sean web o para algun otro
+para la interfaz gráfica para la aplicación, sean web o para algún otro
 tipo de plataforma.
-Además, ambas stories incluyen el login del usuario en el sistema, por
+Además, ambas stories necesitan del login del usuario en el sistema, por
 lo que la story de mayor esfuerzo y mayor prioridad sería la encargada de
 realizar dicha tarea.
 
-Con respecto a la user story #4, ésta una de las que comprende mayor
-desarrollo y mayores resultados. Es la que incluye el algortimo de
+Con respecto a la user story #4, ésta es una de las que comprende mayor
+desarrollo y mayores resultados. Es la que incluye el algoritmo de
 matching entre pedidos y ofertas de viaje y mayor visibilidad para el
-Product Owner. Como aliciente, gran parte de lo necesario para esta story,
-como ingresar los datos de los viajes del cliente y cierto primer aproach
-hacia la estrageia de matching, está resuelto en la story #2, esto nos inclinó
-a reducir un poco la estimacion de la misma.
+Product Owner. 
+Además, funcionalidades que esperamos en esta story se verán resueltas en
+la story #2, dado que resolveremos el ingreso de los datos de viajes y un 
+algoritmo de matching entre viajes ofertados y requeridos muy simple. Esto 
+nos inclinó a reducir un poco la estimación de la misma.
 
 
 Sprint Backlog
 --------------
 
-Tareas asociadas a stories:
+A cada story point, asociamos 4 horas de desarrollo.
+Luego, las tareas asociadas a los stories #1 y #2 quedarían estimadas de la 
+siguiente forma:
 
 Story 1
 
 Task #1
    Description: investigar tecnología conveniente para la interfaz de usuario.
    Status: Not Yet Started
-   Original Estimate: 4 horas
-   Remaining Estimate: 4 horas
-   Time Spent: 4 horas
+   Original Estimate: 6 horas
+   Remaining Estimate: 6 horas
+   Time Spent: 0 horas
 
 Task #2
-   Description: usuario puede loggearse en el sistema.
+   Description: verificar el correcto funcionamiento del sistema de log in (dependencia con story #2)
    Status: Not Yet Started
-   Original Estimate: 8 horas
-   Remaining Estimate: 8 horas
-   Time Spent: 8 horas
+   Original Estimate: 2 horas
+   Remaining Estimate: 2 horas
+   Time Spent: 0 horas
 
 Task #3
-   Description: usuario puede indicar que tiene un auto
+   Description: usuario puede ingresar los datos para ofrecer su auto para un viaje
    Status: Not Yet Started
-   Original Estimate:
-   Remaining Estimate:
-   Time Spent: 
+   Original Estimate: 6 horas
+   Remaining Estimate: 6 horas
+   Time Spent: 0 horas
    
 Task #4
-   Description: usuario puede ingresar lugar de salida.
+   Description: el sistema valida los datos ingresados
    Status: Not Yet Started
    Original Estimate: 4 horas
    Remaining Estimate: 4 horas
-   Time Spent: 4 horas
+   Time Spent: 0 horas
 
 Task #5
-   Description: usuario puede ingresar fecha y hora de salida.
+   Description: se crean las entidades necesarias para crear una nueva oferta de viaje
    Status: Not Yet Started
-   Original Estimate: 4 horas
+   Original Estimate: 8 horas
    Remaining Estimate: 4 horas
    Time Spent: 4 horas
 
 Task #6
-   Description: usuario puede ingresar lugar de llegada.
+   Description: preservar los datos de la oferta generada
    Status: Not Yet Started
-   Original Estimate: 4 horas
-   Remaining Estimate: 4 horas
-   Time Spent: 4 horas
+   Original Estimate: 6 horas
+   Remaining Estimate: 6 horas
+   Time Spent: 0 horas
+   
 
-Task #7
-   Description: usuario puede ingresar fecha y hora de llegada.
-   Status: Not Yet Started
-   Original Estimate: 4 horas
-   Remaining Estimate: 4 horas
-   Time Spent: 4 horas
-   
-Task #8
-   Description: al guardar el pedido, los datos son preservados
-   Status: Not Yet Started
-   Original Estimate: 4 horas
-   Remaining Estimate: 4 horas
-   Time Spent: 4 horas
-   
 Story 2
 
-?? 
+Task #1
+   Description: usuario puede loggearse en el sistema.
+   Status: Not Yet Started
+   Original Estimate: 10 horas
+   Remaining Estimate: 10 horas
+   Time Spent: 0 horas
 
+Task #2
+   Description: usuario puede ingresar los datos para realizar un pedido de viaje
+   Status: Not Yet Started
+   Original Estimate: 6 horas
+   Remaining Estimate: 6 horas
+   Time Spent: 0 horas
+   
+Task #3
+   Description: verificar el correcto funcionamiento del sistema de valición de los datos ingresados
+   Status: Not Yet Started
+   Original Estimate: 2 horas
+   Remaining Estimate: 2 horas
+   Time Spent: 0 horas
+
+Task #4
+   Description: se crean las entidades necesarias para crear un nuevo pedido de viaje
+   Status: Not Yet Started
+   Original Estimate: 8 horas
+   Remaining Estimate: 4 horas
+   Time Spent: 4 horas
+
+Task #5
+   Description: preservar los datos del pedido generado
+   Status: Not Yet Started
+   Original Estimate: 6 horas
+   Remaining Estimate: 6 horas
+   Time Spent: 0 horas
+
+   
 == ===================================================================
 ID Criterios de aceptación
 == ===================================================================
@@ -180,53 +197,52 @@ ID Criterios de aceptación
      satisfacen.
 == ===================================================================
 
-El proyecto se ejecturá en 2 sprints, para el primero, elegimos las stories #1 y #2,
+
+El proyecto se ejecturá en 2 sprint. Para el primero, elegimos las stories #1 y #2,
 indicadas en la tabla anterior, las cuales son las de mayor importancia para el
 cliente. Ambas suman una cantidad de 16 story points (del total de 31).
 
 El equipo prefirió no comprometerse e incluir ninguna story más del product
 backlog, para no establecer expectativas demasiado altas en el cliente, aunque,
-si el tiempo lo permite, se podria intentar el desarrollo la story #3 antes de
-finalizado sprint, de forma tal de completar las primeras 3 stories durante el
-mismo.
+si el tiempo lo permite, se podría intentar el desarrollo la story #3 antes de
+que finalice el sprint, de forma tal de completar las primeras 3 stories durante
+el mismo.
 
-Inicialmente las stories incluidas en este sprint sólo abarcaban la
+Inicialmente, las stories incluidas en este sprint sólo abarcaban la
 funcionalidad para crear cuentas de usuario y que los usuarios registrados
-pudieran ingresar al sitio los datos necesarios para poder cumplir sus necesadades
-de transporte, o incluso, poner disposicion un auto propio, pero sin contemplar
-la posibilidad de organizar viajes por el sistema.
-Se consideró luego, que un hipotetico P.O. se benficiaría más al poder incluir
-al menos cierta funcionalidad basica de organizacion de viajes en este mismo release,
-de forma tal, de obtener un producto que pudiese ser lanzado a produccion de
+pudieran ingresar al sitio los datos necesarios para poder cumplir sus necesidades
+de transporte, o incluso, poner a disposición un auto propio, pero sin contemplar
+la posibilidad de organizar viajes a través del sistema.
+Se consideró luego, que un hipotético P.O. se beneficiaría más al poder incluir
+al menos cierta funcionalidad básica de organización de viajes en este mismo release,
+de forma tal, de obtener un producto que pudiese ser lanzado a producción de
 manera inmediata.
-Adicionalmente, y teniendo en cuenta que al agregar la story que producía los viajes
+Adicionalmente, teniendo en cuenta que al agregar la story que producía los viajes
 óptimos para los datos ingresados por los usuarios, el sprint se volvería demasiado
-abultado y dificilmente podría cumplirse en el tiempo deseado, se decidió dividir
+abultado y difícilmente podría cumplirse en el tiempo deseado, se decidió dividir
 las stories antiguas en otras algo más simples.
 
 Primero, la alta de la cuenta del usuario se separó en una story propia, de forma
-tal que pueda ser desarrollada más adelante en otro sprint. Aligerando la estimación
-de las stories incluidas. Dado este cambio, el sistema podria comenzar a funcionar,
-sin esta funcionalidad, en una estapa inicial donde la participacion estaria cerrada
-a unos usuario ingresados en forma masiva a la DB o por pedido explicito por fuera
-del sistema.
+tal que pueda ser desarrollada más adelante en otro sprint, aligerando la estimación
+de las stories incluídas. Dado este cambio, el sistema podría comenzar a funcionar,
+sin esta funcionalidad, en una etapa inicial donde la participación estaría cerrada
+a algunos usuario ingresados en forma masiva a una base de datos o por pedido explícito
+por fuera del sistema.
 
-Luego se planteó que podrian satisfacerse las necesidades de los usuarios si estós
+Luego se planteó que podrían satisfacerse las necesidades de los usuarios si estos
 pudiesen conocer cuales son las ofertas de autos disponibles que coinciden con sus
 horarios y destinos; luego ellos mismos podrían elegir cual de las ofertas mostradas
 les resultarían preferibles.
-
-Se decidío que la funcionalidad anterior podria comprender una story nueva, la cual
-no incluiria el requisito de registrar los datos de viaje del usuario en la DB del
-sistema (que pasaria a otra story nueva), para aligerar su peso, pero permitira
-obtener al menos las ofertas filtradas segun su correspondencia con las necesiades
-del usuario; esto implicaría comenzar a investigar sobre las estrategias posibles
-de matcheo entre pedidos y ofrecimientos y a su vez amortizaria el costo del
-desarrollo la story que incluiría algoritmo de matching entre los pedidos de viaje
-y los autos puestos a disposicion para el sistema, como consecuencia la estimación
-de la story que incluia el desarrollo del algoritmo de matcheo disminuyó un poco.
+Se decidío que la funcionalidad anterior podría comprender una story nueva, la cual
+no incluiría el requisito de registrar los datos de viaje del usuario en una base del
+sistema. Además, permitiría obtener al menos las ofertas filtradas según su correspondencia 
+con las necesiades del usuario. 
+Además, se agregaría un requisito de investigar las estrategias posibles de matcheo entre
+pedidos y ofrecimientos que amortice el costo del desarrollo. 
+De esta forma, y como se aclaró antes, la story que incluye el algoritmo de matcheo, 
+tendría un esfuerzo menor.
 Satisfechos con esta nueva disposición de stories decidimos incluir esta nueva story
-junto con la que permitia registar un auto para dispoción del sistema (la de mayor
+junto con la que permita registar un auto para dispoción del sistema (la de mayor
 importancia), e iniciar el primer sprint.
 
 
@@ -236,34 +252,35 @@ Diseño
 Con respecto al diseño se tomaron distintas decisiones con el fin de mantenerlo lo
 más flexible que sea posible y abierto a nuevas decisiones y cambios sobre
 distintos ejes.
-Se consideraron distintas estrategias para representar los distintos y puntos de
+Se consideraron distintas estrategias para representar los distintos puntos de
 partida de los viajes de los usuarios, como representarlos mediantes coordenadas,
 dividir todo el territorio disponible en zonas chicas e indivisibles o usar
-direcciones de calles reales las cuales podrian ser ubicadas gracias a un
+direcciones de calles reales las cuales podrían ser ubicadas gracias a un
 servicio interno. Para que ninguna de estas posibilidades quede descartada de
-entrada se incluyo la clase Place, la cual responde a un protocolo que permite
+entrada se incluyó la clase Place, la cual responde a un protocolo que permite
 conocer la distancia entre cualquier par de puntos, independientemente de la
-implementación subyacete por lo que si se utiliza una clase Address la cual consulte
-con un servicio web externo, podría cambiarse por cualquier otra implementación
-que respete el mismo protocolo sin problemas.
-Se decidió ademas representar el pedido de viaje (JourneyRequest) y el ofrecimiento
-de auto (JourneyOffer) mediante clases diferentes ya que poseian atributos en
+implementación subyacete. Por ejemplo, se podría utilizar una clase Address la cual 
+consulte con un servicio web externo, y la misma podría cambiarse por cualquier 
+otra implementación que respete el mismo protocolo sin problemas.
+Se decidió además representar el pedido de viaje (JourneyRequest) y el ofrecimiento
+de auto (JourneyOffer) mediante clases diferentes ya que poseían atributos en
 común pero el protocolo y comportamiento que manifestaban era más bien diferente.
-En ambas hay un lugar destino otro origen y un horario, este último se representa
+En ambas hay un lugar destino, otro origen y un horario, este último se representa
 con la clase Timetable.
 La clase Timetimable, representa la frecuenta y las circunstancias temporales en
-las que se realiza el viaje (o potencialmente algún otro evento). Como queriamos
+las que se realiza el viaje (o potencialmente algún otro evento). Como queríamos
 dejar abierto que se pudiesen especificar rutinas como "todos los Lunes las 8 AM",
 o "de Lunes a Jueves a las 8:30 AM y los Viernes a las 9:00 AM", esta clase permite
 modelar distintas maneras de organizar los horarios de viajes, desde un horario
-y día fijos, hasta otros repetivos, que se cumplan semanalmente como los ya dados
-como ejemplo.
+y día fijos, por ejemplo, como otros con frecuencia semanal.
+
 Finalmente las otras 3 clase importantes que vale la pena aclarar son
 JourneyOrganizer, junto con Journey y JourneyStop. La primera recibe como entrada
 un conjunto de pedidos y ofertas para un día determinado y tiene que ser capaz de,
-organizar los distintos viajes posibles de forma optima segun algún criterio
-determinado. Los viajes producidos se reprensentan con la clase Journey, la cual
-comprende una fecha especifica para el viaje más quien sera el encargado de aportar
+organizar los distintos viajes posibles de forma óptima según algún criterio
+determinado. 
+Los viajes producidos se reprensentan con la clase Journey, la cual
+comprende una fecha específica para el viaje además de quién será el encargado de aportar
 el transporte necesario para ese viaje especifico. Luego las JourneyStops,
 representan los puntos intermedios del viaje donde deben subir o bajar los distintos
 pasajeros, permitiendo que los viajes puedan ser diagramados con mucha flexibilidad.

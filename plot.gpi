@@ -5,6 +5,10 @@ set terminal png enhanced size 1024,768
 # los .out
 set style data linespoints
 
+# Hacer que el en el eje X aparezcan solo numeros enteros
+# Esto lo hacemos haciendo que el incremento sea siempre 1
+set xtics 1
+
 
 set output "plot/burndown-product-ideal.png"
 set title "Product Burndown"

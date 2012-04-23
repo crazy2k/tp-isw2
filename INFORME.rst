@@ -139,18 +139,21 @@ Adicionalmente, y teniendo en cuenta que al agregar la story que producía los v
 óptimos para los datos ingresados por los usuarios, el sprint se volvería demasiado
 abultado y dificilmente podría cumplirse en el tiempo deseado, se decidió dividir
 las stories antiguas en otras algo más simples.
+
 Primero, la alta de la cuenta del usuario se separó en una story propia, de forma
 tal que pueda ser desarrollada más adelante en otro sprint. Aligerando la estimación
 de las stories incluidas. Dado este cambio, el sistema podria comenzar a funcionar,
 sin esta funcionalidad, en una estapa inicial donde la participacion estaria cerrada
 a unos usuario ingresados en forma masiva a la DB o por pedido explicito por fuera
 del sistema.
+
 Luego se planteó que podrian satisfacerse las necesidades de los usuarios si estós
 pudiesen conocer cuales son las ofertas de autos disponibles que coinciden con sus
 horarios y destinos; luego ellos mismos podrían elegir cual de las ofertas mostradas
 les resultarían preferibles.
-Se decidío que esta funcionalidad podria comprender una story nueva, la cual no
-incluiria el requisito de registrar los datos de viaje del usuario en la DB del
+
+Se decidío que la funcionalidad anterior podria comprender una story nueva, la cual
+no incluiria el requisito de registrar los datos de viaje del usuario en la DB del
 sistema (que pasaria a otra story nueva), para aligerar su peso, pero permitira
 obtener al menos las ofertas filtradas segun su correspondencia con las necesiades
 del usuario; esto implicaría comenzar a investigar sobre las estrategias posibles

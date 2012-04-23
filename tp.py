@@ -130,7 +130,7 @@ class JourneyOrganizer:
         return [schedulable for schedulable in schedulables if schedulable.timetable.is_during_this_date(self.date)]
 
     def plausible_offers_for(request):
-        return [offer for offer in self.offers if offer.satisfies(request)]
+        return request.plausible_offers(self.offers)
 
     def organize(self):
         pass

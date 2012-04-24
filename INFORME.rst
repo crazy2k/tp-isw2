@@ -28,70 +28,72 @@ ID Item                                                   Prority Value Effort
    asignado.
 == ====================================================== ======= ===== ======
 
-Justificación de los values
----------------------------
+Justificación de los *values*
+-----------------------------
 
-Consideramos que la decisión acerca de los valores de los ítems del
-Product Backlog es responsabidad del Product Owner.
-Ante la ausencia de esta información para este trabajo elegimos valores
-que nos parecieron razonables poniéndonos en ese papel.
+Consideramos que la decisión acerca de los *values* de los ítems del
+*Product Backlog* es responsabidad del *Product Owner*. Ante la ausencia de
+esta información para este trabajo, elegimos valores que nos parecieron
+razonables poniéndonos en ese papel.
 
-Justificación de los efforts
-----------------------------
+Justificación de los *efforts*
+------------------------------
 
-Consideramos que la user story con menor esfuerzo asociado es la #5
+Consideramos que la *user story* con menor esfuerzo asociado es la #5,
 ya que sólo implica poder consultar los resultados de la estrategia
 utilizada por el organizador de viajes; el algoritmo utilizado para la misma
 está ya contemplado por el ítem #4, de mayor prioridad, por lo que no sería
-necesario tenerlo en cuenta para este punto. 
-En cuanto a la interfaz de usuario, todos los pormenores de la
-misma ya estarían  previamente resueltos en las distintas stories que 
-hacen uso de la misma.
+necesario tenerlo en cuenta para este punto. En cuanto a la interfaz de
+usuario, todos los pormenores de la misma ya estarían previamente
+resueltos en las distintas stories que hacen uso de ella. A partir de
+esa user story, puntuamos el resto de las estimaciones en forma
+relativa, usando la secuencia de Fibonacci.
 
-A partir de esa user story, basamos el resto de las estimaciones en
-forma relativa, usando Fibonacci.
-
-Luego, las demás users stories que requerirían menor esfuerzo asociado son la #6
+Las siguientes user stories, en orden de esfuerzo creciente, son la #6
 y la #3:
-  La #3 sólo implicaría poder registrar un usuario, lo cual requiere
-  ingresar pocos datos y realizar validaciones muy simples. 
-  Esta tarea sólo conllevarían implementar la interfaz de usuario, dado que en la
-  #1 se amortizó gran parte de su peso.
 
-  La #6 sólo implicaría notificar al cliente la información previamente
-  computada. La estimación asignada es algo mayor que la mínima dado que sería 
-  necesario realizar un poco de investigación con respecto a las APIs de SMTP 
-  disponibles o sobre el protocolo de notificación a utilizar que resulte 
-  más conveniente.
+- La #3 sólo implica poder registrar un usuario, lo cual abarca el
+  ingreso de pocos datos y validaciones muy simples de estos. Lo
+  referido a la interfaz gráfica, para la parte de registro,
+  tampoco requeriría mucho esfuerzo, dado que stories más prioritarias,
+  como la #1, ya implican buena parte del trabajo.
 
-La #1 y la #2 story son muy similares en esfuerzo y ambas necesitan algún tipo tarea
-de investigación.
-Decidimos encarar primero la que poseía mayor valor para el Product Owner,
-es decir la #1, y como consecuencia de lo anterior, esta sería la que conlleve la
-investigación necesaria para la interfaz gráfica requerida en ambas stories y en
-otras subsiguentes. 
-De modo de equiparar los efforts de ambas stories, y como ambas conllevan algo de 
-trabajo para permitir que el usuario pueda hacer login, se decidió agregar esta 
-tarea, a la story #2.
+- La #6 sólo conlleva la notificación al cliente de información
+  previamente computada. La estimación asignada es algo mayor que la
+  mínima dado que sería necesario realizar un poco de investigación con
+  respecto a las APIs de SMTP disponibles o sobre el protocolo de
+  notificación a utilizar que resulte más conveniente.
 
-Dicha tarea de investigación incluye averiguar acerca de tecnologías
-para la interfaz gráfica para la aplicación, sean web o para algún otro
-tipo de plataforma.
-Además, ambas stories necesitan del login del usuario en el sistema, por
-lo que la story de mayor esfuerzo y mayor prioridad sería la encargada de
-realizar dicha tarea.
+Las stories #1 y #2 son similares en esfuerzo. La primera implica la
+programación del mecanismo de autenticación de usuarios y el ingreso de
+datos de las ofertas de viaje, así como la creación de las entidades
+pertinentes en el sistema. Además, esta story conlleva el trabajo de
+investigar sobre la tecnología a utilizar para el sitio web, y también
+la creación de los elementos de la interfaz gráfica.
 
-Con respecto a la user story #4, ésta es una de las que comprende mayor
-desarrollo y mayores resultados. Es la que incluye el algoritmo de
-matching entre pedidos y ofertas de viaje y mayor visibilidad para el
-Product Owner. 
-Además, funcionalidades que esperamos en esta story se verán resueltas en
-la story #2, dado que resolveremos el ingreso de los datos de viajes y un 
-algoritmo de matching entre viajes ofertados y requeridos muy simple. Esto 
-nos inclinó a reducir un poco la estimación de la misma.
+La story #2 también implica la autenticación de usuarios y el trabajo
+en la interfaz gráfica. Esta story podría aprovechar lo realizado en la
+story #1, disminuyendo el esfuerzo requerido para realizar algunas de
+sus tareas. Sin embargo, esta story implica el desarrollo de un
+algoritmo de *matching* primitivo que permita al usuario encontrar
+ofertas de viaje de su interés. La programación de este algoritmo,
+aunque este sea básico, podría requerir, además, un tiempo dedicado a
+investigación.
 
-Se puede ver el estado del comienzo del proyecto en el product burndown chart.
+La story #4 implica la registración de los datos de un usuario sin
+auto y el desarrollo de un algoritmo de matching algo más elaborado
+entre pedidos y ofertas de viaje. El mayor esfuerzo en esta story se lo
+lleva el desarrollo del algoritmo de matching, y la investigación
+que esto requiera. En un principio, habíamos asignado a esta story una
+estimación de esfuerzo mayor, pero, luego de realizar la subdivisión de
+algunas de las stories, se logró amortizar el esfuerzo requerido para
+esta: El trabajo sobre la interfaz gráfica y la persistencia de datos,
+así como el desarrollo de un primer algoritmo de matching naive en
+stories de mayor prioridad, hacen que esta story se vuelva más pequeña,
+lo cual es deseable porque reduce la incertidumbre y la vuelve más
+fácil de planificar.
 
+----
 
 Sprint Backlog
 --------------

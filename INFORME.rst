@@ -128,13 +128,24 @@ Task #3
 ```````
 
 :Descripción:
+    Programar validación de datos ingresados por el usuario.
+:Status: Not Yet Started
+:Original Estimate: 6 horas
+:Remaining Estimate: 6 horas
+:Time Spent: 0 horas
+
+
+Task #4
+```````
+
+:Descripción:
     Programar mecanismo de autenticación de usuarios.
 :Status: Not Yet Started
 :Original Estimate: 6 horas
 :Remaining Estimate: 6 horas
 :Time Spent: 0 horas
    
-Task #4
+Task #5
 ```````
 
 :Descripción:
@@ -145,7 +156,7 @@ Task #4
 :Remaining Estimate: 6 horas
 :Time Spent: 0 horas
 
-Task #5
+Task #6
 ```````
 
 :Descripción:
@@ -155,11 +166,10 @@ Task #5
 :Remaining Estimate: 6 horas
 :Time Spent: 0 horas
 
-Task #6
+Task #7
 ```````
 
-:Descripción:
-    Persistir los datos de la oferta generada.
+:Descripción: Persistir los datos de la oferta generada.
 :Status: Not Yet Started
 :Original Estimate: 6 horas
 :Remaining Estimate: 6 horas
@@ -183,13 +193,23 @@ Task #2
 ```````
 
 :Descripción:
-    Programar ingreso de datos para pedido de viaje.
+    Programar validación de datos ingresados para el pedido de viaje.
 :Status: Not Yet Started
 :Original Estimate: 6 horas
 :Remaining Estimate: 6 horas
 :Time Spent: 0 horas
 
 Task #3
+```````
+
+:Descripción:
+    Programar ingreso de datos para pedido de viaje.
+:Status: Not Yet Started
+:Original Estimate: 6 horas
+:Remaining Estimate: 6 horas
+:Time Spent: 0 horas
+
+Task #4
 ```````
 
 :Descripción:
@@ -200,12 +220,23 @@ Task #3
 :Remaining Estimate: 6 horas
 :Time Spent: 0 horas
 
-Task #4
+Task #5
 ```````
 
 :Descripción:
     Programar algoritmo de matching primitivo que permita al usuario
     encontrar ofertas de viaje de su interés.
+:Status: Not Yet Started
+:Original Estimate: 6 horas
+:Remaining Estimate: 6 horas
+:Time Spent: 0 horas
+
+Task #6
+```````
+
+:Descripción:
+    Crear elementos de interfaz necesarios para mostrar al usuario las
+    ofertas de viaje de su interés.
 :Status: Not Yet Started
 :Original Estimate: 6 horas
 :Remaining Estimate: 6 horas

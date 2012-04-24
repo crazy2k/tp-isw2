@@ -98,18 +98,21 @@ fácil de planificar.
 Sprint Backlog
 --------------
 
-A cada story point, asociamos 4 horas de desarrollo.
-Luego, las tareas asociadas a los stories #1 y #2 quedarían estimadas de la 
+A cada *story point*, le asociamos 4 horas de desarrollo. Luego, las
+tareas asociadas a los stories #1 y #2 quedarían estimadas de la
 siguiente forma:
 
-Story 1
+Story #1
+~~~~~~~~
 
 Task #1
-   Description: investigar tecnología conveniente para la interfaz de usuario.
-   Status: Not Yet Started
-   Original Estimate: 6 horas
-   Remaining Estimate: 6 horas
-   Time Spent: 0 horas
+```````
+:Descripción:
+    Investigar tecnología conveniente para la interfaz de usuario.
+:Status: Not Yet Started
+::Original Estimate: 6 horas
+:Remaining Estimate: 6 horas
+:Time Spent: 0 horas
 
 Task #2
    Description: verificar el correcto funcionamiento del sistema de log in (dependencia con story #2)

@@ -1,5 +1,5 @@
 Product Backlog
----------------
+===============
 
 == ====================================================== ======= ===== ======
 ID Item                                                   Prority Value Effort
@@ -29,7 +29,7 @@ ID Item                                                   Prority Value Effort
 == ====================================================== ======= ===== ======
 
 Justificación de los *values*
------------------------------
+=============================
 
 Consideramos que la decisión acerca de los *values* de los ítems del
 *Product Backlog* es responsabidad del *Product Owner*. Ante la ausencia de
@@ -37,7 +37,7 @@ esta información para este trabajo, elegimos valores que nos parecieron
 razonables poniéndonos en ese papel.
 
 Justificación de los *efforts*
-------------------------------
+==============================
 
 Consideramos que la *user story* con menor esfuerzo asociado es la #5,
 ya que sólo implica poder consultar los resultados de la estrategia
@@ -94,14 +94,22 @@ lo cual es deseable porque reduce la incertidumbre y la vuelve más
 fácil de planificar.
 
 Sprint Backlog
---------------
+==============
 
 A cada *story point*, le asociamos 4 horas de desarrollo. Luego, las
 tareas asociadas a los stories #1 y #2 quedarían estimadas de la
 siguiente forma:
 
 Story #1
-~~~~~~~~
+--------
+
+Criterio de aceptación:
+
+- El usuario puede ingresar al sistema con su email y contraseña.
+- El sistema impide el ingreso al sistema al usuario cuando su
+ email y contraseña no coinciden.
+- El usuario puede crear una oferta de viaje indicando que dispone
+ de auto e ingresar lugar, día y horario de salida y de llegada.
 
 Task #1
 ```````
@@ -169,6 +177,16 @@ Task #6
 Task #7
 ```````
 
+:Descripción:
+    Crear las entidades necesarias para una nueva oferta de viaje.
+:Status: Not Yet Started
+:Original Estimate: 6 horas
+:Remaining Estimate: 6 horas
+:Time Spent: 0 horas
+
+Task #8
+```````
+
 :Descripción: Persistir los datos de la oferta generada.
 :Status: Not Yet Started
 :Original Estimate: 6 horas
@@ -176,7 +194,16 @@ Task #7
 :Time Spent: 0 horas
 
 Story #2
-~~~~~~~~
+--------
+
+Criterio de aceptación:
+
+- El usuario puede ingresar al sistema con su email y contraseña.
+- El sistema impide el ingreso al sistema al usuario cuando su
+ email y contraseña no coinciden.
+- El usuario puede ingresar un horario, un lugar de salida, así
+ un como lugar llegada, y obtener todas las ofertas que los
+ satisfacen.
 
 Task #1
 ```````
@@ -235,6 +262,16 @@ Task #6
 ```````
 
 :Descripción:
+    Crear las entidades necesarias para un nuevo pedido de viaje.
+:Status: Not Yet Started
+:Original Estimate: 6 horas
+:Remaining Estimate: 6 horas
+:Time Spent: 0 horas
+
+Task #7
+```````
+
+:Descripción:
     Crear elementos de interfaz necesarios para mostrar al usuario las
     ofertas de viaje de su interés.
 :Status: Not Yet Started
@@ -242,28 +279,9 @@ Task #6
 :Remaining Estimate: 6 horas
 :Time Spent: 0 horas
 
-
 Se puede apreciar el progreso hasta ahora alcanzado en el task burndown chart.
 
 ----
-
-== ===================================================================
-ID Criterios de aceptación
-== ===================================================================
-1  - El usuario puede ingresar al sistema con su email y contraseña.
-   - El sistema impide el ingreso al sistema al usuario cuando su
-     email y contraseña no coinciden.
-   - El usuario puede crear una oferta de viaje indicando que dispone
-     de auto e ingresar lugar, día y horario de salida y de llegada.
--- -------------------------------------------------------------------
-2  - El usuario puede ingresar al sistema con su email y contraseña.
-   - El sistema impide el ingreso al sistema al usuario cuando su
-     email y contraseña no coinciden.
-   - El usuario puede ingresar un horario, un lugar de salida, así
-     un como lugar llegada, y obtener todas las ofertas que los
-     satisfacen.
-== ===================================================================
-
 
 El proyecto se ejecturá en 2 sprint. Para el primero, elegimos las stories #1 y #2,
 indicadas en la tabla anterior, las cuales son las de mayor importancia para el

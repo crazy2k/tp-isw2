@@ -117,8 +117,8 @@ Task #1
 :Descripción:
     Investigar tecnología conveniente para la interfaz de usuario.
 :Status: Not Yet Started
-:Original Estimate: 6 horas
-:Remaining Estimate: 6 horas
+:Original Estimate: 8 horas
+:Remaining Estimate: 8 horas
 :Time Spent: 0 horas
 
 Task #2
@@ -128,8 +128,8 @@ Task #2
     Crear elementos de interfaz necesarios para la autenticación de
     usuarios.
 :Status: Not Yet Started
-:Original Estimate: 10 horas
-:Remaining Estimate: 10 horas
+:Original Estimate: 2 horas
+:Remaining Estimate: 2 horas
 :Time Spent: 0 horas
 
 Task #3
@@ -138,8 +138,8 @@ Task #3
 :Descripción:
     Programar validación de datos ingresados por el usuario.
 :Status: Not Yet Started
-:Original Estimate: 6 horas
-:Remaining Estimate: 6 horas
+:Original Estimate: 4 horas
+:Remaining Estimate: 4 horas
 :Time Spent: 0 horas
 
 
@@ -149,8 +149,8 @@ Task #4
 :Descripción:
     Programar mecanismo de autenticación de usuarios.
 :Status: Not Yet Started
-:Original Estimate: 6 horas
-:Remaining Estimate: 6 horas
+:Original Estimate: 4 horas
+:Remaining Estimate: 4 horas
 :Time Spent: 0 horas
    
 Task #5
@@ -160,8 +160,8 @@ Task #5
     Crear elementos de interfaz necesarios para el ingreso de datos
     para oferta de viaje.
 :Status: Not Yet Started
-:Original Estimate: 6 horas
-:Remaining Estimate: 6 horas
+:Original Estimate: 4 horas
+:Remaining Estimate: 4 horas
 :Time Spent: 0 horas
 
 Task #6
@@ -172,7 +172,7 @@ Task #6
 :Status: Not Yet Started
 :Original Estimate: 6 horas
 :Remaining Estimate: 6 horas
-:Time Spent: 0 horas
+:Time Spent: 4 horas
 
 Task #7
 ```````
@@ -189,8 +189,8 @@ Task #8
 
 :Descripción: Persistir los datos de la oferta generada.
 :Status: Not Yet Started
-:Original Estimate: 6 horas
-:Remaining Estimate: 6 horas
+:Original Estimate: 4 horas
+:Remaining Estimate: 4 horas
 :Time Spent: 0 horas
 
 Story #2
@@ -212,8 +212,8 @@ Task #1
     Crear elementos de interfaz necesarios para el ingreso de datos
     para pedido de viaje.
 :Status: Not Yet Started
-:Original Estimate: 6 horas
-:Remaining Estimate: 6 horas
+:Original Estimate: 4 horas
+:Remaining Estimate: 4 horas
 :Time Spent: 0 horas
 
 Task #2
@@ -222,8 +222,8 @@ Task #2
 :Descripción:
     Programar validación de datos ingresados para el pedido de viaje.
 :Status: Not Yet Started
-:Original Estimate: 6 horas
-:Remaining Estimate: 6 horas
+:Original Estimate: 4 horas
+:Remaining Estimate: 4 horas
 :Time Spent: 0 horas
 
 Task #3
@@ -232,9 +232,9 @@ Task #3
 :Descripción:
     Programar ingreso de datos para pedido de viaje.
 :Status: Not Yet Started
-:Original Estimate: 6 horas
-:Remaining Estimate: 6 horas
-:Time Spent: 0 horas
+:Original Estimate: 4 horas
+:Remaining Estimate: 2 horas
+:Time Spent: 2 horas
 
 Task #4
 ```````
@@ -243,8 +243,8 @@ Task #4
     Investigar sobre algoritmo de matching primitivo que permita al
     usuario encontrar ofertas de viaje de su interés.
 :Status: Not Yet Started
-:Original Estimate: 6 horas
-:Remaining Estimate: 6 horas
+:Original Estimate: 4 horas
+:Remaining Estimate: 4 horas
 :Time Spent: 0 horas
 
 Task #5
@@ -254,8 +254,8 @@ Task #5
     Programar algoritmo de matching primitivo que permita al usuario
     encontrar ofertas de viaje de su interés.
 :Status: Not Yet Started
-:Original Estimate: 6 horas
-:Remaining Estimate: 6 horas
+:Original Estimate: 12 horas
+:Remaining Estimate: 12 horas
 :Time Spent: 0 horas
 
 Task #6
@@ -275,8 +275,8 @@ Task #7
     Crear elementos de interfaz necesarios para mostrar al usuario las
     ofertas de viaje de su interés.
 :Status: Not Yet Started
-:Original Estimate: 6 horas
-:Remaining Estimate: 6 horas
+:Original Estimate: 4 horas
+:Remaining Estimate: 4 horas
 :Time Spent: 0 horas
 
 Se puede apreciar el progreso hasta ahora alcanzado en el task burndown chart.

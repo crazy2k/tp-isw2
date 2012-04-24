@@ -288,6 +288,7 @@ Diseño
 Con respecto al diseño se tomaron distintas decisiones con el fin de mantenerlo lo
 más flexible que sea posible y abierto a nuevas decisiones y cambios sobre
 distintos ejes.
+
 Se consideraron distintas estrategias para representar los distintos puntos de
 partida de los viajes de los usuarios, como representarlos mediantes coordenadas,
 dividir todo el territorio disponible en zonas chicas e indivisibles o usar
@@ -298,11 +299,13 @@ conocer la distancia entre cualquier par de puntos, independientemente de la
 implementación subyacete. Por ejemplo, se podría utilizar una clase Address la cual 
 consulte con un servicio web externo, y la misma podría cambiarse por cualquier 
 otra implementación que respete el mismo protocolo sin problemas.
+
 Se decidió además representar el pedido de viaje (JourneyRequest) y el ofrecimiento
 de auto (JourneyOffer) mediante clases diferentes ya que poseían atributos en
 común pero el protocolo y comportamiento que manifestaban era más bien diferente.
 En ambas hay un lugar destino, otro origen y un horario, este último se representa
 con la clase Timetable.
+
 La clase Timetimable, representa la frecuenta y las circunstancias temporales en
 las que se realiza el viaje (o potencialmente algún otro evento). Como queríamos
 dejar abierto que se pudiesen especificar rutinas como "todos los Lunes las 8 AM",

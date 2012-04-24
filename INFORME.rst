@@ -93,8 +93,6 @@ stories de mayor prioridad, hacen que esta story se vuelva más pequeña,
 lo cual es deseable porque reduce la incertidumbre y la vuelve más
 fácil de planificar.
 
-----
-
 Sprint Backlog
 --------------
 
@@ -107,89 +105,118 @@ Story #1
 
 Task #1
 ```````
+
 :Descripción:
     Investigar tecnología conveniente para la interfaz de usuario.
 :Status: Not Yet Started
-::Original Estimate: 6 horas
+:Original Estimate: 6 horas
 :Remaining Estimate: 6 horas
 :Time Spent: 0 horas
 
 Task #2
-   Description: verificar el correcto funcionamiento del sistema de log in (dependencia con story #2)
-   Status: Not Yet Started
-   Original Estimate: 2 horas
-   Remaining Estimate: 2 horas
-   Time Spent: 0 horas
+```````
+
+:Descripción:
+    Crear elementos de interfaz necesarios para la autenticación de
+    usuarios.
+:Status: Not Yet Started
+:Original Estimate: 10 horas
+:Remaining Estimate: 10 horas
+:Time Spent: 0 horas
 
 Task #3
-   Description: usuario puede ingresar los datos para ofrecer su auto para un viaje
-   Status: Not Yet Started
-   Original Estimate: 6 horas
-   Remaining Estimate: 6 horas
-   Time Spent: 0 horas
+```````
+
+:Descripción:
+    Programar mecanismo de autenticación de usuarios.
+:Status: Not Yet Started
+:Original Estimate: 6 horas
+:Remaining Estimate: 6 horas
+:Time Spent: 0 horas
    
 Task #4
-   Description: el sistema valida los datos ingresados
-   Status: Not Yet Started
-   Original Estimate: 4 horas
-   Remaining Estimate: 4 horas
-   Time Spent: 0 horas
+```````
+
+:Descripción:
+    Crear elementos de interfaz necesarios para el ingreso de datos
+    para oferta de viaje.
+:Status: Not Yet Started
+:Original Estimate: 6 horas
+:Remaining Estimate: 6 horas
+:Time Spent: 0 horas
 
 Task #5
-   Description: se crean las entidades necesarias para crear una nueva oferta de viaje
-   Status: Not Yet Started
-   Original Estimate: 8 horas
-   Remaining Estimate: 4 horas
-   Time Spent: 4 horas
+```````
+
+:Descripción:
+    Programar ingreso de datos para oferta de viaje.
+:Status: Not Yet Started
+:Original Estimate: 6 horas
+:Remaining Estimate: 6 horas
+:Time Spent: 0 horas
 
 Task #6
-   Description: preservar los datos de la oferta generada
-   Status: Not Yet Started
-   Original Estimate: 6 horas
-   Remaining Estimate: 6 horas
-   Time Spent: 0 horas
-   
+```````
 
-Story 2
+:Descripción:
+    Persistir los datos de la oferta generada.
+:Status: Not Yet Started
+:Original Estimate: 6 horas
+:Remaining Estimate: 6 horas
+:Time Spent: 0 horas
+
+Story #2
+--------
 
 Task #1
-   Description: usuario puede loggearse en el sistema.
-   Status: Not Yet Started
-   Original Estimate: 10 horas
-   Remaining Estimate: 10 horas
-   Time Spent: 0 horas
+```````
+
+:Descripción:
+    Crear elementos de interfaz necesarios para el ingreso de datos
+    para pedido de viaje.
+:Status: Not Yet Started
+:Original Estimate: 6 horas
+:Remaining Estimate: 6 horas
+:Time Spent: 0 horas
 
 Task #2
-   Description: usuario puede ingresar los datos para realizar un pedido de viaje
-   Status: Not Yet Started
-   Original Estimate: 6 horas
-   Remaining Estimate: 6 horas
-   Time Spent: 0 horas
-   
+```````
+
+:Descripción:
+    Programar ingreso de datos para pedido de viaje.
+:Status: Not Yet Started
+:Original Estimate: 6 horas
+:Remaining Estimate: 6 horas
+:Time Spent: 0 horas
+
 Task #3
-   Description: verificar el correcto funcionamiento del sistema de valición de los datos ingresados
-   Status: Not Yet Started
-   Original Estimate: 2 horas
-   Remaining Estimate: 2 horas
-   Time Spent: 0 horas
+```````
+
+:Descripción:
+    Investigar sobre algoritmo de matching primitivo que permita al
+    usuario encontrar ofertas de viaje de su interés.
+:Status: Not Yet Started
+:Original Estimate: 6 horas
+:Remaining Estimate: 6 horas
+:Time Spent: 0 horas
+
 
 Task #4
-   Description: se crean las entidades necesarias para crear un nuevo pedido de viaje
-   Status: Not Yet Started
-   Original Estimate: 8 horas
-   Remaining Estimate: 4 horas
-   Time Spent: 4 horas
+```````
 
-Task #5
-   Description: preservar los datos del pedido generado
-   Status: Not Yet Started
-   Original Estimate: 6 horas
-   Remaining Estimate: 6 horas
-   Time Spent: 0 horas
+:Descripción:
+    Programar algoritmo de matching primitivo que permita al usuario
+    encontrar ofertas de viaje de su interés.
+:Status: Not Yet Started
+:Original Estimate: 6 horas
+:Remaining Estimate: 6 horas
+:Time Spent: 0 horas
+
 
 Se puede apreciar el progreso hasta ahora alcanzado en el task burndown chart.
 
-   
+----
+
 == ===================================================================
 ID Criterios de aceptación
 == ===================================================================

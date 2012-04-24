@@ -281,15 +281,16 @@ Task #7
 
 Se puede apreciar el progreso hasta ahora alcanzado en el task burndown chart.
 
-----
+Sobre las stories y los sprints
+===============================
 
-El proyecto se ejecturá en 2 sprint. Para el primero, elegimos las stories #1 y #2,
+El proyecto se efectuará en 2 sprint. Para el primero, elegimos las stories #1 y #2,
 indicadas en la tabla anterior, las cuales son las de mayor importancia para el
 cliente. Ambas suman una cantidad de 16 story points (del total de 31).
 
-El equipo prefirió no comprometerse e incluir ninguna story más del product
-backlog, para no establecer expectativas demasiado altas en el cliente, aunque,
-si el tiempo lo permite, se podría intentar el desarrollo la story #3 antes de
+El equipo prefirió no comprometerse e incluir ninguna story más del Product
+Backlog, para no establecer expectativas demasiado altas en el cliente, aunque,
+si el tiempo lo permite, se podría intentar el desarrollo de la story #3 antes de
 que finalice el sprint, de forma tal de completar las primeras 3 stories durante
 el mismo.
 
@@ -298,38 +299,40 @@ funcionalidad para crear cuentas de usuario y que los usuarios registrados
 pudieran ingresar al sitio los datos necesarios para poder cumplir sus necesidades
 de transporte, o incluso, poner a disposición un auto propio, pero sin contemplar
 la posibilidad de organizar viajes a través del sistema.
+
 Se consideró luego, que un hipotético P.O. se beneficiaría más al poder incluir
 al menos cierta funcionalidad básica de organización de viajes en este mismo release,
 de forma tal, de obtener un producto que pudiese ser lanzado a producción de
 manera inmediata.
+
 Adicionalmente, teniendo en cuenta que al agregar la story que producía los viajes
 óptimos para los datos ingresados por los usuarios, el sprint se volvería demasiado
 abultado y difícilmente podría cumplirse en el tiempo deseado, se decidió dividir
 las stories antiguas en otras algo más simples.
 
-Primero, la alta de la cuenta del usuario se separó en una story propia, de forma
+Primero, el alta de la cuenta del usuario se separó en una story propia, de forma
 tal que pueda ser desarrollada más adelante en otro sprint, aligerando la estimación
 de las stories incluídas. Dado este cambio, el sistema podría comenzar a funcionar,
 sin esta funcionalidad, en una etapa inicial donde la participación estaría cerrada
-a algunos usuario ingresados en forma masiva a una base de datos o por pedido explícito
+a algunos usuarios ingresados en forma masiva a una base de datos o por pedido explícito
 por fuera del sistema.
 
 Luego se planteó que podrían satisfacerse las necesidades de los usuarios si estos
 pudiesen conocer cuales son las ofertas de autos disponibles que coinciden con sus
-horarios y destinos; luego ellos mismos podrían elegir cual de las ofertas mostradas
+horarios y destinos; luego ellos mismos podrían elegir cuál de las ofertas mostradas
 les resultarían preferibles.
-Se decidío que la funcionalidad anterior podría comprender una story nueva, la cual
+Se decidíó que la funcionalidad anterior podría comprender una story nueva, la cual
 no incluiría el requisito de registrar los datos de viaje del usuario en una base del
 sistema. Además, permitiría obtener al menos las ofertas filtradas según su correspondencia 
-con las necesiades del usuario. 
-Además, se agregaría un requisito de investigar las estrategias posibles de matcheo entre
+con las necesidades del usuario. 
+También, se agregaría un requisito de investigar las estrategias posibles de matcheo entre
 pedidos y ofrecimientos que amortice el costo del desarrollo. 
 De esta forma, y como se aclaró antes, la story que incluye el algoritmo de matcheo, 
 tendría un esfuerzo menor.
-Satisfechos con esta nueva disposición de stories decidimos incluir esta nueva story
-junto con la que permita registar un auto para dispoción del sistema (la de mayor
-importancia), e iniciar el primer sprint.
 
+Satisfechos con esta nueva disposición de stories, decidimos incluir esta nueva story
+y la que permita registrar un auto para disposición del sistema (la de mayor
+importancia), e iniciar el primer sprint.
 
 Diseño
 ------
@@ -338,37 +341,39 @@ Con respecto al diseño se tomaron distintas decisiones con el fin de mantenerlo
 más flexible que sea posible y abierto a nuevas decisiones y cambios sobre
 distintos ejes.
 
-Se consideraron distintas estrategias para representar los distintos puntos de
+Se consideraron varias estrategias para representar los diferentes puntos de
 partida de los viajes de los usuarios, como representarlos mediantes coordenadas,
 dividir todo el territorio disponible en zonas chicas e indivisibles o usar
 direcciones de calles reales las cuales podrían ser ubicadas gracias a un
 servicio interno. Para que ninguna de estas posibilidades quede descartada de
-entrada se incluyó la clase Place, la cual responde a un protocolo que permite
+entrada se incluyó la clase ``Place``, la cual responde a un protocolo que permite
 conocer la distancia entre cualquier par de puntos, independientemente de la
-implementación subyacete. Por ejemplo, se podría utilizar una clase Address la cual 
+implementación subyacente. Por ejemplo, se podría utilizar una clase Address la cual 
 consulte con un servicio web externo, y la misma podría cambiarse por cualquier 
 otra implementación que respete el mismo protocolo sin problemas.
 
-Se decidió además representar el pedido de viaje (JourneyRequest) y el ofrecimiento
-de auto (JourneyOffer) mediante clases diferentes ya que poseían atributos en
-común pero el protocolo y comportamiento que manifestaban era más bien diferente.
+Se decidió además representar el pedido de viaje (``JourneyRequest``) y el ofrecimiento
+de auto (``JourneyOffer``) mediante clases diferentes ya que poseían atributos en
+común pero el protocolo y comportamiento que manifestaban era distinto.
 En ambas hay un lugar destino, otro origen y un horario, este último se representa
-con la clase Timetable.
+con la clase ``Timetable``.
 
-La clase Timetimable, representa la frecuenta y las circunstancias temporales en
+La clase ``Timetable``, representa la frecuencia y las circunstancias temporales en
 las que se realiza el viaje (o potencialmente algún otro evento). Como queríamos
-dejar abierto que se pudiesen especificar rutinas como "todos los Lunes las 8 AM",
-o "de Lunes a Jueves a las 8:30 AM y los Viernes a las 9:00 AM", esta clase permite
+dejar abierto que se pudiesen especificar rutinas como "todos los lunes
+a las 8 AM",
+o "de lunes a jueves a las 8:30 AM y los viernes a las 9:00 AM", esta clase permite
 modelar distintas maneras de organizar los horarios de viajes, desde un horario
 y día fijos, por ejemplo, como otros con frecuencia semanal.
 
-Finalmente las otras 3 clase importantes que vale la pena aclarar son
-JourneyOrganizer, junto con Journey y JourneyStop. La primera recibe como entrada
-un conjunto de pedidos y ofertas para un día determinado y tiene que ser capaz de,
+Finalmente, las otras 3 clases importantes que vale la pena aclarar son
+``JourneyOrganizer``, junto con ``Journey`` y ``JourneyStop``. La primera recibe como entrada
+un conjunto de pedidos y ofertas para un día determinado, y tiene que ser capaz de
 organizar los distintos viajes posibles de forma óptima según algún criterio
 determinado. 
-Los viajes producidos se reprensentan con la clase Journey, la cual
+Los viajes producidos se representan con la clase ``Journey``, la cual
 comprende una fecha específica para el viaje además de quién será el encargado de aportar
-el transporte necesario para ese viaje especifico. Luego las JourneyStops,
+el transporte necesario para ese viaje en particular. Luego, las
+``JourneyStops``
 representan los puntos intermedios del viaje donde deben subir o bajar los distintos
 pasajeros, permitiendo que los viajes puedan ser diagramados con mucha flexibilidad.

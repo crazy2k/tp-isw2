@@ -97,8 +97,8 @@ Sprint Backlog
 ==============
 
 A cada *story point*, le asociamos 4 horas de desarrollo. Luego, las
-tareas asociadas a los stories #1 y #2 quedarían estimadas de la
-siguiente forma:
+tareas asociadas a los stories #1 y #2 quedarían estimadas como se
+detalla a continuación.
 
 Story #1
 --------

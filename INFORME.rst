@@ -107,9 +107,9 @@ Criterio de aceptación:
 
 - El usuario puede ingresar al sistema con su email y contraseña.
 - El sistema impide el ingreso al sistema al usuario cuando su
- email y contraseña no coinciden.
+  email y contraseña no coinciden.
 - El usuario puede crear una oferta de viaje indicando que dispone
- de auto e ingresar lugar, día y horario de salida y de llegada.
+  de auto e ingresar lugar, día y horario de salida y de llegada.
 
 Task #1
 ```````
@@ -200,10 +200,10 @@ Criterio de aceptación:
 
 - El usuario puede ingresar al sistema con su email y contraseña.
 - El sistema impide el ingreso al sistema al usuario cuando su
- email y contraseña no coinciden.
+  email y contraseña no coinciden.
 - El usuario puede ingresar un horario, un lugar de salida, así
- un como lugar llegada, y obtener todas las ofertas que los
- satisfacen.
+  un como lugar llegada, y obtener todas las ofertas que los
+  satisfacen.
 
 Task #1
 ```````
@@ -284,7 +284,7 @@ Se puede apreciar el progreso hasta ahora alcanzado en el task burndown chart.
 Sobre las stories y los sprints
 ===============================
 
-El proyecto se efectuará en 2 sprint. Para el primero, elegimos las stories #1 y #2,
+El proyecto se efectuará en 2 sprints. Para el primero, elegimos las stories #1 y #2,
 indicadas en la tabla anterior, las cuales son las de mayor importancia para el
 cliente. Ambas suman una cantidad de 16 story points (del total de 31).
 
@@ -335,7 +335,7 @@ y la que permita registrar un auto para disposición del sistema (la de mayor
 importancia), e iniciar el primer sprint.
 
 Diseño
-------
+======
 
 Con respecto al diseño se tomaron distintas decisiones con el fin de mantenerlo lo
 más flexible que sea posible y abierto a nuevas decisiones y cambios sobre

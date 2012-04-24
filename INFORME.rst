@@ -166,7 +166,7 @@ Task #6
 :Time Spent: 0 horas
 
 Story #2
---------
+~~~~~~~~
 
 Task #1
 ```````
@@ -199,7 +199,6 @@ Task #3
 :Original Estimate: 6 horas
 :Remaining Estimate: 6 horas
 :Time Spent: 0 horas
-
 
 Task #4
 ```````

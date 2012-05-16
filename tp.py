@@ -63,13 +63,14 @@ class WeeklyTimetable(RepetitiveTimetable):
         self.time = atime
 
     def is_happening_at(self, adatetime):
-        return any(day_of_week.same_day_as(adatetime) and datetime.time() == self.time for day_of_week in self.days_of_week)
+        return any(day_of_week.same_day_as(adatetime) and \
+			datetime.time() == self.time for day_of_week in self.days_of_week)
 
     def is_during_this_date(self, adatetime):
         return any(day_of_week.same_day_as(adatetime) for day_of_week in self.days_of_week)
 
 
-class JourneyRequest:
+class JourneyProposal:
     #TODO: ¿La vuelta del trabajo, importa?
     def __init__(self, passenger, origin, destination, timetable):
         self.passenger = passenger
@@ -105,18 +106,19 @@ class Journey:
 
 
 class JourneyStop:
-    def __init__(self, place, datetime, passengers):
+    def __init__(self, place, datetime, passengers_stepping_in, passengers_leaving):
         self.place = place
         self.datetime = datetime
-        self.passengers = passengers
+        self.passengers_stepping_in = passengers_stepping_in
+        self.passengers_leaving = passengers_leaving
 
 
-class JourneyStopForBoarding(JourneyStop):
-    pass
+#class JourneyStopForBoarding(JourneyStop):
+    #pass
 
 
-class JourneyStopForDischarging(JourneyStop):
-    pass
+#class JourneyStopForDischarging(JourneyStop):
+    #pass
 
 
 class JourneyOrganizer:

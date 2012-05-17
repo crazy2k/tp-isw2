@@ -72,7 +72,7 @@ class WeeklyTimetable(RepetitiveTimetable):
 class JourneyProposal:
     #TODO: ¿La vuelta del trabajo, importa?
     def __init__(self, proponent, origin, destination, timetable):
-        self.passenger = proponent
+        self.proponent = proponent
         self.origin = origin
         self.destination = destination
         self.timetable = timetable
@@ -88,7 +88,7 @@ class JourneyOffer:
         self.origin = origin
         self.destination = destination
         self.timetable = timetable
-        self.passengers_capacity = passengers_capacity
+        self.passenger_capacity = passenger_capacity
 
     def satisfies(self, request):
         return self.is_on_its_way(request.origin) and offer.is_on_its_way(request.destination)

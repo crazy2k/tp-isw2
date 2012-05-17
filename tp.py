@@ -69,11 +69,10 @@ class WeeklyTimetable(RepetitiveTimetable):
     def is_during_this_date(self, adatetime):
         return any(day_of_week.same_day_as(adatetime) for day_of_week in self.days_of_week)
 
-
 class JourneyProposal:
     #TODO: ¿La vuelta del trabajo, importa?
-    def __init__(self, passenger, origin, destination, timetable):
-        self.passenger = passenger
+    def __init__(self, proponent, origin, destination, timetable):
+        self.passenger = proponent
         self.origin = origin
         self.destination = destination
         self.timetable = timetable
@@ -84,8 +83,8 @@ class JourneyProposal:
 # TODO: ¿Crear siempre una JourneyRequest por cada JourneyOffer asi el usuario q ofrece su auto tambien
 #       es tenido en cuenta para otras ofertas de auto que no sean iniciadas por el?
 class JourneyOffer:
-    def __init__(self, driver, origin, destination, timetable, passenger_capacity):
-        self.driver = driver
+    def __init__(self, proponent, origin, destination, timetable, passenger_capacity):
+        self.proponent = proponent
         self.origin = origin
         self.destination = destination
         self.timetable = timetable

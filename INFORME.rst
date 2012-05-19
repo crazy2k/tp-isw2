@@ -33,99 +33,112 @@ Product Backlog
 == ====================================================== ======= ===== ======
 ID Item                                                   Prority Value Effort
 == ====================================================== ======= ===== ======
-1  Como usuario con auto quiero ingresar datos para       1       50    8
-   ofrecer posibles viajes que realizaré con él.
+1  Como desarrollador quiero tener un diseño del sistema  1       10    13
 -- ------------------------------------------------------ ------- ----- ------
-2  Como usuario sin auto quiero ingresar datos para       2       40    8
-   conocer qué ofertas de viaje safisfacen mis
-   requisitos.
+2  Como usuario con auto quiero ofrecer posibles viajes   2       50    8
+   que realizaré con él
 -- ------------------------------------------------------ ------- ----- ------
-3  Como usuario quiero poder dar de alta mi cuenta en el  3       35    3
-   sistema para luego poder ingresar los datos de mis
-   viajes.
+3  Como usuario quiero conocer qué ofertas de viaje       3       40    8
+   safisfacen mis requisitos
 -- ------------------------------------------------------ ------- ----- ------
-4  Como usuario sin auto quiero que al ingresar mis datos 4       30    8
-   estos queden registrados para que se me asigne
-   semanalmente el viaje óptimo de forma automática.
+4  Como usuario quiero poder registrarme en el sistema    4       35    3
 -- ------------------------------------------------------ ------- ----- ------
-5  Como usuario registrado quiero poder consultar en el   5       20    1
+5  Como usuario sin auto quiero ingresar los datos del    5       30    5
+   viaje para que me asigne uno cualquiera que satisfaga
+   mi pedido
+-- ------------------------------------------------------ ------- ----- ------
+6  Como usuario registrado quiero poder consultar en el   6       20    1
    sistema los detalles sobre el viaje que me fue
-   asignado.
+   asignado
 -- ------------------------------------------------------ ------- ----- ------
-6  Como usuario registrado quiero recibir notificaciones  6       10    3
+7  Como usuario registrado quiero recibir notificaciones  7       10    3
    para conocer los detalles sobre el viaje que me fue
-   asignado.
+   asignado
+-- ------------------------------------------------------ ------- ----- ------
+8  Como usuario quiero que se confirme la autenticidad de 8       5     5
+   mi email al momento de registrarme
+-- ------------------------------------------------------ ------- ----- ------
+9  Como usuario registrado quiero visualizar en un mapa   9       15    8
+   el recorrido para recibir un feedback visual
+-- ------------------------------------------------------ ------- ----- ------
+10 Como usuario registrado quiero que se me asigne un     10      35    13
+   viaje de forma óptima para minimizar la contaminación
+   ambiental, el volumen del tráfico y uso de combutible
+-- ------------------------------------------------------ ------- ----- ------
+11 Como usuario quiero tener una interfaz simple, e       11      35    13
+   intuitiva para usar el sistema
+-- ------------------------------------------------------ ------- ----- ------
+12 Como desarrollador quiero probar la integración de los 12      10    13
+   distintos módulos del sistema para poder verificar su
+   correcto funcionamiento
+-- ------------------------------------------------------ ------- ----- ------
+13 Como desarrollador quiero poner el sistema en          13      50    13
+   producción
 == ====================================================== ======= ===== ======
 
 
 Justificación de los *values*
 -----------------------------
 
-Consideramos que la decisión acerca de los *values* de los ítems del
-*Product Backlog* es responsabidad del *Product Owner*. Ante la ausencia de
-esta información para este trabajo, elegimos valores que nos parecieron
-razonables poniéndonos en ese papel.
+La decisión acerca de los *values* de los ítems del *Product Backlog* es
+responsabidad del *Product Owner*. Ante la ausencia de esta información para
+este trabajo, elegimos valores que nos parecieron razonables poniéndonos en ese
+papel.
 
 
 Justificación de los *efforts*
 ------------------------------
 
-Consideramos que la *user story* con menor esfuerzo asociado es la #5,
+Consideramos que la *user story* con menor esfuerzo asociado es la #6,
 ya que sólo implica poder consultar los resultados de la estrategia
 utilizada por el organizador de viajes; el algoritmo utilizado para la misma
-está ya contemplado por el ítem #4, de mayor prioridad, por lo que no sería
-necesario tenerlo en cuenta para este punto. En cuanto a la interfaz de
-usuario, todos los pormenores de la misma ya estarían previamente
-resueltos en las distintas stories que hacen uso de ella. A partir de
-esa user story, puntuamos el resto de las estimaciones en forma
-relativa, usando la secuencia de Fibonacci.
+está ya contemplado por el ítem #5, de mayor prioridad, por lo que no sería
+necesario tenerlo en cuenta para este punto. A partir de esa user story,
+puntuamos el resto de las estimaciones en forma relativa, usando la secuencia de
+Fibonacci.
 
-Las siguientes user stories, en orden de esfuerzo creciente, son la #6
-y la #3:
+.. image:: plot/burndown-product-ideal.png
+        :scale: 300
 
-- La #3 sólo implica poder registrar un usuario, lo cual abarca el
-  ingreso de pocos datos y validaciones muy simples de estos. Lo
-  referido a la interfaz gráfica, para la parte de registro,
-  tampoco requeriría mucho esfuerzo, dado que stories más prioritarias,
-  como la #1, ya implican buena parte del trabajo.
+La #4 sólo implica poder registrar un usuario, lo cual abarca el ingreso de
+pocos datos y validaciones muy simples de éstos. Razón por la cual ésta es la
+siguiente en cantidad de esfuerzo relativo.
 
-- La #6 sólo conlleva la notificación al cliente de información
-  previamente computada. La estimación asignada es algo mayor que la
-  mínima dado que sería necesario realizar un poco de investigación con
-  respecto a las APIs de SMTP disponibles o sobre el protocolo de
-  notificación a utilizar que resulte más conveniente.
+La #5, en cambio, conlleva el desarrollo de un algoritmo de *matching*
+primitivo y muy simple. Esto, creemos, es solo un poco más complejo que la story
+anterior, y por eso consideramos que implica un esfuerzo de 5.
 
-Las stories #1 y #2 son similares en esfuerzo. La primera implica la
-programación del mecanismo de autenticación de usuarios y el ingreso de
-datos de las ofertas de viaje, así como la creación de las entidades
-pertinentes en el sistema. Además, esta story conlleva el trabajo de
-investigar sobre la tecnología a utilizar para el sitio web, y también
-la creación de los elementos de la interfaz gráfica.
+La #2 y la #3 tienen un esfuerzo similar y son más complejas ya que
+implican registrar el ingreso de los datos de viaje, además de la creación de
+todas las entidades con las que luego se hará el matching. Por esto es que
+creemos que son más complejas que las anteriores y merecen un esfuerzo de 8.
 
-La story #2 también implica la autenticación de usuarios y el trabajo
-en la interfaz gráfica. Esta story podría aprovechar lo realizado en la
-story #1, disminuyendo el esfuerzo requerido para realizar algunas de
-sus tareas. Sin embargo, esta story implica el desarrollo de un
-algoritmo de *matching* primitivo que permita al usuario encontrar
-ofertas de viaje de su interés. La programación de este algoritmo,
-aunque este sea básico, podría requerir, además, un tiempo dedicado a
-investigación.
+La #1 implica el diseño de todo el sistema, teniendo en cuenta extensibilidad,
+cohesión y bajo acoplamiento de código. Esta story es, sin lugar a dudas, una de
+las más complejas y prioritarias. Cualquier error no detectado en el diseño
+puede tener un alto costo en las siguientes etapas del proyecto. Y todo el resto
+de las stories necesitan, en mayor o menor medida, conocer el diseño del
+sistema.
 
-La story #4 implica la registración de los datos de un usuario sin
-auto y el desarrollo de un algoritmo de matching algo más elaborado
-entre pedidos y ofertas de viaje. El mayor esfuerzo en esta story se lo
-lleva el desarrollo del algoritmo de matching, y la investigación
-que esto requiera. En un principio, habíamos asignado a esta story una
-estimación de esfuerzo mayor, pero, luego de realizar la subdivisión de
-algunas de las stories, se logró amortizar el esfuerzo requerido para
-esta: El trabajo sobre la interfaz gráfica y la persistencia de datos,
-así como el desarrollo de un primer algoritmo de matching naive en
-stories de mayor prioridad, hacen que esta story se vuelva más pequeña,
-lo cual es deseable porque reduce la incertidumbre y la vuelve más
-fácil de planificar.
+La #7 solo requiere el envío de un email notificando las asignaciones ya
+realizadas, por lo que nos pareció simple y un esfuerzo de 3. En cambio, la #8
+le pusimos un esfuerzo mayor porque nadie en el equipo conoce las mejores
+prácticas, ni su complejidad, para autenticar un email. La #9 tiene un
+esfuerzo aún mayor por la integración con algún sistema de mapas.
+
+El resto de las stories nos parecieron bastante difíciles. La #10 implica el
+desarrollo de un algoritmo muy sofisticado de matching. La #11 incluye
+investigar sobre el framework a usar para la interfaz de usuario. La #12 abarca
+todo la creación de tests de sistema y verificación del correcto funcionamiento
+del mismo. La #13 incluye la configuración de los servidores, el registro de
+dominio, DNSs y demás detalles de infraestructura necesarios.
+
+
 
 Sprint Backlog
 ==============
+
+.. TODO: poner que programacion incluye testing y debug
 
 A cada *story point*, le asociamos 4 horas de desarrollo. Luego, las
 tareas asociadas a los stories #1 y #2 quedarían estimadas como se

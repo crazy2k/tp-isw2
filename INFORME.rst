@@ -1,3 +1,32 @@
+
+Introduccion
+============
+
+El objetivo de este informe es planificar y crear un diseño para el sistema
+"Viajemos Juntos". El fin de dicho proyecto es facilitar que distintas
+personas compartan un viaje en auto logrando varios beneficions, como ahorro de
+combustible y peajes, disminución del volumen de tráfico, menor contaminación
+ambiental e incentivar la interacción y comunicación entre sus ciudadanos.
+
+En una primera etapa estará orientado principalmente en viajes laborales, aunque
+podría extenderse a cualquier tipo de viajes en un futuro.
+
+El informe está dividido en las siguientes secciones:
+
+- Product backlog: en esta sección se enumeran en forma general todas las
+  funcionalidades esperadas una vez finalizado el proyecto
+
+- Sprint Backlog: en esta sección se enumeran en forma más detallada un
+  las funcionalidades esperadas en una primera iteración
+
+- Sobre las stories y los sprints: en esta sección se explica la organización
+  general del proyecto y la justifiación de las decisiones tomadas en secciones
+  anteriores
+
+- Diseño: en esta sección se presenta y justifica las principales decisiones de
+  diseño tomadas
+
+
 Product Backlog
 ===============
 
@@ -28,16 +57,18 @@ ID Item                                                   Prority Value Effort
    asignado.
 == ====================================================== ======= ===== ======
 
+
 Justificación de los *values*
-=============================
+-----------------------------
 
 Consideramos que la decisión acerca de los *values* de los ítems del
 *Product Backlog* es responsabidad del *Product Owner*. Ante la ausencia de
 esta información para este trabajo, elegimos valores que nos parecieron
 razonables poniéndonos en ese papel.
 
+
 Justificación de los *efforts*
-==============================
+------------------------------
 
 Consideramos que la *user story* con menor esfuerzo asociado es la #5,
 ya que sólo implica poder consultar los resultados de la estrategia

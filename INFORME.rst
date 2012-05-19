@@ -1,5 +1,5 @@
 
-Introduccion
+Introducción
 ============
 
 El objetivo de este informe es planificar y crear un diseño para el sistema

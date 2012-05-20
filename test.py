@@ -1,6 +1,6 @@
 import unittest
 
-from datetime import datetime
+import datetime
 
 from tp import *
 
@@ -68,6 +68,35 @@ class CommuterRegistrationTest(unittest.TestCase):
         """
         pass
 
+class JourneyOrganizerTest(unittest.TestCase):
+
+    def setUp(self):
+        def proposal_with_car():
+            proponent = User("Pablo", "pablo@pablo.com")
+            address1 = Address()
+            address2 = Address()
+            timetable = WeeklyTimetable(datetime.time(8, 30), (MONDAY, WEDNESDAY)) 
+            return JourneyProposalWithVehicule(proponent, address1, address2, 
+                timetable, 2)
+
+        def proposal_without_car():
+            proponent = User("Rodrigo", "rodrigo@rodrigo.com")
+            address1 = Address()
+            address2 = Address()
+            timetable = WeeklyTimetable(datetime.time(8, 30), (MONDAY, WEDNESDAY)) 
+            return JourneyProposalWithoutVehicule(proponent, address1, address2, 
+                timetable)
+
+        self.proposal1 = proposal_with_car() 
+        self.proposal2 = proposal_without_car() 
+
+        self.timedelta = datetime.timedelta(minutes=15)
+
+
+    def test_organizer_should_create_journey_for_compatible_proposals(self):
+        JourneyOrganizer(self.timedelta, [self.proposal1, self.proposal2])
+
+    def __init__(self, date, tolerance, requests, offers):
 
 if __name__ == "__main__":
     unittest.main()

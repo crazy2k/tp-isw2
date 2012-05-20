@@ -18,8 +18,6 @@ class Address(Place):
     pass
 
 class DayOfWeek:
-    day_names = ("Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo")
-
     def __init__(self, name, ordinal):
         self.name = name
         self.ordinal = ordinal
@@ -33,8 +31,15 @@ class DayOfWeek:
     def same_day_as(self, adatetime):
         return adatetime.weekday() == self.ordinal
 
-DayOfWeek.days_of_week = tuple(DayOfWeek(name, number) for number, name in
-    enumerate(DayOfWeek.day_names))
+MONDAY    = DayOfWeek("Lunes",0)
+TUESDAY   = DayOfWeek("Martes",1)
+WEDNESDAY = DayOfWeek("Miercoles",2)
+THURSDAY  = DayOfWeek("Jueves",3)
+FRIDAY    = DayOfWeek("Viernes",4)
+SATURDAY  = DayOfWeek("Sábado",5)
+SUNDAY    = DayOfWeek("Domingo",6)
+
+DayOfWeek.days_of_week = [MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY] 
 
 
 class Timetable: # Or Schedule (both are more or less synonyms)
@@ -43,6 +48,10 @@ class Timetable: # Or Schedule (both are more or less synonyms)
 
     def is_during_this_date(self, adate):
         raise NotImplementedError()
+
+    def happens_within_delta(self, timetable, delta):
+        raise NotImplementedError()
+
 
 class SingleTimeTimetable(Timetable):
     def __init__(self, datetime):
@@ -53,6 +62,12 @@ class SingleTimeTimetable(Timetable):
 
     def is_during_this_date(self, adate):
         return self.datetime.date() == adate
+
+    def happens_within_delta(self, timetable, delta):
+        return timetable.happens_within_delta_for_single_time_timetable(self, tolerance)
+
+    def happens_within_delta_for_single_time_timetable(self, timetable, delta):
+        return timetable.happens_within_delta_for_single_time_timetable(self, tolerance)
 
 class RepetitiveTimetable(Timetable):
     pass
@@ -69,16 +84,38 @@ class WeeklyTimetable(RepetitiveTimetable):
     def is_during_this_date(self, adatetime):
         return any(day_of_week.same_day_as(adatetime) for day_of_week in self.days_of_week)
 
+    def happens_within_delta(self, timetable, delta):
+        return timetable.happens_within_delta_for_weakly_timetable(self, tolerance)
+
+
 class JourneyProposal:
-    #TODO: ¿La vuelta del trabajo, importa?
     def __init__(self, proponent, origin, destination, timetable):
         self.proponent = proponent
         self.origin = origin
         self.destination = destination
         self.timetable = timetable
 
+    def has_vehicule:
+        raise NotImplementedError()
+
     def plausible_offers(self, offers):
         return [offer for offer in offers if offer.satisfies(request)]
+
+
+class JourneyProposalWithVehicule(JourneyProposal):
+    def __init__(self, proponent, origin, destination, timetable, passenger_capacity):
+        super().__init__(proponent, origin, destination, timetable)
+        self.passenger_capacity = passenger_capacity
+
+    def has_vehicule:
+        return True
+
+
+class JourneyProposalWithoutVehicule(JourneyProposal):
+    def has_vehicule:
+        return False
+        
+        
 
 # TODO: ¿Crear siempre una JourneyRequest por cada JourneyOffer asi el usuario q ofrece su auto tambien
 #       es tenido en cuenta para otras ofertas de auto que no sean iniciadas por el?
@@ -99,7 +136,7 @@ class JourneyOffer:
 
 class Journey:
     def __init__(self, accepted_offer, date, stops):
-        self.accepted_offer = accepted_offer
+        self.accepted_proposal = accepted_proposal
         self.date = date
         self.stops = stops
 
@@ -112,23 +149,10 @@ class JourneyStop:
         self.passengers_leaving = passengers_leaving
 
 
-#class JourneyStopForBoarding(JourneyStop):
-    #pass
-
-
-#class JourneyStopForDischarging(JourneyStop):
-    #pass
-
-
 class JourneyOrganizer:
-    def __init__(self, date, tolerance, requests, offers):
-        self.date = date
-        self.tolerance = tolerance #Late tolerance as a lapse of time (some minutes/hours)
-        self.requests = filter_by_date(requests)
-        self.offers = filter_by_date(offers)
-
-    def filter_by_date(self, schedulables):
-        return [schedulable for schedulable in schedulables if schedulable.timetable.is_during_this_date(self.date)]
+    def __init__(self, time_tolerance, proposals):
+        self.time_tolerance = time_tolerance #Late tolerance as a lapse of time (some minutes/hours)
+        self.proposal = proposals
 
     def plausible_offers_for(self, request):
         return request.plausible_offers(self.offers)

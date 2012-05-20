@@ -41,33 +41,52 @@ SUNDAY    = DayOfWeek("Domingo",6)
 
 DayOfWeek.days_of_week = [MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY] 
 
+class Interval:
+    def __init__(self, begin, end):
+        #TODO: Validacion: begin < end
+        self._begin = begin
+        self._end = end
+
+    def begin(self):
+        return self._begin
+
+    def end(self):
+        return self._end
+
+    def overlaps(self, adatetime):
+        return self._begin < adatetime < self._end
+
+    def included_days(self):
+        first = self._begin.date()
+        last = self._end.date()
+        days = [first + timedelta(days=1) * offset
+            for offset in range((last-first).days - 1)]
+
+        return days
 
 class Timetable: # Or Schedule (both are more or less synonyms)
-    def is_happening_at(self, adatetime):
+    def happens_this_date(self, adate):
         raise NotImplementedError()
 
-    def is_during_this_date(self, adate):
+    def ocurrences_within_interval(self, interval):
         raise NotImplementedError()
 
-    def happens_within_delta(self, timetable, delta):
-        raise NotImplementedError()
+    def times_within_inverval(self, interval):
+        return len(self.ocurrences_within_interval(interval))
+
+    def happens_within_inverval(self, interval):
+        return self.times_within_inverval(interval) > 0
 
 
 class SingleTimeTimetable(Timetable):
     def __init__(self, datetime):
         self.daytime = datetime
 
-    def is_happening_at(self, adatetime):
-        return self.datetime == adatetime
-
-    def is_during_this_date(self, adate):
-        return self.datetime.date() == adate
-
-    def happens_within_delta(self, timetable, delta):
-        return timetable.happens_within_delta_for_single_time_timetable(self, tolerance)
-
-    def happens_within_delta_for_single_time_timetable(self, timetable, delta):
-        return timetable.happens_within_delta_for_single_time_timetable(self, tolerance)
+    def ocurrences_within_interval(self, interval):
+        if interval.overlaps(self.daytime):
+            return [self.daytime]
+        else:
+            return []
 
 class RepetitiveTimetable(Timetable):
     pass
@@ -77,15 +96,15 @@ class WeeklyTimetable(RepetitiveTimetable):
         self.days_of_week = days_of_week
         self.time = atime
 
-    def is_happening_at(self, adatetime):
-        return any(day_of_week.same_day_as(adatetime) and \
-			datetime.time() == self.time for day_of_week in self.days_of_week)
+    def ocurrences_within_interval(self, interval):
+        datetimes = [datetime.combine(adate, self.time) for adate in interval.included_days()]
+                    map(date => datetime.combine(adate, self.time), interval.included_days())
+        
+        def valid_datetime(adatetime):
+            return interval.begin() < adatetime < interval.end() and
+                any(weekday.same_day_as(adatime) for weekday in self.weekdays)
 
-    def is_during_this_date(self, adatetime):
-        return any(day_of_week.same_day_as(adatetime) for day_of_week in self.days_of_week)
-
-    def happens_within_delta(self, timetable, delta):
-        return timetable.happens_within_delta_for_weakly_timetable(self, tolerance)
+        return filter(valid_datetime, datimes)
 
 
 class JourneyProposal:

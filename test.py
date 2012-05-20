@@ -1,59 +1,59 @@
-import unittest
+    import unittest
 
-import datetime
+    import datetime
 
-from tp import *
+    from tp import *
 
-class UserTests(unittest.TestCase):
-    def test_init(self):
-        user = User("Pablo", "pablo@pablo.com")
+    class UserTests(unittest.TestCase):
+        def test_init(self):
+            user = User("Pablo", "pablo@pablo.com")
 
-        self.assertEqual("Pablo", user.name)
-        self.assertEqual("pablo@pablo.com", user.email)
+            self.assertEqual("Pablo", user.name)
+            self.assertEqual("pablo@pablo.com", user.email)
 
-class DayOfWeekTests(unittest.TestCase):
-    def test_init(self):
-        lunes = DayOfWeek("Lunes", 0)
+    class DayOfWeekTests(unittest.TestCase):
+        def test_init(self):
+            lunes = DayOfWeek("Lunes", 0)
 
-        self.assertEqual("Lunes", lunes.name)
-        self.assertEqual(0, lunes.ordinal)
+            self.assertEqual("Lunes", lunes.name)
+            self.assertEqual(0, lunes.ordinal)
 
-    def test_lt(self):
-        lunes = DayOfWeek("Lunes", 0)
-        martes = DayOfWeek("Martes", 1)
+        def test_lt(self):
+            lunes = DayOfWeek("Lunes", 0)
+            martes = DayOfWeek("Martes", 1)
 
-        self.assertTrue(lunes < martes)
+            self.assertTrue(lunes < martes)
 
-class JourneyStopTests(unittest.TestCase):
-    def setUp(self):
-        self.where = Place()
-        self.when = datetime.now
-        self.passengers = [User("Pablo", "pablo@pablo.com")]
+    class JourneyStopTests(unittest.TestCase):
+        def setUp(self):
+            self.where = Place()
+            self.when = datetime.now
+            self.passengers = [User("Pablo", "pablo@pablo.com")]
 
-class JourneyStopForBoardingTests(JourneyStopTests):
-    def test_init(self):
-        stop_for_boarding = JourneyStopForBoarding(self.where, self.when, self.passengers)
+    class JourneyStopForBoardingTests(JourneyStopTests):
+        def test_init(self):
+            stop_for_boarding = JourneyStopForBoarding(self.where, self.when, self.passengers)
 
-        self.assertEqual(self.where, stop_for_boarding.place)
-        self.assertEqual(self.when, stop_for_boarding.datetime)
-        self.assertEqual(self.passengers, stop_for_boarding.passengers)
+            self.assertEqual(self.where, stop_for_boarding.place)
+            self.assertEqual(self.when, stop_for_boarding.datetime)
+            self.assertEqual(self.passengers, stop_for_boarding.passengers)
 
-class JourneyStopForDischargingTests(JourneyStopTests):
-    def test_init(self):
-        stop_for_discharging = JourneyStopForDischarging(self.where, self.when, self.passengers)
+    class JourneyStopForDischargingTests(JourneyStopTests):
+        def test_init(self):
+            stop_for_discharging = JourneyStopForDischarging(self.where, self.when, self.passengers)
 
-        self.assertEqual(self.where, stop_for_discharging.place)
-        self.assertEqual(self.when, stop_for_discharging.datetime)
-        self.assertEqual(self.passengers, stop_for_discharging.passengers)
+            self.assertEqual(self.where, stop_for_discharging.place)
+            self.assertEqual(self.when, stop_for_discharging.datetime)
+            self.assertEqual(self.passengers, stop_for_discharging.passengers)
 
-class CommuterRegistrationTest(unittest.TestCase):
-    def setUp(self):
-        self.user = User("Pablo", "pablo@pablo.com")
+    class CommuterRegistrationTest(unittest.TestCase):
+        def setUp(self):
+            self.user = User("Pablo", "pablo@pablo.com")
 
 
-    def test_register_a_request_for_commuting(self):
-        """
-        Como oficinista quiero registrar que
+        def test_register_a_request_for_commuting(self):
+            """
+            Como oficinista quiero registrar que
             todos los Lunes, Martes y Miercoles, salgo de mi casa a las 8:00 AM y tengo que llegar a mi trabajo a las 9:00 AM
             y los Jueves y Viernes salgo de la casa de mi novia a las 8:30 AM y tengo que llegar a mi trabajo a las 9:30 AM
         """
@@ -89,7 +89,6 @@ class JourneyOrganizerTest(unittest.TestCase):
 
         self.proposal1 = proposal_with_car() 
         self.proposal2 = proposal_without_car() 
-
         self.timedelta = datetime.timedelta(minutes=15)
 
 

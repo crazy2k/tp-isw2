@@ -43,7 +43,7 @@ SUNDAY    = DayOfWeek("Domingo")
 
 DayOfWeek.days_of_week = [MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY] 
 
-class Interval:
+class TimeInterval:
     def __init__(self, begin, end):
         #TODO: Validacion: begin < end
         self._begin = begin

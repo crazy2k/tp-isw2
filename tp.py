@@ -18,26 +18,28 @@ class Address(Place):
     pass
 
 class DayOfWeek:
-    def __init__(self, name, ordinal):
+    def __init__(self, name):
         self.name = name
-        self.ordinal = ordinal
 
     def __repr__(self):
         return self.name
 
     def __lt__(self, other_week_day):
-        return self.ordinal < other_week_day.ordinal
+        return self.ordinal() < other_week_day.ordinal()
 
     def same_day_as(self, adatetime):
-        return adatetime.weekday() == self.ordinal
+        return adatetime.weekday() == self.ordinal()
 
-MONDAY    = DayOfWeek("Lunes",0)
-TUESDAY   = DayOfWeek("Martes",1)
-WEDNESDAY = DayOfWeek("Miercoles",2)
-THURSDAY  = DayOfWeek("Jueves",3)
-FRIDAY    = DayOfWeek("Viernes",4)
-SATURDAY  = DayOfWeek("Sábado",5)
-SUNDAY    = DayOfWeek("Domingo",6)
+    def ordinal(self):
+        return days_of_week.index(self)
+
+MONDAY    = DayOfWeek("Lunes")
+TUESDAY   = DayOfWeek("Martes")
+WEDNESDAY = DayOfWeek("Miercoles")
+THURSDAY  = DayOfWeek("Jueves")
+FRIDAY    = DayOfWeek("Viernes")
+SATURDAY  = DayOfWeek("Sábado")
+SUNDAY    = DayOfWeek("Domingo")
 
 DayOfWeek.days_of_week = [MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY] 
 

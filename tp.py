@@ -100,7 +100,6 @@ class WeeklyTimetable(RepetitiveTimetable):
 
     def ocurrences_within_interval(self, interval):
         datetimes = [datetime.combine(adate, self.time) for adate in interval.included_days()]
-                    map(date => datetime.combine(adate, self.time), interval.included_days())
         
         def valid_datetime(adatetime):
             return interval.begin() <= adatetime < interval.end() and

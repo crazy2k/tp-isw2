@@ -70,7 +70,7 @@ class Timetable: # Or Schedule (both are more or less synonyms)
     def happens_this_date(self, adate):
         raise NotImplementedError()
 
-    def ocurrences_within_interval(self, interval):
+    def ocurrences_for_interval(self, interval):
         raise NotImplementedError()
 
     def times_within_inverval(self, interval):
@@ -84,7 +84,7 @@ class SingleTimeTimetable(Timetable):
     def __init__(self, datetime):
         self.daytime = datetime
 
-    def ocurrences_within_interval(self, interval):
+    def ocurrences_for_interval(self, interval):
         if interval.overlaps(self.daytime):
             return [self.daytime]
         else:
@@ -98,14 +98,14 @@ class WeeklyTimetable(RepetitiveTimetable):
         self.days_of_week = days_of_week
         self.time = atime
 
-    def ocurrences_within_interval(self, interval):
-        datetimes = [datetime.combine(adate, self.time) for adate in interval.included_days()]
+    def ocurrences_for_interval(self, interval):
+        timetable_datetimes = [datetime.combine(adate, self.time) for adate in interval.included_days()]
         
-        def valid_datetime(adatetime):
+        def included_datetime(adatetime):
             return interval.begin() <= adatetime < interval.end() and
                 any(weekday.same_day_as(adatime) for weekday in self.weekdays)
 
-        return filter(valid_datetime, datimes)
+        return filter(included_datetime, timetable_datetimes)
 
 
 class JourneyProposal:

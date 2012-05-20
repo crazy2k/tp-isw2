@@ -170,9 +170,11 @@ class JourneyStop:
 
 
 class JourneyOrganizer:
-    def __init__(self, time_tolerance, proposals):
-        self.time_tolerance = time_tolerance #Late tolerance as a lapse of time (some minutes/hours)
+    def __init__(self, proposals, date_interval, time_tolerance, distance_tolerance):
         self.proposal = proposals
+        self.interval = date_interval
+        self.time_tolerance = time_tolerance #Late tolerance as a lapse of time (some minutes/hours)
+        self.distance_tolerance = distance_tolerance
 
     def plausible_offers_for(self, request):
         return request.plausible_offers(self.offers)

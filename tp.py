@@ -56,7 +56,7 @@ class TimeInterval:
         return self._end
 
     def overlaps(self, adatetime):
-        return self._begin < adatetime < self._end
+        return self._begin <= adatetime < self._end
 
     def included_days(self):
         first = self._begin.date()
@@ -103,7 +103,7 @@ class WeeklyTimetable(RepetitiveTimetable):
                     map(date => datetime.combine(adate, self.time), interval.included_days())
         
         def valid_datetime(adatetime):
-            return interval.begin() < adatetime < interval.end() and
+            return interval.begin() <= adatetime < interval.end() and
                 any(weekday.same_day_as(adatime) for weekday in self.weekdays)
 
         return filter(valid_datetime, datimes)

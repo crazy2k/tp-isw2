@@ -130,28 +130,16 @@ class JourneyProposalWithVehicule(JourneyProposal):
     def has_vehicule:
         return True
 
-
-class JourneyProposalWithoutVehicule(JourneyProposal):
-    def has_vehicule:
-        return False
-        
-        
-
-# TODO: ¿Crear siempre una JourneyRequest por cada JourneyOffer asi el usuario q ofrece su auto tambien
-#       es tenido en cuenta para otras ofertas de auto que no sean iniciadas por el?
-class JourneyOffer:
-    def __init__(self, proponent, origin, destination, timetable, passenger_capacity):
-        self.proponent = proponent
-        self.origin = origin
-        self.destination = destination
-        self.timetable = timetable
-        self.passenger_capacity = passenger_capacity
-
     def satisfies(self, request):
         return self.is_on_its_way(request.origin) and offer.is_on_its_way(request.destination)
 
     def is_on_its_way(self, place): #TODO
         pass
+
+
+class JourneyProposalWithoutVehicule(JourneyProposal):
+    def has_vehicule:
+        return False
 
 
 class Journey:

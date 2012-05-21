@@ -11,20 +11,22 @@ ambiental e incentivar la interacción y comunicación entre sus ciudadanos.
 En una primera etapa estará orientado principalmente en viajes laborales, aunque
 podría extenderse a cualquier tipo de viajes en un futuro.
 
+El proyecto se dividirá en iteraciones y se hará en forma incremental,
+obteniendo al final de cada iteración una versión más cercana al producto final
+esperado. Se decidió utilizar "Scrum" como metodología de desarrollo y en dicha
+metodología a cada iteración se la llama "Sprint".
+
 El informe está dividido en las siguientes secciones:
 
 - Product backlog: en esta sección se enumeran en forma general todas las
   funcionalidades esperadas una vez finalizado el proyecto
 
-- Sprint Backlog: en esta sección se enumeran en forma más detallada un
+- Sprint backlog: en esta sección se enumeran en forma más detallada un
   las funcionalidades esperadas en una primera iteración
-
-- Sobre las stories y los sprints: en esta sección se explica la organización
-  general del proyecto y la justifiación de las decisiones tomadas en secciones
-  anteriores
 
 - Diseño: en esta sección se presenta y justifica las principales decisiones de
   diseño tomadas
+
 
 
 Product Backlog

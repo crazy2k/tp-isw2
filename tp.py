@@ -6,9 +6,9 @@ from itertools import groupby, chain
 
 class User:
     """Represents a registered user."""
-    def __init__(self, name, email):
-        self.name = name
+    def __init__(self, email, passwd):
         self.email = email
+        self.passwd = passwd
 
 
 class Place:

@@ -8,9 +8,9 @@
     </div>
 % end
 
+% with_or_without_vehicle = "withvehicle" if with_vehicle else "without_vehicle"
 
-
-<form method="post" action="/createproposalwithvehicle">
+<form method="post" action="/createproposal/{{with_or_without_vehicle}}">
     <table>
     <tr class="odd">
         <td>Origen:</td>
@@ -64,12 +64,16 @@
         <td>Hora (ejemplo: 8:30):</td>
         <td><input type="text" name="time" size="10" /></td>
     </tr>
+
+    % if with_vehicle:
     <tr class="odd">
         <td>Capacidad del vehículo:</td>
         <td><input type="text" name="capacity" size="10" /></td>
     </tr>
+    % end
+
     </table>
-    <input type="submit" value="Ofrecer viaje"/>
+    <input type="submit" value="Ofrecer"/>
 </form>
 
 %include footer

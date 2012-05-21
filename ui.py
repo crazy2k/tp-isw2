@@ -101,16 +101,21 @@ def logout():
         delete_cookie_email()
     redirect("/")
 
-@route("/createproposalwithvehicle")
-@view("createproposalwithvehicle")
+@route("/createproposal/:with_or_without_vehicle")
+@view("createproposal")
 @add_user_status
-def createproposalwithvehicle():
-    return {"failed": False, "height": GRID_HEIGHT, "width": GRID_WIDTH}
+def createproposal(with_or_without_vehicle):
+    return {
+        "with_vehicle": with_or_without_vehicle == "withvehicle",
+        "failed": False,
+        "height": GRID_HEIGHT,
+        "width": GRID_WIDTH
+    }
 
-@route("/createproposalwithvehicle", method="POST")
-@view("createproposalwithvehicle")
+@route("/createproposal/:with_or_without_vehicle", method="POST")
+@view("createproposal")
 @add_user_status
-def createproposalwithvehicle_post():
+def createproposal_post(with_or_without_vehicle):
     proponent = get_currently_logged_in_user()
     origin = request.forms.get("origin", None)
     destination = request.forms.get("destination", None)
@@ -123,24 +128,41 @@ def createproposalwithvehicle_post():
     daysofweekchecks = map(is_checked, daysofweeknames)
 
     atime = request.forms.get("time", None)
-    capacity = request.forms.get("capacity", None)
 
-    if not site_backend.create_proposal_with_vehicle(proponent, origin,
-        destination, daysofweekchecks, atime, capacity):
-        return {"failed": True, "reason": "invalid_data"}
+    if with_or_without_vehicle == "withvehicle":
+        capacity = request.forms.get("capacity", None)
+
+        worked = site_backend.create_proposal_with_vehicle(proponent, origin,
+            destination, daysofweekchecks, atime, capacity)
+    else:
+        worked = site_backend.create_proposal_without_vehicle(proponent,
+            origin, destination, daysofweekchecks, atime)
+
+    if not worked:
+        return {
+            "with_vehicle": with_or_without_vehicle == "withvehicle",
+            "failed": True,
+            "reason": "invalid_data"
+        }
 
     redirect("/")
+
 
 @route("/viewnotifications",)
 @view("viewnotifications")
 @add_user_status
 def viewnotifications():
 
+    user = get_currently_logged_in_user()
     proposals_with_vehicule = \
-        site_backend.get_proposals_with_vehicle_for(get_currently_logged_in_user())
+        site_backend.get_proposals_with_vehicle_for(user)
+    proposals_without_vehicule = \
+        site_backend.get_proposals_without_vehicle_for(user)
 
-    return {"proposals_with_vehicule": proposals_with_vehicule}
-
+    return {
+        "proposals_with_vehicule": proposals_with_vehicule,
+        "proposals_without_vehicule": proposals_without_vehicule,
+    }
 
 
 if __name__ == "__main__":

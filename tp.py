@@ -290,9 +290,11 @@ class SimpleJourneyOrganizer(JourneyOrganizer):
 
         for proposal in self.proposals_without_vehicule:
             for adatetime in proposal.timetable.ocurrences_at(self.interval):
-                journeys = [candidate for candidate in self.results \
-                    if candidate.satisfies_proposal_at(proposal, adatetime, self.time_tolerance, self.distance_tolerance) \
-                    and candidate.has_spare_seats()]
+                def is_candidate(candidate):
+                    return candidate.satisfies_proposal_at(proposal, adatetime, self.time_tolerance, self.distance_tolerance) \
+                        and candidate.has_spare_seats()    
+
+                journeys = list(filter(is_candidate, self.results))
                 
                 if len(journeys) > 0:
                     journeys[0].add_passenger(proposal.proponent)
@@ -307,10 +309,10 @@ class SimpleJourneyOrganizer(JourneyOrganizer):
             other_journeys.sort(key=Journey.spare_seats)
             other_journeys.sort(key=Journey.total_seats, reverse=True)
 
-            compatible_journeys = [other_journey for other_journey in other_journeys \
-                if journey.can_be_merged_with(other_journey, self.time_tolerance, self.distance_tolerance)]
+            def is_compatible(other_journey):
+                return journey.can_be_merged_with(other_journey, self.time_tolerance, self.distance_tolerance) 
 
-            for other_journey in compatible_journeys:
+            for other_journey in filter(is_compatible, other_journeys):
                 journey.move_passengers_to(other_journey)
 
         self.results = [journey for journey in self.results if len(journey.people()) > 0]

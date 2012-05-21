@@ -1,6 +1,7 @@
 # coding: utf8
 
 from datetime import datetime
+from datetime import date
 from functools import reduce
 from itertools import groupby, chain
 
@@ -38,6 +39,10 @@ class DayOfWeek:
     def ordinal(self):
         return days_of_week.index(self)
 
+    @classmethod
+    def at(cls, adatetime):
+        return cls.days_of_week[adatetime.weekday()]
+
 MONDAY    = DayOfWeek("Lunes")
 TUESDAY   = DayOfWeek("Martes")
 WEDNESDAY = DayOfWeek("Miercoles")
@@ -72,9 +77,6 @@ class DateTimeInterval:
         return days
 
 class Timetable: # Or Schedule (both are more or less synonyms)
-    def happens_this_date(self, adate):
-        raise NotImplementedError()
-
     def ocurrences_at(self, interval):
         raise NotImplementedError()
 
@@ -107,8 +109,7 @@ class WeeklyTimetable(RepetitiveTimetable):
         timetable_datetimes = [datetime.combine(adate, self.time) for adate in interval.included_days()]
         
         def included_datetime(adatetime):
-            return interval.begin() <= adatetime < interval.end() and \
-                any(weekday.same_day_as(adatime) for weekday in self.weekdays)
+            return interval.overlaps(adaytime) and DayOfWeek.at(adate) in self.weekdays
 
         return list(filter(included_datetime, timetable_datetimes))
 
@@ -244,13 +245,13 @@ class SimpleJourneyOrganizer(JourneyOrganizer):
         return request.plausible_offers(self.offers)
 
     def organize(self):
-        self.create_journeys_for_proposal_with_vehicules()
+        self.create_journeys_for_proposals_with_vehicule()
         self.match_proposals_with_journeys()
         self.optimize_results()
 
-        return results
+        return JourneySchedule(results)
 
-    def create_journeys_for_proposal_with_vehicules(self):
+    def create_journeys_for_proposals_with_vehicule(self):
         def journeys_for(proposal):
             return Journey.create_journeys_for_proposal(proposal, self.interval)
 
@@ -293,6 +294,32 @@ class SimpleJourneyOrganizer(JourneyOrganizer):
         is_close_in_time = abs((journey.datetime - adatetime).total_seconds()) <= self.time_tolerance.total_seconds()
 
         return is_near and is_close_in_time
+
+
+class JourneySchedule:
+    def __init__(self, journeys = []):
+        self.journeys = set([])
+
+        for journey in journeys:
+            self.add_journey(journey)
+
+    def add_journey(self, journey):
+        self.journeys.append(journey)
+
+    def journeys_for(self, user):
+        return [journey for journey in self.journeys if user in journey.people()]
+
+    def journey_for_at(self, user, atimetable):
+        journeys = [journey for journeys_for in self.journeys_for(user) if journey.datetime = adatetime]
+
+        if len(journeys) == 0:
+            raise NotScheduledJourney()
+
+        return journeys[0]
+
+
+class NotScheduledJourney(Exception)
+    pass
 
 
 class Notification:

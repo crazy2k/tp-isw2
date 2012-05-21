@@ -13,16 +13,12 @@ class UserTests(unittest.TestCase):
 
 class DayOfWeekTests(unittest.TestCase):
     def test_init(self):
-        lunes = DayOfWeek("Lunes", 0)
+        lunes = DayOfWeek("Lunes")
 
         self.assertEqual("Lunes", lunes.name)
-        self.assertEqual(0, lunes.ordinal)
 
     def test_lt(self):
-        lunes = DayOfWeek("Lunes", 0)
-        martes = DayOfWeek("Martes", 1)
-
-        self.assertTrue(lunes < martes)
+        self.assertTrue(MONDAY < TUESDAY)
 
 class JourneyStopTests(unittest.TestCase):
     def setUp(self):

@@ -37,7 +37,7 @@ class DayOfWeek:
         return adatetime.weekday() == self.ordinal()
 
     def ordinal(self):
-        return days_of_week.index(self)
+        return self.days_of_week.index(self)
 
     @classmethod
     def at(cls, adatetime):

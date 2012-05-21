@@ -75,7 +75,7 @@ class Timetable: # Or Schedule (both are more or less synonyms)
     def happens_this_date(self, adate):
         raise NotImplementedError()
 
-    def ocurrences(self, interval):
+    def ocurrences_at(self, interval):
         raise NotImplementedError()
 
     def times_within_inverval(self, interval):
@@ -89,7 +89,7 @@ class SingleTimeTimetable(Timetable):
     def __init__(self, datetime):
         self.daytime = datetime
 
-    def ocurrences(self, interval):
+    def ocurrences_at(self, interval):
         if interval.overlaps(self.daytime):
             return [self.daytime]
         else:
@@ -103,7 +103,7 @@ class WeeklyTimetable(RepetitiveTimetable):
         self.days_of_week = days_of_week
         self.time = atime
 
-    def ocurrences(self, interval):
+    def ocurrences_at(self, interval):
         timetable_datetimes = [datetime.combine(adate, self.time) for adate in interval.included_days()]
         
         def included_datetime(adatetime):
@@ -170,7 +170,7 @@ class Journey:
     @classmethod
     def create_journeys_for_proposal(cls, proposal, interval):
         journeys = []
-        for adatetime in proposal.timetable.ocurrences(interval):
+        for adatetime in proposal.timetable.ocurrences_at(interval):
             journeys.append(cls.from_proposal_at(proposal, adatetime))
 
         return journeys
@@ -260,8 +260,9 @@ class SimpleJourneyOrganizer(JourneyOrganizer):
         self.results.sort(key=Journal.total_seats, reverse=True)
 
         for proposal in self.proposals_without_vehicule:
-            for adatetime in proposal.timetable.ocurrences(interval):
-                journeys = (candidate for candidate in self.results if self.can_be_used_with(proposal, journeys, adatetime) and candidate.has_spare_seats())
+            for adatetime in proposal.timetable.ocurrences_at(interval):
+                journeys = [candidate for candidate in self.results \
+                    if self.can_be_used_with(proposal, journeys, adatetime) and candidate.has_spare_seats()]
                 journeys.sort(key=Journey.spare_seats)
                 
                 if len(journey) > 0:

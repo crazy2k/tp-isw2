@@ -383,12 +383,13 @@ mejor visualización.
 Se usaron 56 días en el eje "X" porque eso es lo que duró el primer sprint (la
 cantidad de días desde la presentación del TP hasta que se debe presentar la
 DEMO). Sobre el eje "Y", la cantidad total de horas se la calculó simplemente
-usando los valores previamente exlicados: 33 story points, donde cada uno se
+usando los valores previamente explicados: 33 story points, donde cada uno se
 corresponde con 4hs, implica un total de 132 horas para los 33 story points.
 
-Se puede ver como durante el principio del sprint se iba más atrasado del "avance
-teórico", y que llegando al final del sprint se pudo avanzar bastante, llegando a
-superar por un momento el "avance teórico" para esa etapa del proyecto.
+Se puede ver cómo durante el principio del sprint el equipo iba más atrasado 
+con respecto al "avance teórico" ideal, y que llegando al final del sprint se 
+pudo avanzar más rápido, inclusive superando el "avance teórico" para esa 
+etapa del proyecto.
 
 En el product burndown a continuación, se muestra el avance sobre la totalidad del
 proyecto:
@@ -408,7 +409,7 @@ points de cada user story.
 Se puede ver que actualmente está adelantado el proyecto comparando con el
 "avance teórico" esperado. Esto, posiblemente, se deba justamente por redondear
 para arriba la cantidad de sprints necesarios para el proyecto total, combinado
-con que quizás este sprint se lo estimó mejor. Posiblemente en futuros sprints
+con que quizás se lo estimó mejor este sprint. Posiblemente en futuros sprints
 hayan más sorpresas si no se estimaron muy bien las otras user stories.
 
 

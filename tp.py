@@ -350,9 +350,9 @@ class Notification:
         raise NotImplementedError()
 
     @classmethod
-    def notifications_for_at(journey_schedule, proposal, interval):
+    def notifications_for_at(journey_schedule, proposal, time_interval):
         result = []
-        for adatetime in proposal.timetable.ocurrences_at(interval):
+        for adatetime in proposal.timetable.ocurrences_at(time_interval):
             try:
                 journey = journey.journey_for_at(proposal.proponent, adatetime)
                 result.append(SuccesfulMatchNotification(proposal, journey))

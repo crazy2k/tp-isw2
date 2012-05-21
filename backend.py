@@ -122,9 +122,9 @@ class Backend:
     def organize_journeys(self, time_tolerance, distance_tolerance):
         timedelta = datetime.timedelta(minutes=int(time_tolerance))
         distance_tolerance = int(distance_tolerance)
-        week_interval = tp.DateTimeInterval(datetime.datetime.now(),
-            datetime.datetime.now() + datetime.timedelta(days=7))
-
+        interval_begin = datetime.datetime.now()
+        interval_end = interval_begin + datetime.timedelta(days=20)
+        week_interval = tp.DateTimeInterval(interval_begin, interval_end)
         organizer = tp.SimpleJourneyOrganizer(self.proposals, week_interval,
             timedelta, distance_tolerance)
         self.journey_schedule = organizer.organize()
@@ -139,10 +139,10 @@ class Backend:
         for journey in journeys:
             printable_journey = {
                 "driver": journey.accepted_proposal.proponent.email,
-                "datetime": str(len(journey.datetime())),
+                "datetime": str(journey.datetime),
                 "count": str(len(journey.people())),
                 "total_seats": str(journey.total_seats()),
-                "starting_point": str(journey.starting_point()),
+                "starting_point": str(journey.start_point()),
                 "end_point": str(journey.end_point()),
             }
             printable_journeys.append(printable_journey)

@@ -24,6 +24,10 @@ El informe está dividido en las siguientes secciones:
 - Sprint backlog: en esta sección se enumeran en forma más detallada un
   las funcionalidades esperadas en una primera iteración
 
+- Burndown charts: en esta sección se muestran el product burndown chart y el
+  sprint burndown chart mostrando el avance del proyecto y el sprint
+  respectivamente.
+
 - Diseño: en esta sección se presenta y justifica las principales decisiones de
   diseño tomadas
 
@@ -363,58 +367,50 @@ Status              Finished
 =================== ===================================================
 
 
-Sobre las stories y los sprints
-===============================
+Burndown Charts
+===============
 
-El proyecto se efectuará en 2 sprints. Para el primero, elegimos las stories #1 y #2,
-indicadas en la tabla anterior, las cuales son las de mayor importancia para el
-cliente. Ambas suman una cantidad de 16 story points (del total de 31).
+A continuación se muestra el task burndown correspondiente a este sprint,
+basado en las tareas y estimaciones previamente detalladas:
 
-El equipo prefirió no comprometerse e incluir ninguna story más del Product
-Backlog, para no establecer expectativas demasiado altas en el cliente, aunque,
-si el tiempo lo permite, se podría intentar el desarrollo de la story #3 antes de
-que finalice el sprint, de forma tal de completar las primeras 3 stories durante
-el mismo.
+.. image:: plot/burndown-sprint.png
+        :scale: 200
 
-Inicialmente, las stories incluidas en este sprint sólo abarcaban la
-funcionalidad para crear cuentas de usuario y que los usuarios registrados
-pudieran ingresar al sitio los datos necesarios para poder cumplir sus necesidades
-de transporte, o incluso, poner a disposición un auto propio, pero sin contemplar
-la posibilidad de organizar viajes a través del sistema.
+En este gráfico se puede apreciar el progreso en horas que se fue haciendo a lo
+largo del sprint, día a día. Se decidió agrupar por períodos de 7 días para una
+mejor visualización.
 
-Se consideró luego, que un hipotético P.O. se beneficiaría más al poder incluir
-al menos cierta funcionalidad básica de organización de viajes en este mismo release,
-de forma tal, de obtener un producto que pudiese ser lanzado a producción de
-manera inmediata.
+Se usaron 56 días en el eje "X" porque eso es lo que duró el primer sprint (la
+cantidad de días desde la presentación del TP hasta que se debe presentar la
+DEMO). Sobre el eje "Y", la cantidad total de horas se la calculó simplemente
+usando los valores previamente exlicados: 33 story points, donde cada uno se
+corresponde con 4hs, implica un total de 132 horas para los 33 story points.
 
-Adicionalmente, teniendo en cuenta que al agregar la story que producía los viajes
-óptimos para los datos ingresados por los usuarios, el sprint se volvería demasiado
-abultado y difícilmente podría cumplirse en el tiempo deseado, se decidió dividir
-las stories antiguas en otras algo más simples.
+Se puede ver como durante el principio del sprint se iba más atrasado del "avance
+teórico", y que llegando al final del sprint se pudo avanzar bastante, llegando a
+superar por un momento el "avance teórico" para esa etapa del proyecto.
 
-Primero, el alta de la cuenta del usuario se separó en una story propia, de forma
-tal que pueda ser desarrollada más adelante en otro sprint, aligerando la estimación
-de las stories incluídas. Dado este cambio, el sistema podría comenzar a funcionar,
-sin esta funcionalidad, en una etapa inicial donde la participación estaría cerrada
-a algunos usuarios ingresados en forma masiva a una base de datos o por pedido explícito
-por fuera del sistema.
+En el product burndown a continuación, se muestra el avance sobre la totalidad del
+proyecto:
 
-Luego se planteó que podrían satisfacerse las necesidades de los usuarios si estos
-pudiesen conocer cuales son las ofertas de autos disponibles que coinciden con sus
-horarios y destinos; luego ellos mismos podrían elegir cuál de las ofertas mostradas
-les resultarían preferibles.
-Se decidíó que la funcionalidad anterior podría comprender una story nueva, la cual
-no incluiría el requisito de registrar los datos de viaje del usuario en una base del
-sistema. Además, permitiría obtener al menos las ofertas filtradas según su correspondencia 
-con las necesidades del usuario. 
-También, se agregaría un requisito de investigar las estrategias posibles de matcheo entre
-pedidos y ofrecimientos que amortice el costo del desarrollo. 
-De esta forma, y como se aclaró antes, la story que incluye el algoritmo de matcheo, 
-tendría un esfuerzo menor.
+.. image:: plot/burndown-product.png
+        :scale: 200
 
-Satisfechos con esta nueva disposición de stories, decidimos incluir esta nueva story
-y la que permita registrar un auto para disposición del sistema (la de mayor
-importancia), e iniciar el primer sprint.
+
+Considerando que cada sprint dura 8 semanas (56 días) y que el equipo trabaja
+20hs por semana, el equipo puede avanzar 160hs por sprint. Dado que hay 132
+story points y que cada uno implica 4hs, se necesitan 528hs para terminar el
+proyecto. Esto implica un poco más de 3 sprints para finalizar el proyecto, y se
+decidió usar 4 en total por posibles errores en las estimaciones. Y para
+calcular la cantidad de story points totales, simplemente se sumó los story
+points de cada user story. 
+
+Se puede ver que actualmente está adelantado el proyecto comparando con el
+"avance teórico" esperado. Esto, posiblemente, se deba justamente por redondear
+para arriba la cantidad de sprints necesarios para el proyecto total, combinado
+con que quizás este sprint se lo estimó mejor. Posiblemente en futuros sprints
+hayan más sorpresas si no se estimaron muy bien las otras user stories.
+
 
 Diseño
 ======
@@ -459,3 +455,4 @@ el transporte necesario para ese viaje en particular. Luego, las
 ``JourneyStops``
 representan los puntos intermedios del viaje donde deben subir o bajar los distintos
 pasajeros, permitiendo que los viajes puedan ser diagramados con mucha flexibilidad.
+

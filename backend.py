@@ -17,7 +17,8 @@ class Backend:
         return True
 
     def login_user(self, email, passwd):
-        users = [user for user in self.registered_users if user.authenticate(email, passwd)]
+        users = [user for email, user in self.registered_users.items() if
+            user.authenticate(email, passwd)]
 
         if not len(users) == 1:
             return False

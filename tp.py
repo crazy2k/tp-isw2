@@ -239,7 +239,6 @@ class SimpleJourneyOrganizer(JourneyOrganizer):
         self.proposals_without_vehicule = proposals - proposals_without_vehicule
 
         self.results = []
-        self.left_overs = []
 
     def plausible_offers_for(self, request):
         return request.plausible_offers(self.offers)
@@ -267,9 +266,6 @@ class SimpleJourneyOrganizer(JourneyOrganizer):
                 
                 if len(journey) > 0:
                     journeys[0].add_passenger(proposal.proponent)
-                else:
-                    #FIX!!!!!!!!!!!!!!!
-                    left_overs.append((proposal,adatetime))
 
     def optimize_results(self):
         self.results.sort(key=lambda journey: len(journey.people()))

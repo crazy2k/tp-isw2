@@ -81,34 +81,31 @@ class SimpleJourneyOrganizerTest(unittest.TestCase):
 
 
     def test_organizer_should_create_journey_for_compatible_proposals(self):
-        journeys = self.organizer.organize()
+        journey_schedule = self.organizer.organize()
 
-        assertEqual(1, len(journeys))
+        self.assertEqual(1, journey_schedule.total_journeys())
 
-        journey = journeys[0]
-        assertEqual(self.proposal_with_car, journey.accepted_proposal)
-        assertEqual(2, len(journeys.stops))
+        journey = journey_schedule.journeys_for(self.proposal_with_car.proponent)[0]
+        self.assertEqual(self.proposal_with_car, journey.accepted_proposal)
+        self.assertEqual(2, len(journey.stops))
 
-        stops = journeys.stops
-        assertEqual(self.proposal_with_car.origin, stops[0].place)
-        assertEqual(self.proposal_with_car.destination, stops[1].place)
+        stops = journey.stops
+        self.assertEqual(self.proposal_with_car.origin, stops[0].place)
+        self.assertEqual(self.proposal_with_car.destination, stops[1].place)
 
-        assertTrue(self.proposal_without_car.origin.is_near(stops[0].place, self.distance_tolerance))
-        assertTrue(self.proposal_without_car.destination.in_near(stops[1].place, self.distance_tolerance))
+        self.assertTrue(self.proposal_without_car.origin.is_near(stops[0].place, self.distance_tolerance))
+        self.assertTrue(self.proposal_without_car.destination.is_near(stops[1].place, self.distance_tolerance))
 
         users = {self.proposal_with_car.proponent, self.proposal_without_car.proponent}
-        assertEqual(users, set(self.stops[0].passengers_stepping_in))
-        assertEqual(users, set(self.stops[1].passengers_leaving))
-        assertEqual(0, len(self.stops[0].passengers_leaving))
-        assertEqual(0, len(self.stops[1].passengers_stepping_in))
+        self.assertEqual(users, set(stops[0].passengers_stepping_in))
+        self.assertEqual(users, set(stops[1].passengers_leaving))
+        self.assertEqual(0, len(stops[0].passengers_leaving))
+        self.assertEqual(0, len(stops[1].passengers_stepping_in))
 
-        delta = self.stops[0].datetime - self.proposal_without_car.timetable.ocurrences()[0]
-        assertTrue(abs(delta.total_seconds()) <= self.timedelta.total_seconds())
+        delta = journey.datetime - self.proposal_without_car.timetable.ocurrences_at(self.week_interval)[0]
+        self.assertTrue(abs(delta.total_seconds()) <= self.timedelta.total_seconds())
 
-        delta = self.stops[0].datetime - self.proposal_with_car.timetable.ocurrences()[0]
-        assertTrue(abs(delta.total_seconds()) <= self.timedelta.total_seconds())
-
-        assertEqual(journeys.stops[0].datetime.date(), journey.date())
+        self.assertEqual(journey.datetime.date(), journey.date())
 
         
 

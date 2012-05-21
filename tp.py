@@ -158,7 +158,7 @@ class Journey:
         return reduce(set.union, [set(stop.passengers_stepping_in) for stop in self.stops])
 
     def date(self):
-        return self.stops[0].datetime.date()
+        return self.datetime.date()
 
     @classmethod
     def from_proposal_at(cls, proposal, adatetime):
@@ -305,6 +305,9 @@ class JourneySchedule:
 
     def add_journey(self, journey):
         self.journeys.add(journey)
+
+    def total_journeys(self):
+        return len(self.journeys)
 
     def journeys_for(self, user):
         return [journey for journey in self.journeys if user in journey.people()]

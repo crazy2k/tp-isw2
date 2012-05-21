@@ -257,15 +257,14 @@ class SimpleJourneyOrganizer(JourneyOrganizer):
         self.results = list(chain(*map(journeys_for, proposals_with_vehicule)))
 
     def match_proposals_with_journeys(self):
-        self.results.sort(key=Journal.total_seats, reverse=True)
+        self.results.sort(key=Journey.total_seats, reverse=True)
 
         for proposal in self.proposals_without_vehicule:
             for adatetime in proposal.timetable.ocurrences_at(interval):
                 journeys = [candidate for candidate in self.results \
                     if self.can_be_used_with(proposal, journeys, adatetime) and candidate.has_spare_seats()]
-                journeys.sort(key=Journey.spare_seats)
                 
-                if len(journey) > 0:
+                if len(journeys) > 0:
                     journeys[0].add_passenger(proposal.proponent)
 
     def optimize_results(self):

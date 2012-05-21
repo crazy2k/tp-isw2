@@ -32,12 +32,12 @@ class JourneyStopTests():
         self.assertEqual(self.passengers, stop.passengers_stepping_in)
         self.assertEqual([], stop.passengers_leaving)
 
-class CommuterRegistrationTest(unittest.TestCase):
+class UserRegistrationTest(unittest.TestCase):
     def setUp(self):
         self.user = User("Pablo", "pablo@pablo.com")
 
 
-    def test_register_a_request_for_commuting(self):
+    def test_register_a_journey_proposal(self):
         """
         Como oficinista quiero registrar que
         todos los Lunes, Martes y Miercoles, salgo de mi casa a las 8:00 AM y tengo que llegar a mi trabajo a las 9:00 AM
@@ -45,7 +45,7 @@ class CommuterRegistrationTest(unittest.TestCase):
     """
     pass
 
-    def test_register_a_request_for_commuting_with_a_car_offer(self):
+    def test_register_a_journey_proposal_with_a_car_offer(self):
         """
         Como vendedor de autopartes quiero registrar que
             todos los Lunes, Miercoles y Viernes salgo de mi casa a las 7:00 AM y tengo que llegar a mi oficina en el centro a las 9:00 AM

@@ -59,32 +59,60 @@ class UserRegistrationTest(unittest.TestCase):
         pass
 
 class SimpleJourneyOrganizerTest(unittest.TestCase):
+    def proposal_with_car(self):
+        proponent = User("pablo@pablo.com", "123456")
+        address1 = Address("Rivadavia 6242")
+        address2 = Address("Viamonte 1203")
+        timetable = WeeklyTimetable(time(8, 30), (MONDAY,))
+        return JourneyProposalWithVehicule(proponent, address1, address2,
+            timetable, 2)
+
+    def proposal_without_car(self):
+        proponent = User("rodrigo@rodrigo.com", "654321")
+        address1 = Address("Rivadavia 6486")
+        address2 = Address("Viamonte 1205")
+        timetable = WeeklyTimetable(time(8, 25), (MONDAY,))
+        return JourneyProposalWithoutVehicule(proponent, address1, address2,
+            timetable)
+
+
+    def very_far_proposal_with_car(self):
+        proponent = User("pablo@pablo.com", "123456")
+        address1 = GridPosition(0,0)
+        address2 = GridPosition(5000,5000)
+        timetable = WeeklyTimetable(time(8, 30), (MONDAY,))
+        return JourneyProposalWithVehicule(proponent, address1, address2,
+            timetable, 2)
+
+    def very_far_proposal_with_no_car(self):
+        proponent = User("rodrigo@rodrigo.com", "654321")
+        address1 = GridPosition(8000,8000)
+        address2 = GridPosition(1000,1000)
+        timetable = WeeklyTimetable(time(8, 25), (MONDAY,))
+        return JourneyProposalWithoutVehicule(proponent, address1, address2,
+            timetable)
+
+
+
     def setUp(self):
         Address.web_service = StubedAddressWebService
 
-        def proposal_with_car():
-            proponent = User("pablo@pablo.com", "123456")
-            address1 = Address("Rivadavia 6242")
-            address2 = Address("Viamonte 1203")
-            timetable = WeeklyTimetable(time(8, 30), (MONDAY,))
-            return JourneyProposalWithVehicule(proponent, address1, address2, 
-                timetable, 2)
-
-        def proposal_without_car():
-            proponent = User("rodrigo@rodrigo.com", "654321")
-            address1 = Address("Rivadavia 6486")
-            address2 = Address("Viamonte 1205")
-            timetable = WeeklyTimetable(time(8, 25), (MONDAY,))
-            return JourneyProposalWithoutVehicule(proponent, address1, address2, 
-                timetable)
-
-        self.proposal_with_car = proposal_with_car() 
-        self.proposal_without_car = proposal_without_car() 
         self.timedelta = timedelta(minutes=15)
         self.week_interval = DateTimeInterval(datetime(2012, 5, 14), datetime(2012, 5, 19))
         self.distance_tolerance = 300
 
+        self.proposal_with_car = self.proposal_with_car()
+        self.proposal_without_car = self.proposal_without_car()
+
+        self.very_far_proposal_with_car = self.very_far_proposal_with_car()
+        self.very_far_proposal_with_no_car = self.very_far_proposal_with_no_car()
+
+
         self.organizer_for_near_users = SimpleJourneyOrganizer([self.proposal_with_car, self.proposal_without_car],
+            self.week_interval, self.timedelta, self.distance_tolerance)
+
+        self.organizer_with_left_over_poposal = SimpleJourneyOrganizer( \
+            [self.very_far_proposal_with_car, self.very_far_proposal_with_no_car],
             self.week_interval, self.timedelta, self.distance_tolerance)
 
 
@@ -121,14 +149,17 @@ class SimpleJourneyOrganizerTest(unittest.TestCase):
 
         self.assertEqual(1, journey_schedule.total_journeys())
 
-        journey = journey_schedule.journeys_for_at(self.proposal_with_car.proponent, self.interval)
+        when = self.very_far_proposal_with_car.timetable.ocurrences_at(self.week_interval)[0]
 
-        self.assertEqual(self.proposal_with_car, journey.accepted_proposal)
+        journey = journey_schedule.journey_for_at(self.very_far_proposal_with_car.proponent, when)
+
+        self.assertEqual(self.very_far_proposal_with_car, journey.accepted_proposal)
 
         try:
-            journey = journey_schedule.journeys_for_at(self.very_far_proposal.proponent, self.interval)
+            when = self.very_far_proposal_with_no_car.timetable.ocurrences_at(self.week_interval)[0]
+            journey = journey_schedule.journey_for_at(self.very_far_proposal_with_no_car.proponent, when)
         except Exception as e:
-            assertIs(e, NotScheduledJourney)
+            self.assertIsInstance(e, NotScheduledJourney)
 
     def test_organizer_should_merge_similar_proposals_together_when_there_are_spare_seats(self):
         pass

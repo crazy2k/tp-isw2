@@ -334,8 +334,8 @@ class JourneySchedule:
     def journeys_for(self, user):
         return [journey for journey in self.journeys if user in journey.people()]
 
-    def journey_for_at(self, user, atimetable):
-        journeys = [journey for journeys_for in self.journeys_for(user) if journey.datetime == adatetime]
+    def journey_for_at(self, user, adatetime):
+        journeys = [journey for journey in self.journeys_for(user) if journey.datetime == adatetime]
 
         if len(journeys) == 0:
             raise NotScheduledJourney()

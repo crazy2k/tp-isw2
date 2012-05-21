@@ -17,15 +17,13 @@ class Backend:
         return True
 
     def login_user(self, email, passwd):
-        registered_user = self.registered_users.get(email)
-        if not registered_user:
-            return False
+        users = [user for user in self.registered_users if user.authenticate(email, passwd)]
 
-        if registered_user.passwd == passwd:
+        if not len(users) == 1:
+            return False
+        else:
             self.logged_in_users[email] = registered_user
             return True
-
-        return False
 
     def logout_user(self, email):
         if self.logged_in_users.get(email, None):

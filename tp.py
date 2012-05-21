@@ -303,6 +303,7 @@ class SimpleJourneyOrganizer(JourneyOrganizer):
                     journeys[0].add_passenger(proposal.proponent)
 
     def optimize_results(self):
+        self.results.sort(key=lambda journey: journey.accepted_proposal.passenger_capacity)
         self.results.sort(key=lambda journey: len(journey.people()))
         other_journeys = self.results[:] #Duplicate list
 

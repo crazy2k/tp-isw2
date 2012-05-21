@@ -10,7 +10,7 @@
 
 <p>¡Bienvenido, {{user_status["email"]}}! Estas son tus opciones:</p>
 <ul>
-    <li><a href="/createproposalwithcar">Ofrecer viajes que realizarás con tu
+    <li><a href="/createproposalwithvehicle">Ofrecer viajes que realizarás con tu
         vehículo</a></li>
     <li><a href="/createproposalwithoutcar">Ofrecerte como acompañante para
     viajes</a></li>

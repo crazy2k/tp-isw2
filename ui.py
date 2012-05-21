@@ -125,11 +125,21 @@ def createproposalwithvehicle_post():
     atime = request.forms.get("time", None)
     capacity = request.forms.get("capacity", None)
 
-    if not site_backend.create_proposal_with_car(proponent, origin,
+    if not site_backend.create_proposal_with_vehicle(proponent, origin,
         destination, daysofweekchecks, atime, capacity):
         return {"failed": True, "reason": "invalid_data"}
 
     redirect("/")
+
+@route("/viewnotifications",)
+@view("viewnotifications")
+@add_user_status
+def viewnotifications():
+
+    proposals_with_vehicule = \
+        site_backend.get_proposals_with_vehicle_for(get_currently_logged_in_user())
+
+    return {"proposals_with_vehicule": proposals_with_vehicule}
 
 
 

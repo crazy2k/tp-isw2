@@ -173,8 +173,9 @@ def viewnotifications():
 def organize_post():
     time_tolerance = request.forms.get("time_tolerance", None)
     distance_tolerance = request.forms.get("distance_tolerance", None)
+    days = request.forms.get("days", None)
 
-    site_backend.organize_journeys(time_tolerance, distance_tolerance)
+    site_backend.organize_journeys(time_tolerance, distance_tolerance, days)
     redirect("/viewnotifications")
 
 

@@ -119,11 +119,11 @@ class Backend:
         return self.prepare_proposals_for_printing(proponent,
             tp.JourneyProposalWithoutVehicule)
 
-    def organize_journeys(self, time_tolerance, distance_tolerance):
+    def organize_journeys(self, time_tolerance, distance_tolerance, days):
         timedelta = datetime.timedelta(minutes=int(time_tolerance))
         distance_tolerance = int(distance_tolerance)
         interval_begin = datetime.datetime.now()
-        interval_end = interval_begin + datetime.timedelta(days=20)
+        interval_end = interval_begin + datetime.timedelta(days=int(days)+1)
         week_interval = tp.DateTimeInterval(interval_begin, interval_end)
         organizer = tp.SimpleJourneyOrganizer(self.proposals, week_interval,
             timedelta, distance_tolerance)
@@ -153,7 +153,7 @@ class Backend:
             return []
 
         interval_begin = datetime.datetime.now()
-        interval_end = interval_begin + datetime.timedelta(days=20)
+        interval_end = interval_begin + datetime.timedelta(days=9)
 
         notifications = []
         for proposal in self.proposals:

@@ -20,27 +20,17 @@ class DayOfWeekTests(unittest.TestCase):
     def test_lt(self):
         self.assertTrue(MONDAY < TUESDAY)
 
-class JourneyStopTests(unittest.TestCase):
+class JourneyStopTests():
     def setUp(self):
         self.where = Place()
-        self.when = datetime.now
         self.passengers = [User("Pablo", "pablo@pablo.com")]
 
-class JourneyStopForBoardingTests(JourneyStopTests):
     def test_init(self):
-        stop_for_boarding = JourneyStopForBoarding(self.where, self.when, self.passengers)
+        stop = JourneyStop(self.where, self.passengers, [])
 
-        self.assertEqual(self.where, stop_for_boarding.place)
-        self.assertEqual(self.when, stop_for_boarding.datetime)
-        self.assertEqual(self.passengers, stop_for_boarding.passengers)
-
-class JourneyStopForDischargingTests(JourneyStopTests):
-    def test_init(self):
-        stop_for_discharging = JourneyStopForDischarging(self.where, self.when, self.passengers)
-
-        self.assertEqual(self.where, stop_for_discharging.place)
-        self.assertEqual(self.when, stop_for_discharging.datetime)
-        self.assertEqual(self.passengers, stop_for_discharging.passengers)
+        self.assertEqual(self.where, stop.place)
+        self.assertEqual(self.passengers, stop.passengers_stepping_in)
+        self.assertEqual([], stop.passengers_leaving)
 
 class CommuterRegistrationTest(unittest.TestCase):
     def setUp(self):

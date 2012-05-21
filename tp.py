@@ -6,9 +6,9 @@ from itertools import groupby, chain
 
 class User:
     """Represents a registered user."""
-    def __init__(self, name, email):
-        self.name = name
+    def __init__(self, email, passwd):
         self.email = email
+        self.passwd = passwd
 
 
 class Place:
@@ -18,6 +18,18 @@ class Place:
     def distance_to(self, place):
         """Returns distance between two places in meters"""
         raise NotImplementedError()
+
+class GridPosition(Place):
+    def __init__(self, x_coordinate, y_coordinate):
+        self.x_coordinate = x_coordinate
+        self.y_coordinate = y_coordinate
+
+    def distance_to(self, place):
+        return abs(place.x_coordinate - self.x_coordinate) + \
+            abs(place.y_coordinate - self.y_coordinate)
+
+    def __str__(self):
+        return "(%d, %d)" % (self.x_coordinate, self.y_coordinate)
 
 class Address(Place):
     def distance_to(self, place):

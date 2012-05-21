@@ -139,279 +139,229 @@ todo la creación de tests de sistema y verificación del correcto funcionamient
 del mismo. La #13 incluye la configuración de los servidores, el registro de
 dominio, DNSs y demás detalles de infraestructura necesarios.
 
-
-
 Sprint Backlog
 ==============
 
-.. TODO: poner que programacion incluye testing y debug
+El primer sprint abarca las stories 1 a 7 y finaliza el Lunes 21 de mayo, con
+la presentación de una DEMO al cliente. Estas stories suman 33 story points de
+un total de 106.
 
-A cada *story point*, le asociamos 4 horas de desarrollo. Luego, las
-tareas asociadas a los stories #1 y #2 quedarían estimadas como se
+A cada *story point*, le asociamos 4 horas de desarrollo, dando un total de 132
+horas para los 33 story points. Y el equipo puede trabajar 20 horas por semana
+(5hs cada uno por semana), dando un total de 160hs por sprint. Esta elección fue
+hecha en base a trabajos pasados que hemos realizado en otras materias.
+
+El equipo prefirió no comprometerse e incluir ninguna story más del Product
+Backlog, para no establecer expectativas demasiado altas en el cliente, aunque,
+si el tiempo lo permite, se podría intentar el desarrollo de la story #8 antes de
+que finalice el sprint, de forma tal de completar las primeras 8 stories durante
+el mismo.
+
+También, es importante notar que las tareas de testing de unidad y debugging
+están incluídas como parte de las tareas de programación.
+
+Las tareas asociadas a los stories de este sprint quedarían estimadas como se
 detalla a continuación.
 
 Story #1
 --------
 
+No se nos ocurrió una forma correcta de agregar en un user story el tiempo
+dedicado a la realización de todo el informe para la entrega del trabajo
+práctico. Sin embargo, sí encontramos una forma de mostrar en una user story el
+tiempo dedicado al diseño, sus charts y justificación. Esta user story refleja
+la forma que encontramos de hacerlo.
+
 Criterio de aceptación:
 
-- El usuario puede ingresar al sistema con su email y contraseña.
-- El sistema impide el ingreso al sistema al usuario cuando su
-  email y contraseña no coinciden.
-- El usuario puede crear una oferta de viaje indicando que dispone
-  de auto e ingresar lugar, día y horario de salida y de llegada.
+- El desarrollador cuenta con conjunto de diagramas explicando el diseño
+  
+- El desarrollador cuenta con la justificación de las principales decisiones de
+  diseño tomadas
 
 Task #1
 ```````
 
 =================== ===================================================
-Descripción         Investigar tecnología conveniente para la interfaz
-                    de usuario.
+Descripción         Crear todos los documentos necesarios para explicar
+                    adecuadamente el diseño del sistema
 ------------------- ---------------------------------------------------
-Status              Not Yet Started
-------------------- ---------------------------------------------------
-Original Estimate   8 horas
-------------------- ---------------------------------------------------
-Remaining Estimate  8 horas
-------------------- ---------------------------------------------------
-Time Spent          0 horas
+Status              Finished
 =================== ===================================================
 
 Task #2
 ```````
 
 =================== ===================================================
-Descripción         Crear elementos de interfaz necesarios para la
-                    autenticación de usuarios.
+Descripción         Justificar las decisiones de diseño tomadas
 ------------------- ---------------------------------------------------
-Status              Not Yet Started
-------------------- ---------------------------------------------------
-Original Estimate   2 horas
-------------------- ---------------------------------------------------
-Remaining Estimate  2 horas
-------------------- ---------------------------------------------------
-Time Spent          0 horas
+Status              Finished
 =================== ===================================================
 
-Task #3
-```````
-
-=================== ===================================================
-Descripción         Programar validación de datos ingresados por el
-                    usuario.
-------------------- ---------------------------------------------------
-Status              Not Yet Started
-------------------- ---------------------------------------------------
-Original Estimate   4 horas
-------------------- ---------------------------------------------------
-Remaining Estimate  4 horas
-------------------- ---------------------------------------------------
-Time Spent          0 horas
-=================== ===================================================
-
-Task #4
-```````
-
-=================== ===================================================
-Descripción         Programar mecanismo de autenticación de usuarios.
-------------------- ---------------------------------------------------
-Status              Not Yet Started
-------------------- ---------------------------------------------------
-Original Estimate   4 horas
-------------------- ---------------------------------------------------
-Remaining Estimate  4 horas
-------------------- ---------------------------------------------------
-Time Spent          0 horas
-=================== ===================================================
-
-Task #5
-```````
-
-=================== ===================================================
-Descripción         Crear elementos de interfaz necesarios para el
-                    ingreso de datos para oferta de viaje.
-------------------- ---------------------------------------------------
-Status              Not Yet Started
-------------------- ---------------------------------------------------
-Original Estimate   4 horas
-------------------- ---------------------------------------------------
-Remaining Estimate  4 horas
-------------------- ---------------------------------------------------
-Time Spent          0 horas
-=================== ===================================================
-
-Task #6
-```````
-
-=================== ===================================================
-Descripción         Programar ingreso de datos para oferta de viaje.
-------------------- ---------------------------------------------------
-Status              In Progress
-------------------- ---------------------------------------------------
-Original Estimate   6 horas
-------------------- ---------------------------------------------------
-Remaining Estimate  6 horas
-------------------- ---------------------------------------------------
-Time Spent          4 horas
-=================== ===================================================
-
-Task #7
-```````
-
-=================== ===================================================
-Descripción         Crear las entidades necesarias para una nueva
-                    oferta de viaje.
-------------------- ---------------------------------------------------
-Status              Not Yet Started
-------------------- ---------------------------------------------------
-Original Estimate   6 horas
-------------------- ---------------------------------------------------
-Remaining Estimate  6 horas
-------------------- ---------------------------------------------------
-Time Spent          0 horas
-=================== ===================================================
-
-Task #8
-```````
-
-=================== ===================================================
-Descripción         Persistir los datos de la oferta generada.
-------------------- ---------------------------------------------------
-Status              Not Yet Started
-------------------- ---------------------------------------------------
-Original Estimate   4 horas
-------------------- ---------------------------------------------------
-Remaining Estimate  4 horas
-------------------- ---------------------------------------------------
-Time Spent          0 horas
-=================== ===================================================
 
 Story #2
 --------
 
 Criterio de aceptación:
 
-- El usuario puede ingresar al sistema con su email y contraseña.
-- El sistema impide el ingreso al sistema al usuario cuando su
-  email y contraseña no coinciden.
-- El usuario puede ingresar un horario, un lugar de salida, así
-  un como lugar llegada, y obtener todas las ofertas que los
-  satisfacen.
+- El usuario puede crear una oferta de viaje indicando que dispone de auto, la
+  cantidad de lugares disponibles e ingresar el lugar, día y horario de salida y
+  llegada
 
 Task #1
 ```````
 
 =================== ===================================================
-Descripción         Crear elementos de interfaz necesarios para el
-                    ingreso de datos para pedido de viaje.
+Descripción         Programar ingreso de datos para oferta de viaje.
 ------------------- ---------------------------------------------------
-Status              Not Yet Started
-------------------- ---------------------------------------------------
-Original Estimate   4 horas
-------------------- ---------------------------------------------------
-Remaining Estimate  4 horas
-------------------- ---------------------------------------------------
-Time Spent          0 horas
+Status              Finished
 =================== ===================================================
 
 Task #2
 ```````
 
 =================== ===================================================
-Descripción         Programar validación de datos ingresados para el
-                    pedido de viaje.
+Descripción         Crear las entidades necesarias para una nueva
+                    oferta de viaje.
 ------------------- ---------------------------------------------------
-Status              Not Yet Started
-------------------- ---------------------------------------------------
-Original Estimate   4 horas
-------------------- ---------------------------------------------------
-Remaining Estimate  4 horas
-------------------- ---------------------------------------------------
-Time Spent          0 horas
+Status              Finished
 =================== ===================================================
 
-Task #3
+Story #3
+--------
+
+Criterio de aceptación:
+
+- Si el usuario no se ha registrado aún, puede registrarse ingresando Nombre y
+  su dirección de correo electrónico
+
+- Si el usuario ya se ha registrado, se emite un error indicando el problema
+
+
+Task #1
+```````
+
+=================== ===================================================
+Descripción         Crear las entidades necesarias para crear un
+                    nuevo usuario
+------------------- ---------------------------------------------------
+Status              Finished
+=================== ===================================================
+
+
+Task #2
+```````
+
+=================== ===================================================
+Descripción         Crear mecanismos de validación para usuarios
+                    existentes
+------------------- ---------------------------------------------------
+Status              Finished
+=================== ===================================================
+
+Story #4
+--------
+
+Criterio de aceptación:
+
+- Si el usuario ya se ha registrado, puede loguearse con los datos usados en la
+  registración
+
+- Si el usuario no se ha registrado, se muestra un error y no se le permite
+  loguearse
+
+
+Task #1
+```````
+
+=================== ===================================================
+Descripción         Programar la lógica de loguear usuarios
+------------------- ---------------------------------------------------
+Status              Finished
+=================== ===================================================
+
+Story #5
+--------
+
+Criterio de aceptación:
+
+- El usuario puede ingresar un horario, un lugar de salida, así
+  como de llegada.
+
+
+Task #1
 ```````
 
 =================== ===================================================
 Descripción         Programar ingreso de datos para pedido de viaje.
 ------------------- ---------------------------------------------------
-Status              In Progress
-------------------- ---------------------------------------------------
-Original Estimate   4 horas
-------------------- ---------------------------------------------------
-Remaining Estimate  2 horas
-------------------- ---------------------------------------------------
-Time Spent          2 horas
+Status              Finished
 =================== ===================================================
 
-Task #4
+Task #2
 ```````
 
 =================== ===================================================
-Descripción         Investigar sobre algoritmo de matching primitivo
-                    que permita al usuario encontrar ofertas de viaje
-                    de su interés.
+Descripción         Crear las entidades necesarias para que un nuevo
+                    pedido de viaje sea contemplado en la asignación de
+                    viajes
 ------------------- ---------------------------------------------------
-Status              Not Yet Started
-------------------- ---------------------------------------------------
-Original Estimate   4 horas
-------------------- ---------------------------------------------------
-Remaining Estimate  4 horas
-------------------- ---------------------------------------------------
-Time Spent          0 horas
+Status              Finished
 =================== ===================================================
 
-Task #5
+
+
+Story #6
+--------
+
+Criterio de aceptación:
+
+- En caso de que existan ofertas de viaje con lugares disponibles y  que cumplan
+  con los requisitos de viajes ingresados, se debería asignar y notificar las
+  asignaciones realizadas
+
+- En caso de que no existan ofertas de viaje con lugares disponibles y que
+  cumplan con los requisitos de viajes ingresados, se informará esta situación
+
+Task #1
 ```````
 
 =================== ===================================================
 Descripción         Programar algoritmo de matching primitivo que
-                    permita al usuario encontrar ofertas de viaje de su
-                    interés.
+                    asigne los usuarios a viajes
 ------------------- ---------------------------------------------------
-Status              Not Yet Started
-------------------- ---------------------------------------------------
-Original Estimate   12 horas
-------------------- ---------------------------------------------------
-Remaining Estimate  12 horas
-------------------- ---------------------------------------------------
-Time Spent          0 horas
+Status              Finished
 =================== ===================================================
 
-Task #6
+Task #2
 ```````
 
 =================== ===================================================
-Descripción         Crear las entidades necesarias para un nuevo pedido
-                    de viaje.
+Descripción         Notificar el resultado del matching, detallando la
+                    información de las asignaciones en caso que se
+                    hayan podido realizar
 ------------------- ---------------------------------------------------
-Status              Not Yet Started
-------------------- ---------------------------------------------------
-Original Estimate   6 horas
-------------------- ---------------------------------------------------
-Remaining Estimate  6 horas
-------------------- ---------------------------------------------------
-Time Spent          0 horas
+Status              Finished
 =================== ===================================================
 
-Task #7
+Story #7
+--------
+
+Criterio de aceptación:
+
+- Se muestran los viajes asignados por el matching si los hay. Sino, se muestra
+  que no se pudo asignar ningún viaje
+
+Task #1
 ```````
 
 =================== ===================================================
-Descripción         Crear elementos de interfaz necesarios para mostrar
-                    al usuario las ofertas de viaje de su interés.
+Descripción         Programar la lógica para consultar los viajes
+                    asignados
 ------------------- ---------------------------------------------------
-Status              Not Yet Started
-------------------- ---------------------------------------------------
-Original Estimate   4 horas
-------------------- ---------------------------------------------------
-Remaining Estimate  4 horas
-------------------- ---------------------------------------------------
-Time Spent          0 horas
+Status              Finished
 =================== ===================================================
 
-Se puede apreciar el progreso hasta ahora alcanzado en el task burndown chart.
 
 Sobre las stories y los sprints
 ===============================

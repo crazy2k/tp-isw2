@@ -342,28 +342,35 @@ class JourneySchedule:
 
         return journeys[0]
 
-    def notifications_for(proposal):
-        pass#TODO
-
-
 class NotScheduledJourney(Exception):
     pass
-
 
 class Notification:
     def content(self):
         raise NotImplementedError()
 
+    @classmethod
+    def notifications_for_at(journey_schedule, proposal, interval):
+        result = []
+        for adatetime in proposal.timetable.ocurrences_at(interval):
+            try:
+                journey = journey.journey_for_at(proposal.proponent, adatetime)
+                result.append(SuccesfulMatchNotification(proposal, journey))
+            except NotScheduledJourney:
+                result.append(UnsuccesfulMatchNotification(proposal))
+
+        return result
+
 class UnsuccesfulMatchNotification(Notification):
-    def __init__(self, request):
-        self.request = request
+    def __init__(self, proposal):
+        self.proposal = proposal
 
     def content(self):
         pass
 
 class SuccesfulMatchNotification(Notification):
     def __init__(self, proposal, journey):
-        self.request = request
+        self.proposal = proposal
         self.journey = journey
 
     def content(self):

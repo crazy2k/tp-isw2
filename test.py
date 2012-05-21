@@ -119,7 +119,7 @@ class SimpleJourneyOrganizerTest(unittest.TestCase):
 
         try:
             journey = journey_schedule.journeys_for_at(self.very_far_proposal.proponent, self.interval)
-        except Exception, e:
+        except Exception as e:
             assertIs(e, NotScheduledJourney)
 
     def test_organizer_should_merge_similar_proposals_together_when_there_are_spare_seats(self):

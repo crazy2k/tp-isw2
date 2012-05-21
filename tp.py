@@ -249,6 +249,8 @@ class SimpleJourneyOrganizer(JourneyOrganizer):
         self.match_proposals_with_journeys()
         self.optimize_results()
 
+        return results
+
     def create_journeys_for_proposal_with_vehicules(self):
         def journeys_for(proposal):
             return Journey.create_journeys_for_proposal(proposal, self.interval)
@@ -260,7 +262,7 @@ class SimpleJourneyOrganizer(JourneyOrganizer):
 
         for proposal in self.proposals_without_vehicule:
             for adatetime in proposal.timetable.ocurrences(interval):
-                journeys = (candidate for candidate in self.results if self.are_compatible(candidate, proposal, adatetime) and candidate.has_spare_seats())
+                journeys = (candidate for candidate in self.results if self.can_be_used_with(proposal, journeys, adatetime) and candidate.has_spare_seats())
                 journeys.sort(key=Journey.spare_seats)
                 
                 if len(journey) > 0:
@@ -271,13 +273,13 @@ class SimpleJourneyOrganizer(JourneyOrganizer):
 
     def optimize_results(self):
         self.results.sort(key=lambda journey: len(journey.people()))
-        other_journeys = self.results[:]
+        other_journeys = self.results[:] #Duplicate list
 
         for journey in self.results:
             other_journeys.remove(journey)
             other_journeys = list(filter(Journey.has_spare_seats, other_journeys))
-            other_journeys.sort(key=lambda journey: journey.spare_seats)
-            other_journeys.sort(key=lambda journey: journey.total_seats, reverse=True)
+            other_journeys.sort(key=Journey.spare_seats)
+            other_journeys.sort(key=Journey.total_seats, reverse=True)
 
             for other_journey in [other_journey for other_journey in other_journeys if self.are_compatible(journey, other_journey)]:
                 journey.move_passengers_to(other_journey)
@@ -288,7 +290,7 @@ class SimpleJourneyOrganizer(JourneyOrganizer):
     def are_compatible(self, journey, other_journey):
         return 
 
-    def are_compatible(self, journey, proposal, adatetime):
+    def can_be_used_with(self, proposal, journey, adatetime):
         is_near = journey.start_point.is_near(proposal.origin, self.distance_tolerance) and \
             journey.end_point.is_near(proposal.destination, self.distance_tolerance) 
 

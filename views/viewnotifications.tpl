@@ -55,7 +55,7 @@
     <li>Ninguna</li>
 % end
 % for notification in notifications:
-    <li><b>{{notification.title()}}:<b> {{notification.content()}}</li>
+    <li><b>{{notification.title()}}:</b> {{notification.content()}}</li>
 % end
 </ul>
 

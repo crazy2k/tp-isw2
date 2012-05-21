@@ -331,7 +331,7 @@ class Notification:
     def notifications_for_at(journey_schedule, proposal, interval):
         result = []
         for adatetime in proposal.timetable.ocurrences_at(interval):
-            try
+            try:
                 journey = journey.journey_for_at(proposal.proponent, adatetime)
                 result.append(SuccesfulMatchNotification(proposal, journey))
             except NotScheduledJourney:

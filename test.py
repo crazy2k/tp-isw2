@@ -1,7 +1,5 @@
 import unittest
 
-import datetime
-
 from tp import *
 
 class UserTests(unittest.TestCase):
@@ -54,14 +52,13 @@ class UserRegistrationTest(unittest.TestCase):
         """
         pass
 
-class JourneyOrganizerTest(unittest.TestCase):
-
+class SimpleJourneyOrganizerTest(unittest.TestCase):
     def setUp(self):
         def proposal_with_car():
             proponent = User("Pablo", "pablo@pablo.com")
             address1 = Address()
             address2 = Address()
-            timetable = WeeklyTimetable(datetime.time(8, 30), (MONDAY,)) 
+            timetable = WeeklyTimetable(time(8, 30), (MONDAY,))
             return JourneyProposalWithVehicule(proponent, address1, address2, 
                 timetable, 2)
 
@@ -69,18 +66,18 @@ class JourneyOrganizerTest(unittest.TestCase):
             proponent = User("Rodrigo", "rodrigo@rodrigo.com")
             address1 = Address()
             address2 = Address()
-            timetable = WeeklyTimetable(datetime.time(8, 25), (MONDAY,)) 
+            timetable = WeeklyTimetable(time(8, 25), (MONDAY,))
             return JourneyProposalWithoutVehicule(proponent, address1, address2, 
                 timetable)
 
         self.proposal_with_car = proposal_with_car() 
         self.proposal_without_car = proposal_without_car() 
-        self.timedelta = datetime.timedelta(minutes=15)
-        self.aweek_interval = DateTimeInterval(datetime.datetime(2012, 5, 14), datetime.datetime(2012, 5, 19))
+        self.timedelta = timedelta(minutes=15)
+        self.week_interval = DateTimeInterval(datetime(2012, 5, 14), datetime(2012, 5, 19))
         self.distance_tolerance = 10
 
-        self.organizer = JourneyOrganizer([self.proposal_with_car, self.proposal_without_car],
-            self.aweek_interval, self.timedelta, self.distance_tolerance)
+        self.organizer = SimpleJourneyOrganizer([self.proposal_with_car, self.proposal_without_car],
+            self.week_interval, self.timedelta, self.distance_tolerance)
 
 
     def test_organizer_should_create_journey_for_compatible_proposals(self):

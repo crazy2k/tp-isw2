@@ -7,6 +7,7 @@ class Backend:
         self.registered_users = {}
         self.logged_in_users = {}
         self.proposals = []
+        self.journey_schedule = None
 
     def register_user(self, email, passwd):
         if self.registered_users.get(email, None):
@@ -118,4 +119,33 @@ class Backend:
     def get_proposals_without_vehicle_for(self, proponent):
         return self.prepare_proposals_for_printing(proponent,
             tp.JourneyProposalWithoutVehicule)
+
+    def organize_journeys(self, time_tolerance, distance_tolerance):
+        timedelta = datetime.timedelta(minutes=int(time_tolerance))
+        distance_tolerance = int(distance_tolerance)
+        week_interval = tp.DateTimeInterval(datetime.datetime.now(),
+            datetime.datetime.now() + datetime.timedelta(days=7))
+
+        organizer = tp.SimpleJourneyOrganizer(self.proposals, week_interval,
+            timedelta, distance_tolerance)
+        self.journey_schedule = organizer.organize()
+
+    def get_journeys_for(self, user):
+        if not self.journey_schedule:
+            return []
+
+        journeys = self.journey_schedule.journeys_for(user)
+
+        printable_journeys = []
+        for journey in journeys:
+            printable_journey = {
+                "driver": journey.accepted_proposal.proponent.email,
+                "datetime": str(len(journey.datetime())),
+                "count": str(len(journey.people())),
+                "total_seats": str(journey.total_seats()),
+                "starting_point": str(journey.starting_point()),
+                "end_point": str(journey.end_point()),
+            }
+            printable_journeys.append(printable_journey)
+        return printable_journeys
 

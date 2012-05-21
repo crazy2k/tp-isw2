@@ -148,3 +148,20 @@ class Backend:
             printable_journeys.append(printable_journey)
         return printable_journeys
 
+    def get_notifications_for(self, user):
+        if not self.journey_schedule:
+            return []
+
+        interval_begin = datetime.datetime.now()
+        interval_end = interval_begin + datetime.timedelta(days=20)
+
+        notifications = []
+        for proposal in self.proposals:
+            if proposal.proponent == user:
+                notifications += \
+                    tp.Notification.notifications_for_at(self.journey_schedule,
+                        proposal, tp.DateTimeInterval(interval_begin,
+                        interval_end))
+
+        return notifications
+

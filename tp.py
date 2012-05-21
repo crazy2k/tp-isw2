@@ -357,11 +357,12 @@ class Notification:
         raise NotImplementedError()
 
     @classmethod
-    def notifications_for_at(journey_schedule, proposal, time_interval):
+    def notifications_for_at(cls, journey_schedule, proposal, time_interval):
         result = []
         for adatetime in proposal.timetable.ocurrences_at(time_interval):
             try:
-                journey = journey.journey_for_at(proposal.proponent, adatetime)
+                journey = journey_schedule.journey_for_at(proposal.proponent,
+                    adatetime)
                 result.append(SuccesfulMatchNotification(proposal, journey))
             except NotScheduledJourney:
                 result.append(UnsuccesfulMatchNotification(proposal))
@@ -373,10 +374,10 @@ class UnsuccesfulMatchNotification(Notification):
         self.proposal = proposal
 
     def title(self):
-        pass
+        return "No hubo match!"
 
     def content(self):
-        pass
+        return "Lo siento, no encontramos un match"
 
 class SuccesfulMatchNotification(Notification):
     def __init__(self, proposal, journey):
@@ -384,11 +385,13 @@ class SuccesfulMatchNotification(Notification):
         self.journey = journey
 
     def title(self):
-        pass
+        return "Hubo match!"
 
     def content(self):
-        pass
-
+        journey = self.journey
+        return "Viajas con " + journey.accepted_proposal.proponent.email + \
+            " de " + str(journey.start_point()) + " a " + \
+            str(journey.end_point()) + " el día " + str(journey.datetime)
 
 class NotificationSender:
     def send_mail(self, notification):

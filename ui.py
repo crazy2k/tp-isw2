@@ -160,11 +160,13 @@ def viewnotifications():
         site_backend.get_proposals_without_vehicle_for(user)
 
     organized_journeys = site_backend.get_journeys_for(user)
+    notifications = site_backend.get_notifications_for(user)
 
     return {
         "proposals_with_vehicule": proposals_with_vehicule,
         "proposals_without_vehicule": proposals_without_vehicule,
         "organized_journeys": organized_journeys,
+        "notifications": notifications,
     }
 
 @route("/organize", method="POST")

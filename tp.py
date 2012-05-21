@@ -225,6 +225,10 @@ class JourneyStop:
 
 
 class JourneyOrganizer:
+    def organize(self):
+        raise NotImplementedError()
+
+class SimpleJourneyOrganizer(JourneyOrganizer):
     def __init__(self, proposals, interval, time_tolerance, distance_tolerance):
         self.proposal = proposals
         self.interval = interval

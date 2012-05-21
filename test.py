@@ -173,8 +173,16 @@ class SimpleJourneyOrganizerTest(unittest.TestCase):
             self.assertIsInstance(e, NotScheduledJourney)
 
     def test_organizer_should_merge_similar_proposals_together_when_there_are_spare_seats(self):
-        pass
+        journey_schedule = self.organizer_for_many_users_with_cars.organize()
 
+        journey = journey_schedule.journeys_for(self.proposal_with_car.proponent)[0]
+
+        self.assertEqual(1, journey_schedule.total_journeys())
+        self.assertEqual(self.another_proposal_with_car, journey.accepted_proposal)
+
+        self.assertTrue(self.proposal_with_car.proponent in journey.people())
+        self.assertTrue(self.proposal_without_car.proponent in journey.people())
+        self.assertTrue(self.another_proposal_with_car.proponent in journey.people())
 
 
 if __name__ == "__main__":

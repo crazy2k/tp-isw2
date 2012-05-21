@@ -234,7 +234,7 @@ class JourneyStop:
         self.passengers_stepping_in = passengers_stepping_in
         self.passengers_leaving = passengers_leaving
 
-    def remove_passenger_stepping_int(self, passenger):
+    def remove_passenger_stepping_in(self, passenger):
         self.passengers_stepping_in.remove(passenger)
 
     def remove_passenger_leaving(self, passenger):
@@ -307,7 +307,7 @@ class SimpleJourneyOrganizer(JourneyOrganizer):
 
 
     def are_compatible(self, journey, other_journey):
-        return can_be_used_with(journey, other_journey.accepted_proposal, other_journey.datetime)
+        return self.can_be_used_with(journey, other_journey.accepted_proposal, other_journey.datetime)
 
     def can_be_used_with(self, journey, proposal, adatetime):
         is_near = journey.start_point().is_near(proposal.origin, self.distance_tolerance) and \

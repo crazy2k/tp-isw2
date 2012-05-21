@@ -22,7 +22,7 @@ class Backend:
         if not len(users) == 1:
             return False
         else:
-            self.logged_in_users[email] = registered_user
+            self.logged_in_users[email] = users[0]
             return True
 
     def logout_user(self, email):

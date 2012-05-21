@@ -184,12 +184,38 @@ class Journey:
     def end_point(self):
         return self.stops[-1].place
 
+    def add_passenger(self, passenger):
+        self.stops[0].add_passenger_stepping_in(passenger)
+        self.stops[-1].add_passenger_leaving(passenger)
+
+    def remove_passenger(self, passenger):
+        self.stops[0].remove_passenger_stepping_in(passenger)
+        self.stops[-1].remove_passenger_leaving(passenger)
+
+    def move_passengers_to(self, other_journey):
+        for passenger in self.people():
+            if other_journey.has_spare_seats():
+                other_journey.add_passenger(passenger)
+                self.remove_passenger(passenger)
+
     
 class JourneyStop:
     def __init__(self, place, passengers_stepping_in, passengers_leaving):
         self.place = place
         self.passengers_stepping_in = passengers_stepping_in
         self.passengers_leaving = passengers_leaving
+
+    def remove_passenger_stepping_int(self, passenger):
+        self.passengers_stepping_in.remove(passenger)
+
+    def remove_passenger_leaving(self, passenger):
+        self.passengers_leaving.remove(passenger)
+
+    def add_passenger_stepping_int(self, passenger):
+        self.passengers_stepping_in.append(passenger)
+
+    def add_passenger_leaving(self, passenger):
+        self.passengers_leaving.append(passenger)
 
 
 class JourneyOrganizer:
@@ -226,7 +252,7 @@ class JourneyOrganizer:
                 journeys.sort(key=Journey.spare_seats)
                 
                 if len(journey) > 0:
-                    journeys[0].add_passenger(proposal)
+                    journeys[0].add_passenger(proposal.proponent)
                 else:
                     #FIX!!!!!!!!!!!!!!!
                     left_overs.append((proposal,adatetime))
@@ -242,7 +268,7 @@ class JourneyOrganizer:
             other_journeys.sort(key=lambda journey: journey.total_seats)
 
             for other_journey in other_journeys:
-                journeys.move_passengers_to(other_journey)
+                journey.move_passengers_to(other_journey)
 
         self.results = [journey for journey in candidate_journeys if len(journey.people) > 0]
 

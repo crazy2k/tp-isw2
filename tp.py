@@ -11,6 +11,9 @@ class User:
         self.email = email
         self.passwd = passwd
 
+    def change_password(passwd):
+        self.passwd = passwd
+
     def authenticate(self, email, passwd):
         return self.email == email and self.passwd == passwd
 

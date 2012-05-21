@@ -343,6 +343,9 @@ class NotScheduledJourney(Exception):
     pass
 
 class Notification:
+    def title(self):
+        raise NotImplementedError()
+
     def content(self):
         raise NotImplementedError()
 
@@ -362,6 +365,9 @@ class UnsuccesfulMatchNotification(Notification):
     def __init__(self, proposal):
         self.proposal = proposal
 
+    def title(self):
+        pass
+
     def content(self):
         pass
 
@@ -369,6 +375,9 @@ class SuccesfulMatchNotification(Notification):
     def __init__(self, proposal, journey):
         self.proposal = proposal
         self.journey = journey
+
+    def title(self):
+        pass
 
     def content(self):
         pass

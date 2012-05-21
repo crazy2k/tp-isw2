@@ -3,6 +3,7 @@
 from datetime import datetime,date,time,timedelta
 from functools import reduce
 from itertools import groupby, chain
+from math import sqrt
 
 class User:
     """Represents a registered user."""
@@ -25,15 +26,24 @@ class GridPosition(Place):
         self.y_coordinate = y_coordinate
 
     def distance_to(self, place):
-        return abs(place.x_coordinate - self.x_coordinate) + \
-            abs(place.y_coordinate - self.y_coordinate)
+        x_2 = abs(place.x_coordinate - self.x_coordinate) ** 2
+        y_2 = abs(place.y_coordinate - self.y_coordinate) ** 2
+        return sqrt(x_2 + y_2)
 
     def __str__(self):
         return "(%d, %d)" % (self.x_coordinate, self.y_coordinate)
 
 class Address(Place):
-    def distance_to(self, place):
-        return 0#TODO
+    def __init__(self, street):
+        self.street = street
+
+    def distance_to(self, other_address):
+        return self.web_service.distance_from_to(self, other_address)
+
+class AddressWebService:
+    @classmethod
+    def distance_from_to(cls, address1, address2):
+        raise NotImplementedError()
 
 class DayOfWeek:
     def __init__(self, name):
@@ -67,7 +77,9 @@ DayOfWeek.days_of_week = (MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY
 
 class DateTimeInterval:
     def __init__(self, begin, end):
-        #TODO: Validacion: begin < end
+        if begin > end:
+            raise ValueError("Begin must be before end")
+
         self._begin = begin
         self._end = end
 
@@ -136,8 +148,9 @@ class JourneyProposal:
     def has_vehicule(self):
         raise NotImplementedError()
 
-    def plausible_offers(self, offers):
-        return [offer for offer in offers if offer.satisfies(request)]
+    def is_similar_to(self, proposal, time_tolerance, distance_tolerance):
+        return None#TODO
+
 
 
 class JourneyProposalWithVehicule(JourneyProposal):
@@ -147,13 +160,6 @@ class JourneyProposalWithVehicule(JourneyProposal):
 
     def has_vehicule(self):
         return True
-
-    def satisfies(self, request):
-        return self.is_on_its_way(request.origin) and offer.is_on_its_way(request.destination)
-
-    def is_on_its_way(self, place): #TODO
-        pass
-
 
 class JourneyProposalWithoutVehicule(JourneyProposal):
     def has_vehicule(self):
@@ -165,12 +171,6 @@ class Journey:
         self.accepted_proposal = accepted_proposal
         self.stops = stops
         self.datetime = adatetime
-
-    def people(self):
-        return reduce(set.union, [set(stop.passengers_stepping_in) for stop in self.stops])
-
-    def date(self):
-        return self.datetime.date()
 
     @classmethod
     def from_proposal_at(cls, proposal, adatetime):
@@ -187,6 +187,16 @@ class Journey:
             journeys.append(cls.from_proposal_at(proposal, adatetime))
 
         return journeys
+
+
+    def people(self):
+        return reduce(set.union, [set(stop.passengers_stepping_in) for stop in self.stops])
+
+    def date(self):
+        return self.datetime.date()
+
+    def satisfies_proposal_at(proposal, adatime, time_tolerance, distance_tolerance):
+        return None#TODO
 
     def total_seats(self):
         return self.accepted_proposal.passenger_capacity
@@ -224,7 +234,7 @@ class JourneyStop:
         self.passengers_stepping_in = passengers_stepping_in
         self.passengers_leaving = passengers_leaving
 
-    def remove_passenger_stepping_int(self, passenger):
+    def remove_passenger_stepping_in(self, passenger):
         self.passengers_stepping_in.remove(passenger)
 
     def remove_passenger_leaving(self, passenger):
@@ -275,7 +285,7 @@ class SimpleJourneyOrganizer(JourneyOrganizer):
         for proposal in self.proposals_without_vehicule:
             for adatetime in proposal.timetable.ocurrences_at(self.interval):
                 journeys = [candidate for candidate in self.results \
-                    if self.can_be_used_with(proposal, candidate, adatetime) and candidate.has_spare_seats()]
+                    if self.can_be_used_with(candidate, proposal, adatetime) and candidate.has_spare_seats()]
                 
                 if len(journeys) > 0:
                     journeys[0].add_passenger(proposal.proponent)
@@ -297,9 +307,9 @@ class SimpleJourneyOrganizer(JourneyOrganizer):
 
 
     def are_compatible(self, journey, other_journey):
-        return 
+        return self.can_be_used_with(journey, other_journey.accepted_proposal, other_journey.datetime)
 
-    def can_be_used_with(self, proposal, journey, adatetime):
+    def can_be_used_with(self, journey, proposal, adatetime):
         is_near = journey.start_point().is_near(proposal.origin, self.distance_tolerance) and \
             journey.end_point().is_near(proposal.destination, self.distance_tolerance) 
 
@@ -324,8 +334,8 @@ class JourneySchedule:
     def journeys_for(self, user):
         return [journey for journey in self.journeys if user in journey.people()]
 
-    def journey_for_at(self, user, atimetable):
-        journeys = [journey for journeys_for in self.journeys_for(user) if journey.datetime == adatetime]
+    def journey_for_at(self, user, adatetime):
+        journeys = [journey for journey in self.journeys_for(user) if journey.datetime == adatetime]
 
         if len(journeys) == 0:
             raise NotScheduledJourney()

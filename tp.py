@@ -290,10 +290,10 @@ class SimpleJourneyOrganizer(JourneyOrganizer):
 
         for proposal in self.proposals_without_vehicule:
             for adatetime in proposal.timetable.ocurrences_at(self.interval):
+
                 def is_candidate(candidate):
                     return candidate.satisfies_proposal_at(proposal, adatetime, self.time_tolerance, self.distance_tolerance) \
                         and candidate.has_spare_seats()    
-
                 journeys = list(filter(is_candidate, self.results))
                 
                 if len(journeys) > 0:

@@ -3,6 +3,7 @@
 from datetime import datetime,date,time,timedelta
 from functools import reduce
 from itertools import groupby, chain
+from math import sqrt
 
 class User:
     """Represents a registered user."""
@@ -25,15 +26,24 @@ class GridPosition(Place):
         self.y_coordinate = y_coordinate
 
     def distance_to(self, place):
-        return abs(place.x_coordinate - self.x_coordinate) + \
-            abs(place.y_coordinate - self.y_coordinate)
+        x_2 = abs(place.x_coordinate - self.x_coordinate) ** 2
+        y_2 = abs(place.y_coordinate - self.y_coordinate) ** 2
+        return sqrt(x_2 + y_2)
 
     def __str__(self):
         return "(%d, %d)" % (self.x_coordinate, self.y_coordinate)
 
 class Address(Place):
-    def distance_to(self, place):
-        return 0#TODO
+    def __init__(self, street):
+        self.street = street
+
+    def distance_to(self, other_address):
+        return self.web_service.distance_from_to(self, other_address)
+
+class AddressWebService:
+    @classmethod
+    def distance_from_to(cls, address1, address2):
+        raise NotImplementedError()
 
 class DayOfWeek:
     def __init__(self, name):

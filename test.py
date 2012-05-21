@@ -2,12 +2,18 @@ import unittest
 
 from tp import *
 
+
+class StubedAddressWebService(AddressWebService):
+    @classmethod
+    def distance_from_to(cls, addr1, addr2):
+        return True
+
 class UserTests(unittest.TestCase):
     def test_init(self):
-        user = User("Pablo", "pablo@pablo.com")
+        user = User("pablo@pablo.com", "123456")
 
-        self.assertEqual("Pablo", user.name)
         self.assertEqual("pablo@pablo.com", user.email)
+        self.assertEqual("123456", user.passwd)
 
 class DayOfWeekTests(unittest.TestCase):
     def test_init(self):
@@ -21,7 +27,7 @@ class DayOfWeekTests(unittest.TestCase):
 class JourneyStopTests():
     def setUp(self):
         self.where = Place()
-        self.passengers = [User("Pablo", "pablo@pablo.com")]
+        self.passengers = [User("pablo@pablo.com", "123456")]
 
     def test_init(self):
         stop = JourneyStop(self.where, self.passengers, [])
@@ -32,7 +38,7 @@ class JourneyStopTests():
 
 class UserRegistrationTest(unittest.TestCase):
     def setUp(self):
-        self.user = User("Pablo", "pablo@pablo.com")
+        self.user = User("pablo@pablo.com", "123456")
 
 
     def test_register_a_journey_proposal(self):
@@ -54,18 +60,20 @@ class UserRegistrationTest(unittest.TestCase):
 
 class SimpleJourneyOrganizerTest(unittest.TestCase):
     def setUp(self):
+        Address.web_service = StubedAddressWebService
+
         def proposal_with_car():
-            proponent = User("Pablo", "pablo@pablo.com")
-            address1 = Address()
-            address2 = Address()
+            proponent = User("pablo@pablo.com", "123456")
+            address1 = Address("Rivadavia 6242")
+            address2 = Address("Viamonte 1203")
             timetable = WeeklyTimetable(time(8, 30), (MONDAY,))
             return JourneyProposalWithVehicule(proponent, address1, address2, 
                 timetable, 2)
 
         def proposal_without_car():
-            proponent = User("Rodrigo", "rodrigo@rodrigo.com")
-            address1 = Address()
-            address2 = Address()
+            proponent = User("rodrigo@rodrigo.com", "654321")
+            address1 = Address("Rivadavia 6486")
+            address2 = Address("Viamonte 1205")
             timetable = WeeklyTimetable(time(8, 25), (MONDAY,))
             return JourneyProposalWithoutVehicule(proponent, address1, address2, 
                 timetable)
@@ -74,7 +82,7 @@ class SimpleJourneyOrganizerTest(unittest.TestCase):
         self.proposal_without_car = proposal_without_car() 
         self.timedelta = timedelta(minutes=15)
         self.week_interval = DateTimeInterval(datetime(2012, 5, 14), datetime(2012, 5, 19))
-        self.distance_tolerance = 10
+        self.distance_tolerance = 300
 
         self.organizer = SimpleJourneyOrganizer([self.proposal_with_car, self.proposal_without_car],
             self.week_interval, self.timedelta, self.distance_tolerance)

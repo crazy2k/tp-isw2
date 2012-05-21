@@ -269,9 +269,6 @@ class SimpleJourneyOrganizer(JourneyOrganizer):
 
         self.results = []
 
-    def plausible_offers_for(self, request):
-        return request.plausible_offers(self.offers)
-
     def organize(self):
         self.create_journeys_for_proposals_with_vehicule()
         self.match_proposals_with_journeys()

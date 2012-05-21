@@ -148,9 +148,6 @@ class JourneyProposal:
     def has_vehicule(self):
         raise NotImplementedError()
 
-    def is_similar_to(self, proposal, time_tolerance, distance_tolerance):
-        return None#TODO
-
 
 
 class JourneyProposalWithVehicule(JourneyProposal):
@@ -189,14 +186,23 @@ class Journey:
         return journeys
 
 
+    def can_be_merged_with(self, other_journey, time_tolerance, distance_tolerance):
+        return self.satisfies_proposal_at(other_journey.accepted_proposal, other_journey.datetime, time_tolerance, distance_tolerance)
+
+    def satisfies_proposal_at(self, proposal, adatetime, time_tolerance, distance_tolerance):
+        is_near = self.start_point().is_near(proposal.origin, distance_tolerance) and \
+            self.end_point().is_near(proposal.destination, distance_tolerance) 
+
+        is_close_in_time = abs((self.datetime - adatetime).total_seconds()) <= time_tolerance.total_seconds()
+
+        return is_near and is_close_in_time
+
+
     def people(self):
         return reduce(set.union, [set(stop.passengers_stepping_in) for stop in self.stops])
 
     def date(self):
         return self.datetime.date()
-
-    def satisfies_proposal_at(proposal, adatime, time_tolerance, distance_tolerance):
-        return None#TODO
 
     def total_seats(self):
         return self.accepted_proposal.passenger_capacity
@@ -285,7 +291,8 @@ class SimpleJourneyOrganizer(JourneyOrganizer):
         for proposal in self.proposals_without_vehicule:
             for adatetime in proposal.timetable.ocurrences_at(self.interval):
                 journeys = [candidate for candidate in self.results \
-                    if self.can_be_used_with(candidate, proposal, adatetime) and candidate.has_spare_seats()]
+                    if candidate.satisfies_proposal_at(proposal, adatetime, self.time_tolerance, self.distance_tolerance) \
+                    and candidate.has_spare_seats()]
                 
                 if len(journeys) > 0:
                     journeys[0].add_passenger(proposal.proponent)
@@ -300,22 +307,13 @@ class SimpleJourneyOrganizer(JourneyOrganizer):
             other_journeys.sort(key=Journey.spare_seats)
             other_journeys.sort(key=Journey.total_seats, reverse=True)
 
-            for other_journey in [other_journey for other_journey in other_journeys if self.are_compatible(journey, other_journey)]:
+            compatible_journeys = [other_journey for other_journey in other_journeys \
+                if journey.can_be_merged_with(other_journey, self.time_tolerance, self.distance_tolerance)]
+
+            for other_journey in compatible_journeys:
                 journey.move_passengers_to(other_journey)
 
         self.results = [journey for journey in self.results if len(journey.people()) > 0]
-
-
-    def are_compatible(self, journey, other_journey):
-        return self.can_be_used_with(journey, other_journey.accepted_proposal, other_journey.datetime)
-
-    def can_be_used_with(self, journey, proposal, adatetime):
-        is_near = journey.start_point().is_near(proposal.origin, self.distance_tolerance) and \
-            journey.end_point().is_near(proposal.destination, self.distance_tolerance) 
-
-        is_close_in_time = abs((journey.datetime - adatetime).total_seconds()) <= self.time_tolerance.total_seconds()
-
-        return is_near and is_close_in_time
 
 
 class JourneySchedule:

@@ -61,3 +61,22 @@ class Backend:
 
         return True
 
+    def get_proposals_with_vehicle_for(self, proponent):
+        def is_eligible(proposal):
+            return proposal.proponent == proponent and \
+                isinstance(proposal, tp.JourneyProposalWithVehicule)
+
+        proposals = filter(is_eligible, self.proposals)
+
+        printable_proposals = []
+        for proposal in proposals:
+            printable_proposals.append({
+                "origin": str(proposal.origin),
+                "destination": str(proposal.destination),
+                "daysofweeknames": [day_of_week.name for day_of_week in
+                    proposal.timetable.days_of_week],
+                "time": proposal.timetable.time,
+                "capacity": str(proposal.passenger_capacity),
+            })
+        return printable_proposals
+

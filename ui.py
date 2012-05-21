@@ -116,7 +116,7 @@ def createproposalwithvehicle_post():
     destination = request.forms.get("destination", None)
 
     def is_checked(dayofweekname):
-        return request.forms.get("dayofweek", None) == "on"
+        return request.forms.get(dayofweekname, None) == "on"
 
     daysofweeknames = ["monday", "tuesday", "wednesday", "thursday", "friday",
         "saturday", "sunday"]

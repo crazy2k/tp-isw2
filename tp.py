@@ -160,12 +160,18 @@ class Journey:
         return self.stops[0].datetime.date()
 
     @classmethod
+    def from_proposal_at(cls, proposal, adatetime):
+        stops = [JourneyStop(place, [], []) for place in [proposal.origin, proposal.destination]]
+        journey = Journey(proposal, adatetime, stops)
+        journey.add_passenger(proposals.proponent)
+
+        return journey
+
+    @classmethod
     def create_journeys_for_proposal(cls, proposal, interval):
         journeys = []
         for adatetime in proposal.timetable.ocurrences(interval):
-            begin = JourneyStop(proposal.origin, [proposal.proponent], [])
-            end = JourneyStop(proposal.destination, [], [proposal.proponent])
-            journeys.append(Journey(proposal, adatetime, [begin, end]))
+            journeys.append(cls.from_proposal_at(proposal, adatetime))
 
         return journeys
 
@@ -235,17 +241,19 @@ class JourneyOrganizer:
         return request.plausible_offers(self.offers)
 
     def organize(self):
-        self.create_journeys_for_proposal_with_wehicules()
+        self.create_journeys_for_proposal_with_vehicules()
         self.match_proposals_with_journeys()
         self.optimize_results()
 
-    def create_journeys_for_proposal_with_wehicules(self):
+    def create_journeys_for_proposal_with_vehicules(self):
         def journeys_for(proposal):
             return Journey.create_journeys_for_proposal(proposal, self.interval)
 
         self.results = list(chain(*map(journeys_for, proposals_with_vehicule)))
 
     def match_proposals_with_journeys(self):
+        self.results.sort(key=Journal.total_seats, reverse=True)
+
         for proposal in self.proposals_without_vehicule:
             for adatetime in proposal.timetable.ocurrences(interval):
                 journeys = (candidate for candidate in self.results if self.are_compatible(candidate, proposal, adatetime) and candidate.has_spare_seats())
@@ -264,14 +272,17 @@ class JourneyOrganizer:
         for journey in self.results:
             other_journeys.remove(journey)
             other_journeys = list(filter(Journey.has_spare_seats, other_journeys))
-            other_journeys.sort(key=lambda journey: journey.spare_seats, reverse=True)
-            other_journeys.sort(key=lambda journey: journey.total_seats)
+            other_journeys.sort(key=lambda journey: journey.spare_seats)
+            other_journeys.sort(key=lambda journey: journey.total_seats, reverse=True)
 
-            for other_journey in other_journeys:
+            for other_journey in [other_journey for other_journey in other_journeys if self.are_compatible(journey, other_journey)]:
                 journey.move_passengers_to(other_journey)
 
         self.results = [journey for journey in candidate_journeys if len(journey.people) > 0]
 
+
+    def are_compatible(self, journey, other_journey):
+        return 
 
     def are_compatible(self, journey, proposal, adatetime):
         is_near = journey.start_point.is_near(proposal.origin, self.distance_tolerance) and \

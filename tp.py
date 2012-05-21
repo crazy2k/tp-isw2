@@ -310,15 +310,18 @@ class JourneySchedule:
         return [journey for journey in self.journeys if user in journey.people()]
 
     def journey_for_at(self, user, atimetable):
-        journeys = [journey for journeys_for in self.journeys_for(user) if journey.datetime = adatetime]
+        journeys = [journey for journeys_for in self.journeys_for(user) if journey.datetime == adatetime]
 
         if len(journeys) == 0:
             raise NotScheduledJourney()
 
         return journeys[0]
 
+    def notifications_for(proposal):
+        pass#TODO
 
-class NotScheduledJourney(Exception)
+
+class NotScheduledJourney(Exception):
     pass
 
 
@@ -334,10 +337,9 @@ class UnsuccesfulMatchNotification(Notification):
         pass
 
 class SuccesfulMatchNotification(Notification):
-    def __init__(self, request, journey, journey_stop):
+    def __init__(self, proposal, journey):
         self.request = request
         self.journey = journey
-        self.journey_stop = journey_stop
 
     def content(self):
         pass

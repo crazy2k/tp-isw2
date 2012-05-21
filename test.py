@@ -59,7 +59,7 @@ class UserRegistrationTest(unittest.TestCase):
         pass
 
 class SimpleJourneyOrganizerTest(unittest.TestCase):
-    def proposal_with_car(self):
+    def get_proposal_with_car(self):
         proponent = User("pablo@pablo.com", "123456")
         address1 = Address("Rivadavia 6242")
         address2 = Address("Viamonte 1203")
@@ -67,7 +67,7 @@ class SimpleJourneyOrganizerTest(unittest.TestCase):
         return JourneyProposalWithVehicule(proponent, address1, address2,
             timetable, 2)
 
-    def proposal_without_car(self):
+    def get_proposal_without_car(self):
         proponent = User("rodrigo@rodrigo.com", "654321")
         address1 = Address("Rivadavia 6486")
         address2 = Address("Viamonte 1205")
@@ -75,8 +75,15 @@ class SimpleJourneyOrganizerTest(unittest.TestCase):
         return JourneyProposalWithoutVehicule(proponent, address1, address2,
             timetable)
 
+    def get_another_proposal_with_car(self):
+        proponent = User("ashy@ashy.com", "123456")
+        address1 = Address("Rivadavia 6205")
+        address2 = Address("Viamonte 1305")
+        timetable = WeeklyTimetable(time(8, 30), (MONDAY,))
+        return JourneyProposalWithVehicule(proponent, address1, address2,
+            timetable, 3)
 
-    def very_far_proposal_with_car(self):
+    def get_very_far_proposal_with_car(self):
         proponent = User("pablo@pablo.com", "123456")
         address1 = GridPosition(0,0)
         address2 = GridPosition(5000,5000)
@@ -84,7 +91,7 @@ class SimpleJourneyOrganizerTest(unittest.TestCase):
         return JourneyProposalWithVehicule(proponent, address1, address2,
             timetable, 2)
 
-    def very_far_proposal_with_no_car(self):
+    def get_very_far_proposal_with_no_car(self):
         proponent = User("rodrigo@rodrigo.com", "654321")
         address1 = GridPosition(8000,8000)
         address2 = GridPosition(1000,1000)
@@ -101,14 +108,18 @@ class SimpleJourneyOrganizerTest(unittest.TestCase):
         self.week_interval = DateTimeInterval(datetime(2012, 5, 14), datetime(2012, 5, 19))
         self.distance_tolerance = 300
 
-        self.proposal_with_car = self.proposal_with_car()
-        self.proposal_without_car = self.proposal_without_car()
+        self.proposal_with_car = self.get_proposal_with_car()
+        self.proposal_without_car = self.get_proposal_without_car()
+        self.another_proposal_with_car = self.get_another_proposal_with_car()
 
-        self.very_far_proposal_with_car = self.very_far_proposal_with_car()
-        self.very_far_proposal_with_no_car = self.very_far_proposal_with_no_car()
+        self.very_far_proposal_with_car = self.get_very_far_proposal_with_car()
+        self.very_far_proposal_with_no_car = self.get_very_far_proposal_with_no_car()
 
 
         self.organizer_for_near_users = SimpleJourneyOrganizer([self.proposal_with_car, self.proposal_without_car],
+            self.week_interval, self.timedelta, self.distance_tolerance)
+
+        self.organizer_for_many_users_with_cars = SimpleJourneyOrganizer([self.proposal_with_car, self.proposal_without_car, self.another_proposal_with_car],
             self.week_interval, self.timedelta, self.distance_tolerance)
 
         self.organizer_with_left_over_poposal = SimpleJourneyOrganizer( \

@@ -108,6 +108,24 @@ class SimpleJourneyOrganizerTest(unittest.TestCase):
         self.assertEqual(journey.datetime.date(), journey.date())
 
         
+    def test_organizer_should_notify_when_a_proposal_was_not_posible_to_organize(self):
+        journey_schedule = self.organizer_with_left_over_poposal.organize()
+
+        self.assertEqual(1, journey_schedule.total_journeys())
+
+        journey = journey_schedule.journeys_for_at(self.proposal_with_car.proponent, self.interval)
+
+        self.assertEqual(self.proposal_with_car, journey.accepted_proposal)
+
+        try:
+            journey = journey_schedule.journeys_for_at(self.very_far_proposal.proponent, self.interval)
+        except Exception, e:
+            assertIs(e, NotScheduledJourney)
+
+    def test_organizer_should_merge_similar_proposals_together_when_there_are_spare_seats(self):
+        pass
+
+
 
 if __name__ == "__main__":
     unittest.main()

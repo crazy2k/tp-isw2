@@ -35,24 +35,22 @@ ID Item                                                   Prority Value Effort
 == ====================================================== ======= ===== ======
 1  Como desarrollador quiero tener un diseño del sistema  1       10    13
 -- ------------------------------------------------------ ------- ----- ------
-2  Como usuario con auto quiero ofrecer posibles viajes   2       50    8
+2  Como usuario con auto quiero ofrecer posibles viajes   2       40    5
    que realizaré con él
 -- ------------------------------------------------------ ------- ----- ------
-3  Como usuario quiero conocer qué ofertas de viaje       3       40    8
-   safisfacen mis requisitos
+3  Como usuario quiero poder registrarme en el sistema    3       35    3
 -- ------------------------------------------------------ ------- ----- ------
-4  Como usuario quiero poder registrarme en el sistema    4       35    3
+4  Como usuario quiero poder loguearme en el sistema      4       35    3
 -- ------------------------------------------------------ ------- ----- ------
-5  Como usuario sin auto quiero ingresar los datos del    5       30    5
-   viaje para que me asigne uno cualquiera que satisfaga
-   mi pedido
+5  Como usuario quiero ingresar los datos del viaje para  5       30    3
+   que me asigne uno cualquiera que satisfaga mi pedido
 -- ------------------------------------------------------ ------- ----- ------
-6  Como usuario registrado quiero poder consultar en el   6       20    1
+6  Como usuario registrado quiero recibir notificaciones  6       40    5
+   semanales para conocer los detalles sobre el viaje que
+   me fue asignado
+-- ------------------------------------------------------ ------- ----- ------
+7  Como usuario registrado quiero poder consultar en el   7       20    1
    sistema los detalles sobre el viaje que me fue
-   asignado
--- ------------------------------------------------------ ------- ----- ------
-7  Como usuario registrado quiero recibir notificaciones  7       10    3
-   para conocer los detalles sobre el viaje que me fue
    asignado
 -- ------------------------------------------------------ ------- ----- ------
 8  Como usuario quiero que se confirme la autenticidad de 8       5     5
@@ -65,7 +63,7 @@ ID Item                                                   Prority Value Effort
    viaje de forma óptima para minimizar la contaminación
    ambiental, el volumen del tráfico y uso de combutible
 -- ------------------------------------------------------ ------- ----- ------
-11 Como usuario quiero tener una interfaz simple, e       11      35    13
+11 Como usuario quiero tener una interfaz simple e        11      35    13
    intuitiva para usar el sistema
 -- ------------------------------------------------------ ------- ----- ------
 12 Como desarrollador quiero probar la integración de los 12      10    13
@@ -74,6 +72,11 @@ ID Item                                                   Prority Value Effort
 -- ------------------------------------------------------ ------- ----- ------
 13 Como desarrollador quiero poner el sistema en          13      50    13
    producción
+-- ------------------------------------------------------ ------- ----- ------
+14 Como usuario registrado quiero recibir una             14      20    8
+   notificación semanal por email con un formato amigable
+   de los viajes asignados
+
 == ====================================================== ======= ===== ======
 
 
@@ -89,29 +92,26 @@ papel.
 Justificación de los *efforts*
 ------------------------------
 
-Consideramos que la *user story* con menor esfuerzo asociado es la #6,
+Consideramos que la *user story* con menor esfuerzo asociado es la #7,
 ya que sólo implica poder consultar los resultados de la estrategia
 utilizada por el organizador de viajes; el algoritmo utilizado para la misma
-está ya contemplado por el ítem #5, de mayor prioridad, por lo que no sería
-necesario tenerlo en cuenta para este punto. A partir de esa user story,
-puntuamos el resto de las estimaciones en forma relativa, usando la secuencia de
-Fibonacci.
+está ya contemplado por el ítem #6, de mayor prioridad, por lo que no sería
+necesario tenerlo en cuenta para este punto.
 
-.. image:: plot/burndown-product-ideal.png
-        :scale: 300
+A partir de la user story #7, puntuamos el resto de las estimaciones en forma
+relativa, usando la secuencia de Fibonacci.
 
-La #4 sólo implica poder registrar un usuario, lo cual abarca el ingreso de
+La #3 sólo implica poder registrar un usuario, lo cual abarca el ingreso de
 pocos datos y validaciones muy simples de éstos. Razón por la cual ésta es la
-siguiente en cantidad de esfuerzo relativo.
+siguiente en cantidad de esfuerzo relativo. Y lo mismo para la #4, ya que
+también solo implica poder loguearse en el sistema.
 
-La #5, en cambio, conlleva el desarrollo de un algoritmo de *matching*
-primitivo y muy simple. Esto, creemos, es solo un poco más complejo que la story
-anterior, y por eso consideramos que implica un esfuerzo de 5.
-
-La #2 y la #3 tienen un esfuerzo similar y son más complejas ya que
-implican registrar el ingreso de los datos de viaje, además de la creación de
-todas las entidades con las que luego se hará el matching. Por esto es que
-creemos que son más complejas que las anteriores y merecen un esfuerzo de 8.
+La #2 y la #6 tienen un esfuerzo similar, dado que la #6 conlleva el
+desarrollo de un algoritmo de *matching* primitivo y una notificación muy
+simple. La #2 implica registrar el ingreso de los datos de viaje, además de la
+creación de todas las entidades con las que luego se hará el matching. Creemos
+que son solo un poco más complejas que la story #3 o la #4, y por eso
+consideramos que implican un esfuerzo de 5.
 
 La #1 implica el diseño de todo el sistema, teniendo en cuenta extensibilidad,
 cohesión y bajo acoplamiento de código. Esta story es, sin lugar a dudas, una de
@@ -120,11 +120,15 @@ puede tener un alto costo en las siguientes etapas del proyecto. Y todo el resto
 de las stories necesitan, en mayor o menor medida, conocer el diseño del
 sistema.
 
-La #7 solo requiere el envío de un email notificando las asignaciones ya
-realizadas, por lo que nos pareció simple y un esfuerzo de 3. En cambio, la #8
-le pusimos un esfuerzo mayor porque nadie en el equipo conoce las mejores
-prácticas, ni su complejidad, para autenticar un email. La #9 tiene un
+La #5 es solo ingresar datos de un pedido de viaje, que serán tenidos en cuenta
+para realizar el matching, por lo que nos pareció simple y un esfuerzo de 3.  En
+cambio, la #8 le pusimos un esfuerzo mayor porque nadie en el equipo conoce las
+mejores prácticas, ni su complejidad, para autenticar un email. La #9 tiene un
 esfuerzo aún mayor por la integración con algún sistema de mapas.
+
+La #14 implica el uso de tecnologías nunca usadas por nadie del equipo e
+investigación de un framework para el envío de emails. Por esto es que creemos
+que tiene un esfuerzo de 8.
 
 El resto de las stories nos parecieron bastante difíciles. La #10 implica el
 desarrollo de un algoritmo muy sofisticado de matching. La #11 incluye

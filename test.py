@@ -84,12 +84,12 @@ class SimpleJourneyOrganizerTest(unittest.TestCase):
         self.week_interval = DateTimeInterval(datetime(2012, 5, 14), datetime(2012, 5, 19))
         self.distance_tolerance = 300
 
-        self.organizer = SimpleJourneyOrganizer([self.proposal_with_car, self.proposal_without_car],
+        self.organizer_for_near_users = SimpleJourneyOrganizer([self.proposal_with_car, self.proposal_without_car],
             self.week_interval, self.timedelta, self.distance_tolerance)
 
 
     def test_organizer_should_create_journey_for_compatible_proposals(self):
-        journey_schedule = self.organizer.organize()
+        journey_schedule = self.organizer_for_near_users.organize()
 
         self.assertEqual(1, journey_schedule.total_journeys())
 

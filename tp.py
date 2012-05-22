@@ -260,37 +260,33 @@ class JourneyStop:
 
 
 class JourneyOrganizer:
-    def organize(self):
+    def organize(self, proposals, interval):
         raise NotImplementedError()
 
 class SimpleJourneyOrganizer(JourneyOrganizer):
-    def __init__(self, proposals, interval, time_tolerance, distance_tolerance):
-        self.proposals = proposals
-        self.interval = interval
+    def __init__(self, time_tolerance, distance_tolerance):
         self.time_tolerance = time_tolerance #Late tolerance as a lapse of time (some minutes/hours)
         self.distance_tolerance = distance_tolerance
 
-        self.proposals_with_vehicule = [proposal for proposal in proposals if proposal.has_vehicule()]
-        self.proposals_without_vehicule = [proposal for proposal in proposals if not proposal.has_vehicule()]
-
-    def organize(self):
-        results = self.create_journeys_for_proposals_with_vehicule()
-        self.match_proposals_with_journeys(results)
+    def organize(self, proposals, interval):
+        results = self.create_journeys_for_proposals_with_vehicule(proposals, interval)
+        self.match_proposals_with_journeys(results, proposals, interval)
         self.optimize_results(results)
 
         return JourneySchedule(results)
 
-    def create_journeys_for_proposals_with_vehicule(self):
+    def create_journeys_for_proposals_with_vehicule(self, proposals, interval):
         def journeys_for(proposal):
-            return Journey.create_journeys_for_proposal(proposal, self.interval)
+            return Journey.create_journeys_for_proposal(proposal, interval)
 
-        return list(chain(*map(journeys_for, self.proposals_with_vehicule)))
+        proposals_with_vehicule = [proposal for proposal in proposals if proposal.has_vehicule()]
+        return list(chain(*map(journeys_for, proposals_with_vehicule)))
 
-    def match_proposals_with_journeys(self, results):
+    def match_proposals_with_journeys(self, results, proposals, interval):
         results.sort(key=Journey.total_seats, reverse=True)
 
-        for proposal in self.proposals_without_vehicule:
-            for adatetime in proposal.timetable.ocurrences_at(self.interval):
+        for proposal in [proposal for proposal in proposals if not proposal.has_vehicule()]:
+            for adatetime in proposal.timetable.ocurrences_at(interval):
 
                 def is_candidate(candidate):
                     return candidate.satisfies_proposal_at(proposal, adatetime, self.time_tolerance, self.distance_tolerance) \

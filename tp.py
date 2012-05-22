@@ -273,23 +273,21 @@ class SimpleJourneyOrganizer(JourneyOrganizer):
         self.proposals_with_vehicule = [proposal for proposal in proposals if proposal.has_vehicule()]
         self.proposals_without_vehicule = [proposal for proposal in proposals if not proposal.has_vehicule()]
 
-        self.results = []
-
     def organize(self):
-        self.create_journeys_for_proposals_with_vehicule()
-        self.match_proposals_with_journeys()
-        self.optimize_results()
+        results = self.create_journeys_for_proposals_with_vehicule()
+        self.match_proposals_with_journeys(results)
+        self.optimize_results(results)
 
-        return JourneySchedule(self.results)
+        return JourneySchedule(results)
 
     def create_journeys_for_proposals_with_vehicule(self):
         def journeys_for(proposal):
             return Journey.create_journeys_for_proposal(proposal, self.interval)
 
-        self.results = list(chain(*map(journeys_for, self.proposals_with_vehicule)))
+        return list(chain(*map(journeys_for, self.proposals_with_vehicule)))
 
-    def match_proposals_with_journeys(self):
-        self.results.sort(key=Journey.total_seats, reverse=True)
+    def match_proposals_with_journeys(self, results):
+        results.sort(key=Journey.total_seats, reverse=True)
 
         for proposal in self.proposals_without_vehicule:
             for adatetime in proposal.timetable.ocurrences_at(self.interval):
@@ -297,17 +295,17 @@ class SimpleJourneyOrganizer(JourneyOrganizer):
                 def is_candidate(candidate):
                     return candidate.satisfies_proposal_at(proposal, adatetime, self.time_tolerance, self.distance_tolerance) \
                         and candidate.has_spare_seats()    
-                journeys = list(filter(is_candidate, self.results))
+                journeys = list(filter(is_candidate, results))
                 
                 if len(journeys) > 0:
                     journeys[0].add_passenger(proposal.proponent)
 
-    def optimize_results(self):
-        self.results.sort(key=lambda journey: journey.accepted_proposal.passenger_capacity)
-        self.results.sort(key=lambda journey: len(journey.people()))
-        other_journeys = self.results[:] #Duplicate list
+    def optimize_results(self, results):
+        results.sort(key=lambda journey: journey.accepted_proposal.passenger_capacity)
+        results.sort(key=lambda journey: len(journey.people()))
+        other_journeys = results[:] #Duplicate list
 
-        for journey in self.results:
+        for journey in results:
             other_journeys.remove(journey)
             other_journeys = list(filter(Journey.has_spare_seats, other_journeys))
             other_journeys.sort(key=Journey.spare_seats)
@@ -319,7 +317,8 @@ class SimpleJourneyOrganizer(JourneyOrganizer):
             for other_journey in filter(is_compatible, other_journeys):
                 journey.move_passengers_to(other_journey)
 
-        self.results = [journey for journey in self.results if len(journey.people()) > 0]
+        for journey in [result for result in results if len(result.people()) == 0]:
+            results.remove(journey)
 
 
 class JourneySchedule:

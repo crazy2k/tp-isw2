@@ -205,7 +205,16 @@ class Journey:
 
 
     def people(self):
-        return reduce(set.union, [set(stop.passengers_stepping_in) for stop in self.stops])
+        return list(reduce(set.union, [set(stop.passengers_stepping_in) for stop in self.stops]))
+
+    def non_drivers(self):
+        result = self.people()
+        if len(result) > 0:
+            result.remove(self.driver())
+        return result
+
+    def driver(self):
+        return self.accepted_proposal.proponent
 
     def date(self):
         return self.datetime.date()
@@ -215,6 +224,9 @@ class Journey:
 
     def spare_seats(self):
         return self.total_seats() - len(self.people())
+
+    def is_full(self):
+        return not self.has_spare_seats()
 
     def has_spare_seats(self):
         return self.spare_seats() > 0
@@ -233,11 +245,17 @@ class Journey:
         self.stops[0].remove_passenger_stepping_in(passenger)
         self.stops[-1].remove_passenger_leaving(passenger)
 
+    def move_passenger_to(self, passenger, other_journey):
+        other_journey.add_passenger(passenger)
+        self.remove_passenger(passenger)
+
     def move_passengers_to(self, other_journey):
-        for passenger in self.people():
+        for passenger in self.non_drivers():
             if other_journey.has_spare_seats():
-                other_journey.add_passenger(passenger)
-                self.remove_passenger(passenger)
+                self.move_passenger_to(passenger, other_journey)
+
+        if other_journey.has_spare_seats():
+            self.move_passenger_to(self.driver(), other_journey)
 
     
 class JourneyStop:

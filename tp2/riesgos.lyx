@@ -69,7 +69,7 @@ Los principales riesgos encontrados son los siguientes:
 
 \begin_layout Section*
 \noindent
-Riesgo 1
+Riesgo #01
 \end_layout
 
 \begin_layout Standard
@@ -142,7 +142,7 @@ Plan de contingencia:
 
 \begin_layout Subsection*
 \noindent
-Riesgo 2
+Riesgo #02
 \end_layout
 
 \begin_layout Standard
@@ -268,7 +268,7 @@ idad de comunicación con GPSs se concluya que se necesita más tiempo, informar
 \end_layout
 
 \begin_layout Subsection*
-Riesgo 3
+Riesgo #03
 \end_layout
 
 \begin_layout Standard
@@ -333,7 +333,7 @@ En caso de que Policía Científica no brinde los servicios solicitados, informa
 
 \begin_layout Subsection*
 \noindent
-Riesgo 4
+Riesgo #04
 \end_layout
 
 \begin_layout Standard
@@ -397,7 +397,7 @@ Plan de contingencia:
 
 \begin_layout Subsection*
 \noindent
-Riesgo 5
+Riesgo #05
 \end_layout
 
 \begin_layout Standard
@@ -457,7 +457,7 @@ En caso de que el equipo de desarrollo no disponga de las capacidades técnicas
 \end_layout
 
 \begin_layout Subsection*
-Riesgo 6
+Riesgo #06
 \end_layout
 
 \begin_layout Standard
@@ -517,7 +517,7 @@ Se terceriza con una empresa especializada en seguridad informática si la
 \end_layout
 
 \begin_layout Subsection*
-Riesgo 7
+Riesgo #07
 \end_layout
 
 \begin_layout Standard
@@ -576,7 +576,7 @@ Si pasada la fecha límite el refuerzo no se ha recibido, se negociará nuevas
 \end_layout
 
 \begin_layout Subsection*
-Riesgo 8
+Riesgo #08
 \end_layout
 
 \begin_layout Standard
@@ -625,7 +625,7 @@ El sistema seguirá funcionando, con funcionalidades reducidas, si la conexión
 \end_layout
 
 \begin_layout Subsection*
-Riesgo 9
+Riesgo #09
 \end_layout
 
 \begin_layout Standard

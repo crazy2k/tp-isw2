@@ -787,5 +787,48 @@ Consultando preferencias sobre música y temas de conversación
 
 \end_layout
 
+\begin_layout Standard
+A partir de los riesgo de alta exposición, los únicos casos de usos asociados
+ son el CU#01 y el CU#02.
+ Por ello, se decidió implementar dichos casos de uso en la etapa de elaboración.
+ 
+\end_layout
+
+\begin_layout Standard
+Por lo tanto, los casos de uso con riesgo son:
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+#01	Autenticando usuario
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+#02	Registrando información de GPS para estadísticas de viaje a nivel masivo
+\end_layout
+
 \end_body
 \end_document

@@ -1,0 +1,43 @@
+Autenticando usuario
+Registrando información de GPS para estadísticas de viaje a nivel masivo
+
+Obteniendo reporte de tránsito a nivel masivo
+
+Ofreciendo transporte para viaje
+- es extendido por Seleccionando amigos de redes sociales para compartir viajes
+Buscando combinación de transporte para viaje 
+- (acá hay que tener en cuenta crtierios de conf.)
+- es extendido por Seleccionando amigos de redes sociales para compartir viajes
+Agregando medio de transporte
+Agregando rutas habilitadas
+Modificando medio de transporte
+Modificando rutas habilitadas
+Eliminando medio de transporte
+Eliminando rutas habilitadas
+Visualizando mapas con alertas de tránsito
+Informando velocidad y posición actual
+Consultando velocidad vehículo
+Accediendo mediante API GIS
+Informando alertas
+Informando imprevistos
+Reasingando, replanificando o cancelando viaje
+- Incluido por Informando alertas e Informando imprevistos
+Obteniendo puntos de usuario
+Ingresando información para prevenir abusos
+Ingresando preferencias sobre música y temas de conversación
+Consultando preferencias sobre música y temas de conversación
+
+
+Riesgos:
+- Conexión con la policía, que sea lenta o no disponible (no satisfaga la demanda) 	P:A, I:A
+- No se hace la inversión por no llegar a tiempo con GPS				P:M, I:A
+- Posible conflicto entre ministerios que el jefe de gabinete no puede resolver		P:M, I:A
+- Compromiso de información personal de los usuarios					P:M, I:A
+
+- Tener en cuenta redes sociales, o si no no nos aprueban el presupuesto		P:B, I:A
+- Conexión con la policía, que sea insegura						P:B, I:A
+- Refuerzo presupuestario se puede trabar y no ocurrir					P:B, I:A
+- Conexión con SMN, inestabilidad							P:A, I:B
+
+- Problemas de comunicación al monitorear velocidad y posición de los vehículos		P:B, I:B
+

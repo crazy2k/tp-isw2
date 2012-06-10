@@ -160,19 +160,22 @@ def viewnotifications():
         site_backend.get_proposals_without_vehicle_for(user)
 
     organized_journeys = site_backend.get_journeys_for(user)
+    notifications = site_backend.get_notifications_for(user)
 
     return {
         "proposals_with_vehicule": proposals_with_vehicule,
         "proposals_without_vehicule": proposals_without_vehicule,
         "organized_journeys": organized_journeys,
+        "notifications": notifications,
     }
 
 @route("/organize", method="POST")
 def organize_post():
     time_tolerance = request.forms.get("time_tolerance", None)
     distance_tolerance = request.forms.get("distance_tolerance", None)
+    days = request.forms.get("days", None)
 
-    site_backend.organize_journeys(time_tolerance, distance_tolerance)
+    site_backend.organize_journeys(time_tolerance, distance_tolerance, days)
     redirect("/viewnotifications")
 
 

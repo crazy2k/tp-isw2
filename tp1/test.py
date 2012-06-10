@@ -104,7 +104,7 @@ class SimpleJourneyOrganizerTest(unittest.TestCase):
     def setUp(self):
         Address.web_service = StubedAddressWebService
 
-        self.timedelta = timedelta(minutes=15)
+        self.time_tolerance = timedelta(minutes=15)
         self.week_interval = DateTimeInterval(datetime(2012, 5, 14), datetime(2012, 5, 19))
         self.distance_tolerance = 300
 
@@ -116,19 +116,15 @@ class SimpleJourneyOrganizerTest(unittest.TestCase):
         self.very_far_proposal_with_no_car = self.get_very_far_proposal_with_no_car()
 
 
-        self.organizer_for_near_users = SimpleJourneyOrganizer([self.proposal_with_car, self.proposal_without_car],
-            self.week_interval, self.timedelta, self.distance_tolerance)
+        self.proposals = [self.proposal_with_car, self.proposal_without_car]
+        self.proposals_with_many_cars = [self.proposal_with_car, self.proposal_without_car, self.another_proposal_with_car]
+        self.proposals_too_far_from_each_other = [self.very_far_proposal_with_car, self.very_far_proposal_with_no_car]
 
-        self.organizer_for_many_users_with_cars = SimpleJourneyOrganizer([self.proposal_with_car, self.proposal_without_car, self.another_proposal_with_car],
-            self.week_interval, self.timedelta, self.distance_tolerance)
-
-        self.organizer_with_left_over_poposal = SimpleJourneyOrganizer( \
-            [self.very_far_proposal_with_car, self.very_far_proposal_with_no_car],
-            self.week_interval, self.timedelta, self.distance_tolerance)
+        self.organizer = SimpleJourneyOrganizer(self.time_tolerance, self.distance_tolerance)
 
 
     def test_organizer_should_create_journey_for_compatible_proposals(self):
-        journey_schedule = self.organizer_for_near_users.organize()
+        journey_schedule = self.organizer.organize(self.proposals, self.week_interval)
 
         self.assertEqual(1, journey_schedule.total_journeys())
 
@@ -150,13 +146,13 @@ class SimpleJourneyOrganizerTest(unittest.TestCase):
         self.assertEqual(0, len(stops[1].passengers_stepping_in))
 
         delta = journey.datetime - self.proposal_without_car.timetable.ocurrences_at(self.week_interval)[0]
-        self.assertTrue(abs(delta.total_seconds()) <= self.timedelta.total_seconds())
+        self.assertTrue(abs(delta.total_seconds()) <= self.time_tolerance.total_seconds())
 
         self.assertEqual(journey.datetime.date(), journey.date())
 
         
     def test_organizer_should_notify_when_a_proposal_was_not_posible_to_organize(self):
-        journey_schedule = self.organizer_with_left_over_poposal.organize()
+        journey_schedule = self.organizer.organize(self.proposals_too_far_from_each_other, self.week_interval)
 
         self.assertEqual(1, journey_schedule.total_journeys())
 
@@ -173,7 +169,7 @@ class SimpleJourneyOrganizerTest(unittest.TestCase):
             self.assertIsInstance(e, NotScheduledJourney)
 
     def test_organizer_should_merge_similar_proposals_together_when_there_are_spare_seats(self):
-        journey_schedule = self.organizer_for_many_users_with_cars.organize()
+        journey_schedule = self.organizer.organize(self.proposals_with_many_cars, self.week_interval)
 
         journey = journey_schedule.journeys_for(self.proposal_with_car.proponent)[0]
 

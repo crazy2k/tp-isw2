@@ -11,6 +11,12 @@ class User:
         self.email = email
         self.passwd = passwd
 
+    def change_password(passwd):
+        self.passwd = passwd
+
+    def authenticate(self, email, passwd):
+        return self.email == email and self.passwd == passwd
+
 
 class Place:
     def is_near(self, place, tolerance):
@@ -148,9 +154,6 @@ class JourneyProposal:
     def has_vehicule(self):
         raise NotImplementedError()
 
-    def is_similar_to(self, proposal, time_tolerance, distance_tolerance):
-        return None#TODO
-
 
 
 class JourneyProposalWithVehicule(JourneyProposal):
@@ -189,20 +192,41 @@ class Journey:
         return journeys
 
 
+    def can_be_merged_with(self, other_journey, time_tolerance, distance_tolerance):
+        return self.satisfies_proposal_at(other_journey.accepted_proposal, other_journey.datetime, time_tolerance, distance_tolerance)
+
+    def satisfies_proposal_at(self, proposal, adatetime, time_tolerance, distance_tolerance):
+        is_near = self.start_point().is_near(proposal.origin, distance_tolerance) and \
+            self.end_point().is_near(proposal.destination, distance_tolerance) 
+
+        is_close_in_time = abs((self.datetime - adatetime).total_seconds()) <= time_tolerance.total_seconds()
+
+        return is_near and is_close_in_time
+
+
     def people(self):
-        return reduce(set.union, [set(stop.passengers_stepping_in) for stop in self.stops])
+        return list(reduce(set.union, [set(stop.passengers_stepping_in) for stop in self.stops]))
+
+    def non_drivers(self):
+        result = self.people()
+        if len(result) > 0:
+            result.remove(self.driver())
+        return result
+
+    def driver(self):
+        return self.accepted_proposal.proponent
 
     def date(self):
         return self.datetime.date()
-
-    def satisfies_proposal_at(proposal, adatime, time_tolerance, distance_tolerance):
-        return None#TODO
 
     def total_seats(self):
         return self.accepted_proposal.passenger_capacity
 
     def spare_seats(self):
         return self.total_seats() - len(self.people())
+
+    def is_full(self):
+        return not self.has_spare_seats()
 
     def has_spare_seats(self):
         return self.spare_seats() > 0
@@ -221,11 +245,17 @@ class Journey:
         self.stops[0].remove_passenger_stepping_in(passenger)
         self.stops[-1].remove_passenger_leaving(passenger)
 
+    def move_passenger_to(self, passenger, other_journey):
+        other_journey.add_passenger(passenger)
+        self.remove_passenger(passenger)
+
     def move_passengers_to(self, other_journey):
-        for passenger in self.people():
+        for passenger in self.non_drivers():
             if other_journey.has_spare_seats():
-                other_journey.add_passenger(passenger)
-                self.remove_passenger(passenger)
+                self.move_passenger_to(passenger, other_journey)
+
+        if other_journey.has_spare_seats():
+            self.move_passenger_to(self.driver(), other_journey)
 
     
 class JourneyStop:
@@ -248,74 +278,61 @@ class JourneyStop:
 
 
 class JourneyOrganizer:
-    def organize(self):
+    def organize(self, proposals, interval):
         raise NotImplementedError()
 
 class SimpleJourneyOrganizer(JourneyOrganizer):
-    def __init__(self, proposals, interval, time_tolerance, distance_tolerance):
-        self.proposals = proposals
-        self.interval = interval
+    def __init__(self, time_tolerance, distance_tolerance):
         self.time_tolerance = time_tolerance #Late tolerance as a lapse of time (some minutes/hours)
         self.distance_tolerance = distance_tolerance
 
-        self.proposals_with_vehicule = [proposal for proposal in proposals if proposal.has_vehicule()]
-        self.proposals_without_vehicule = [proposal for proposal in proposals if not proposal.has_vehicule()]
+    def organize(self, proposals, interval):
+        results = self.create_journeys_for_proposals_with_vehicule(proposals, interval)
+        self.match_proposals_with_journeys(results, proposals, interval)
+        self.optimize_results(results)
 
-        self.results = []
+        return JourneySchedule(results)
 
-    def plausible_offers_for(self, request):
-        return request.plausible_offers(self.offers)
-
-    def organize(self):
-        self.create_journeys_for_proposals_with_vehicule()
-        self.match_proposals_with_journeys()
-        self.optimize_results()
-
-        return JourneySchedule(self.results)
-
-    def create_journeys_for_proposals_with_vehicule(self):
+    def create_journeys_for_proposals_with_vehicule(self, proposals, interval):
         def journeys_for(proposal):
-            return Journey.create_journeys_for_proposal(proposal, self.interval)
+            return Journey.create_journeys_for_proposal(proposal, interval)
 
-        self.results = list(chain(*map(journeys_for, self.proposals_with_vehicule)))
+        proposals_with_vehicule = [proposal for proposal in proposals if proposal.has_vehicule()]
+        return list(chain(*map(journeys_for, proposals_with_vehicule)))
 
-    def match_proposals_with_journeys(self):
-        self.results.sort(key=Journey.total_seats, reverse=True)
+    def match_proposals_with_journeys(self, results, proposals, interval):
+        results.sort(key=Journey.total_seats, reverse=True)
 
-        for proposal in self.proposals_without_vehicule:
-            for adatetime in proposal.timetable.ocurrences_at(self.interval):
-                journeys = [candidate for candidate in self.results \
-                    if self.can_be_used_with(candidate, proposal, adatetime) and candidate.has_spare_seats()]
+        for proposal in [proposal for proposal in proposals if not proposal.has_vehicule()]:
+            for adatetime in proposal.timetable.ocurrences_at(interval):
+
+                def is_candidate(candidate):
+                    return candidate.satisfies_proposal_at(proposal, adatetime, self.time_tolerance, self.distance_tolerance) \
+                        and candidate.has_spare_seats()    
+                journeys = list(filter(is_candidate, results))
                 
                 if len(journeys) > 0:
                     journeys[0].add_passenger(proposal.proponent)
 
-    def optimize_results(self):
-        self.results.sort(key=lambda journey: len(journey.people()))
-        other_journeys = self.results[:] #Duplicate list
+    def optimize_results(self, results):
+        results.sort(key=lambda journey: journey.accepted_proposal.passenger_capacity)
+        results.sort(key=lambda journey: len(journey.people()))
+        other_journeys = results[:] #Duplicate list
 
-        for journey in self.results:
+        for journey in results:
             other_journeys.remove(journey)
             other_journeys = list(filter(Journey.has_spare_seats, other_journeys))
             other_journeys.sort(key=Journey.spare_seats)
             other_journeys.sort(key=Journey.total_seats, reverse=True)
 
-            for other_journey in [other_journey for other_journey in other_journeys if self.are_compatible(journey, other_journey)]:
+            def is_compatible(other_journey):
+                return journey.can_be_merged_with(other_journey, self.time_tolerance, self.distance_tolerance) 
+
+            for other_journey in filter(is_compatible, other_journeys):
                 journey.move_passengers_to(other_journey)
 
-        self.results = [journey for journey in self.results if len(journey.people()) > 0]
-
-
-    def are_compatible(self, journey, other_journey):
-        return self.can_be_used_with(journey, other_journey.accepted_proposal, other_journey.datetime)
-
-    def can_be_used_with(self, journey, proposal, adatetime):
-        is_near = journey.start_point().is_near(proposal.origin, self.distance_tolerance) and \
-            journey.end_point().is_near(proposal.destination, self.distance_tolerance) 
-
-        is_close_in_time = abs((journey.datetime - adatetime).total_seconds()) <= self.time_tolerance.total_seconds()
-
-        return is_near and is_close_in_time
+        for journey in [result for result in results if len(result.people()) == 0]:
+            results.remove(journey)
 
 
 class JourneySchedule:
@@ -346,15 +363,19 @@ class NotScheduledJourney(Exception):
     pass
 
 class Notification:
+    def title(self):
+        raise NotImplementedError()
+
     def content(self):
         raise NotImplementedError()
 
     @classmethod
-    def notifications_for_at(journey_schedule, proposal, interval):
+    def notifications_for_at(cls, journey_schedule, proposal, time_interval):
         result = []
-        for adatetime in proposal.timetable.ocurrences_at(interval):
+        for adatetime in proposal.timetable.ocurrences_at(time_interval):
             try:
-                journey = journey.journey_for_at(proposal.proponent, adatetime)
+                journey = journey_schedule.journey_for_at(proposal.proponent,
+                    adatetime)
                 result.append(SuccesfulMatchNotification(proposal, journey))
             except NotScheduledJourney:
                 result.append(UnsuccesfulMatchNotification(proposal))
@@ -365,17 +386,25 @@ class UnsuccesfulMatchNotification(Notification):
     def __init__(self, proposal):
         self.proposal = proposal
 
+    def title(self):
+        return "No hubo match!"
+
     def content(self):
-        pass
+        return "Lo siento, no encontramos un match"
 
 class SuccesfulMatchNotification(Notification):
     def __init__(self, proposal, journey):
         self.proposal = proposal
         self.journey = journey
 
-    def content(self):
-        pass
+    def title(self):
+        return "Hubo match!"
 
+    def content(self):
+        journey = self.journey
+        return "Viajas con " + journey.accepted_proposal.proponent.email + \
+            " de " + str(journey.start_point()) + " a " + \
+            str(journey.end_point()) + " el día " + str(journey.datetime)
 
 class NotificationSender:
     def send_mail(self, notification):

@@ -48,6 +48,19 @@
 % end
 </ul>
 
+<h2>Tus notificaciones de esta semana</h2>
+
+<ul>
+% if not notifications:
+    <li>Ninguna</li>
+% end
+% for notification in notifications:
+    <li><b>{{notification.title()}}:</b> {{notification.content()}}</li>
+% end
+</ul>
+
+
+
 
 <hr>
 
@@ -61,8 +74,12 @@
         <td>Tolerancia de distancia:</td>
         <td><input type="text" name="distance_tolerance" /></td>
     </tr>
+    <tr class="odd">
+        <td>Organizar para los siguientes N días:</td>
+        <td><input type="text" name="days" /></td>
+    </tr>
     </table>
-    <input type="submit" value="Organizar viajes semanales" />
+    <input type="submit" value="Organizar viajes" />
 </form>
 
 %include footer

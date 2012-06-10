@@ -17,15 +17,14 @@ class Backend:
         return True
 
     def login_user(self, email, passwd):
-        registered_user = self.registered_users.get(email)
-        if not registered_user:
+        users = [user for email, user in self.registered_users.items() if
+            user.authenticate(email, passwd)]
+
+        if not len(users) == 1:
             return False
-
-        if registered_user.passwd == passwd:
-            self.logged_in_users[email] = registered_user
+        else:
+            self.logged_in_users[email] = users[0]
             return True
-
-        return False
 
     def logout_user(self, email):
         if self.logged_in_users.get(email, None):
@@ -120,15 +119,14 @@ class Backend:
         return self.prepare_proposals_for_printing(proponent,
             tp.JourneyProposalWithoutVehicule)
 
-    def organize_journeys(self, time_tolerance, distance_tolerance):
+    def organize_journeys(self, time_tolerance, distance_tolerance, days):
         timedelta = datetime.timedelta(minutes=int(time_tolerance))
         distance_tolerance = int(distance_tolerance)
-        week_interval = tp.DateTimeInterval(datetime.datetime.now(),
-            datetime.datetime.now() + datetime.timedelta(days=7))
-
-        organizer = tp.SimpleJourneyOrganizer(self.proposals, week_interval,
-            timedelta, distance_tolerance)
-        self.journey_schedule = organizer.organize()
+        interval_begin = datetime.datetime.now()
+        interval_end = interval_begin + datetime.timedelta(days=int(days)+1)
+        week_interval = tp.DateTimeInterval(interval_begin, interval_end)
+        organizer = tp.SimpleJourneyOrganizer(timedelta, distance_tolerance)
+        self.journey_schedule = organizer.organize(self.proposals, week_interval)
 
     def get_journeys_for(self, user):
         if not self.journey_schedule:
@@ -140,12 +138,29 @@ class Backend:
         for journey in journeys:
             printable_journey = {
                 "driver": journey.accepted_proposal.proponent.email,
-                "datetime": str(len(journey.datetime())),
+                "datetime": str(journey.datetime),
                 "count": str(len(journey.people())),
                 "total_seats": str(journey.total_seats()),
-                "starting_point": str(journey.starting_point()),
+                "starting_point": str(journey.start_point()),
                 "end_point": str(journey.end_point()),
             }
             printable_journeys.append(printable_journey)
         return printable_journeys
+
+    def get_notifications_for(self, user):
+        if not self.journey_schedule:
+            return []
+
+        interval_begin = datetime.datetime.now()
+        interval_end = interval_begin + datetime.timedelta(days=9)
+
+        notifications = []
+        for proposal in self.proposals:
+            if proposal.proponent == user:
+                notifications += \
+                    tp.Notification.notifications_for_at(self.journey_schedule,
+                        proposal, tp.DateTimeInterval(interval_begin,
+                        interval_end))
+
+        return notifications
 

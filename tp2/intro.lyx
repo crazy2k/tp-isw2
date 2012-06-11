@@ -25,10 +25,9 @@
 \bibtex_command default
 \index_command default
 \paperfontsize default
-\spacing single
 \use_hyperref false
 \papersize default
-\use_geometry true
+\use_geometry false
 \use_amsmath 1
 \use_esint 1
 \use_mhchem 1
@@ -38,15 +37,11 @@
 \use_indices false
 \paperorientation portrait
 \suppress_date false
-\use_refstyle 0
+\use_refstyle 1
 \index Index
 \shortcut idx
 \color #008000
 \end_index
-\leftmargin 2cm
-\topmargin 4cm
-\rightmargin 2cm
-\bottommargin 4cm
 \secnumdepth 3
 \tocdepth 3
 \paragraph_separation indent
@@ -64,62 +59,30 @@
 
 \begin_body
 
-\begin_layout Title
-Ingeniería de Software II
-\begin_inset Newline newline
-\end_inset
-
-Trabajo Práctico II - Entrega I
-\end_layout
-
-\begin_layout Author
-Pablo Antonio (290/08)
-\begin_inset Newline newline
-\end_inset
-
-Pablo Herrero (332/07)
-\begin_inset Newline newline
-\end_inset
-
-Ayelén Chavez (130/06)
-\begin_inset Newline newline
-\end_inset
-
-Rodrigo Campos (561/06)
+\begin_layout Section*
+Introducción
 \end_layout
 
 \begin_layout Standard
-\begin_inset CommandInset include
-LatexCommand include
-filename "intro.lyx"
-
-\end_inset
-
-
+Dado el notable éxito del sistema Viajemos Juntos, las máximas autoridades
+ han decidido lanzar un proyecto nacional a través del Ministerio de la
+ Producción y con consulta a todas las reparticiones competentes, mediante
+ el cual se podrán coordinar viajes de todo tipo a lo largo y ancho del
+ país.
 \end_layout
 
 \begin_layout Standard
-\begin_inset CommandInset include
-LatexCommand include
-filename "riesgos.lyx"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset CommandInset include
-LatexCommand include
-filename "casos-uso.lyx"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-	
+En este informe presentamos un análisis de los riesgos principales encontrados
+ para este proyecto.
+ Luego se listan los caso de uso identificados para el sistema y se detalla
+ cómo los riesgos antes nombrados afectan a ciertos casos de uso puntuales.
+ También listamos las tareas para cada caso de uso dentro de la primera
+ iteración y las tareas de la primera iteración que no son abarcadas por
+ los casos de uso.
+ Finalmente, se muestra en un diagrama gantt que condensa la información
+ de las tareas abarcadas en la primera iteración, así como dependencias
+ entre tareas.
+ 
 \end_layout
 
 \end_body

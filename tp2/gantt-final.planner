@@ -1,0 +1,173 @@
+<?xml version="1.0"?>
+<project name="Project1" company="" manager="" phase="" project-start="20120528T000000Z" mrproject-version="2" calendar="1">
+  <properties/>
+  <phases>
+    <phase name="Elaboracion"/>
+    <phase name="Construccion"/>
+  </phases>
+  <calendars>
+    <day-types>
+      <day-type id="0" name="Working" description="A default working day"/>
+      <day-type id="1" name="Nonworking" description="A default non working day"/>
+      <day-type id="2" name="Use base" description="Use day from base calendar"/>
+    </day-types>
+    <calendar id="1" name="Default">
+      <default-week mon="0" tue="0" wed="0" thu="0" fri="0" sat="1" sun="1"/>
+      <overridden-day-types>
+        <overridden-day-type id="0">
+          <interval start="1200" end="1600"/>
+        </overridden-day-type>
+      </overridden-day-types>
+      <days/>
+    </calendar>
+  </calendars>
+  <tasks>
+    <task id="1" name="Reconocimiento de casos de uso" note="" work="10800" duration="28800" start="20120528T000000Z" end="20120529T160000Z" work-start="20120528T120000Z" percent-complete="0" priority="500" type="normal" scheduling="fixed-duration"/>
+    <task id="2" name="Reconocimiento de drivers de arquitectura" note="" work="10800" duration="28800" start="20120528T000000Z" end="20120529T160000Z" work-start="20120528T120000Z" percent-complete="0" priority="500" type="normal" scheduling="fixed-duration"/>
+    <task id="3" name="An&#xE1;lisis de riesgos" note="" work="14400" duration="28800" start="20120528T000000Z" end="20120529T160000Z" work-start="20120528T120000Z" percent-complete="0" priority="500" type="normal" scheduling="fixed-duration"/>
+    <task id="4" name="Refinamiento de objetivos y requerimientos" note="" work="7200" duration="28800" start="20120528T000000Z" end="20120529T160000Z" work-start="20120528T120000Z" percent-complete="0" priority="500" type="normal" scheduling="fixed-duration"/>
+    <task id="5" name="Priorizaci&#xF3;n de casos de uso" note="" work="3600" duration="28800" start="20120529T160000Z" end="20120531T160000Z" work-start="20120530T120000Z" percent-complete="0" priority="500" type="normal" scheduling="fixed-duration">
+      <predecessors>
+        <predecessor id="1" predecessor-id="3" type="FS"/>
+      </predecessors>
+    </task>
+    <task id="6" name="Configuraci&#xF3;n del ambiente de desarrollo" note="" work="3600" duration="28800" start="20120529T160000Z" end="20120531T160000Z" work-start="20120530T120000Z" percent-complete="0" priority="500" type="normal" scheduling="fixed-duration">
+      <predecessors>
+        <predecessor id="1" predecessor-id="1" type="FS"/>
+      </predecessors>
+    </task>
+    <task id="7" name="Dise&#xF1;o conceptual del sistema" note="" work="28800" duration="28800" start="20120529T160000Z" end="20120531T160000Z" work-start="20120530T120000Z" percent-complete="0" priority="500" type="normal" scheduling="fixed-duration">
+      <predecessors>
+        <predecessor id="1" predecessor-id="4" type="FS"/>
+      </predecessors>
+    </task>
+    <task id="8" name="Estimaci&#xF3;n de tiempo de casos de uso" note="" work="14400" duration="28800" start="20120529T160000Z" end="20120531T160000Z" work-start="20120530T120000Z" percent-complete="0" priority="500" type="normal" scheduling="fixed-duration">
+      <predecessors>
+        <predecessor id="1" predecessor-id="1" type="FS"/>
+        <predecessor id="1" predecessor-id="3" type="FS"/>
+      </predecessors>
+    </task>
+    <task id="9" name="An&#xE1;lisis de atributos de calidad del sistema" note="" work="14400" duration="28800" start="20120528T000000Z" end="20120529T160000Z" work-start="20120528T120000Z" percent-complete="0" priority="500" type="normal" scheduling="fixed-duration"/>
+    <task id="10" name="Dise&#xF1;o de arquitectura del sistema" note="" work="28800" duration="28800" start="20120529T160000Z" end="20120531T160000Z" work-start="20120530T120000Z" percent-complete="0" priority="500" type="normal" scheduling="fixed-duration">
+      <predecessors>
+        <predecessor id="1" predecessor-id="2" type="FS"/>
+        <predecessor id="1" predecessor-id="9" type="FS"/>
+      </predecessors>
+    </task>
+    <task id="11" name="Elecci&#xF3;n de tecnolog&#xED;as" note="" work="14400" duration="28800" start="20120529T160000Z" end="20120531T160000Z" work-start="20120530T120000Z" percent-complete="0" priority="500" type="normal" scheduling="fixed-duration">
+      <predecessors>
+        <predecessor id="1" predecessor-id="3" type="FS"/>
+        <predecessor id="1" predecessor-id="9" type="FS"/>
+      </predecessors>
+    </task>
+    <task id="12" name="Realizaci&#xF3;n de tareas del caso de uso 1" note="" work="151200" duration="57600" start="20120531T160000Z" end="20120606T160000Z" work-start="20120601T120000Z" percent-complete="0" priority="500" type="normal" scheduling="fixed-duration">
+      <predecessors>
+        <predecessor id="1" predecessor-id="11" type="FS"/>
+        <predecessor id="1" predecessor-id="10" type="FS"/>
+        <predecessor id="1" predecessor-id="5" type="FS"/>
+        <predecessor id="1" predecessor-id="6" type="FS"/>
+        <predecessor id="1" predecessor-id="7" type="FS"/>
+        <predecessor id="1" predecessor-id="8" type="FS"/>
+      </predecessors>
+      <task id="13" name="Investigaci&#xF3;n sobre tecnolog&#xED;as de comunicaci&#xF3;n" note="" work="28800" duration="28800" start="20120531T160000Z" end="20120604T160000Z" work-start="20120601T120000Z" percent-complete="0" priority="500" type="normal" scheduling="fixed-duration"/>
+      <task id="14" name="Investigaci&#xF3;n del sistema de polic&#xED;a cient&#xED;fica existente" note="" work="21600" duration="28800" start="20120531T160000Z" end="20120604T160000Z" work-start="20120601T120000Z" percent-complete="0" priority="500" type="normal" scheduling="fixed-duration"/>
+      <task id="15" name="Implementaci&#xF3;n de infraestructura para testing de comunicaci&#xF3;n con el sistema de polic&#xED;a cient&#xED;fica" note="" work="14400" duration="28800" start="20120604T160000Z" end="20120606T160000Z" work-start="20120605T120000Z" percent-complete="0" priority="500" type="normal" scheduling="fixed-duration">
+        <predecessors>
+          <predecessor id="1" predecessor-id="14" type="FS"/>
+        </predecessors>
+      </task>
+      <task id="16" name="Implementaci&#xF3;n de la comunicaci&#xF3;n con el sistema de polic&#xED;a cient&#xED;fica" note="" work="14400" duration="28800" start="20120604T160000Z" end="20120606T160000Z" work-start="20120605T120000Z" percent-complete="0" priority="500" type="normal" scheduling="fixed-duration">
+        <predecessors>
+          <predecessor id="1" predecessor-id="14" type="FS"/>
+        </predecessors>
+      </task>
+      <task id="17" name="Pruebas de comportamiento del sistema de polic&#xED;a cient&#xED;fica frente a demanda alta" note="" work="21600" duration="28800" start="20120604T160000Z" end="20120606T160000Z" work-start="20120605T120000Z" percent-complete="0" priority="500" type="normal" scheduling="fixed-duration">
+        <predecessors>
+          <predecessor id="1" predecessor-id="14" type="FS"/>
+        </predecessors>
+      </task>
+      <task id="18" name="Definici&#xF3;n de interfaz del m&#xF3;dulo de autenticaci&#xF3;n" note="" work="14400" duration="28800" start="20120604T160000Z" end="20120606T160000Z" work-start="20120605T120000Z" percent-complete="0" priority="500" type="normal" scheduling="fixed-duration">
+        <predecessors>
+          <predecessor id="1" predecessor-id="13" type="FS"/>
+        </predecessors>
+      </task>
+      <task id="19" name="Implementaci&#xF3;n del m&#xF3;dulo de autenticaci&#xF3;n" note="" work="21600" duration="28800" start="20120604T160000Z" end="20120606T160000Z" work-start="20120605T120000Z" percent-complete="0" priority="500" type="normal" scheduling="fixed-duration">
+        <predecessors>
+          <predecessor id="1" predecessor-id="14" type="FS"/>
+        </predecessors>
+      </task>
+      <task id="20" name="Testing del m&#xF3;dulo de autenticaci&#xF3;n" note="" work="7200" duration="28800" start="20120604T160000Z" end="20120606T160000Z" work-start="20120605T120000Z" percent-complete="0" priority="500" type="normal" scheduling="fixed-duration">
+        <predecessors>
+          <predecessor id="1" predecessor-id="14" type="FS"/>
+        </predecessors>
+      </task>
+      <task id="21" name="Integraci&#xF3;n del m&#xF3;dulo de autenticaci&#xF3;n con el resto del sistema" note="" work="7200" duration="28800" start="20120604T160000Z" end="20120606T160000Z" work-start="20120605T120000Z" percent-complete="0" priority="500" type="normal" scheduling="fixed-duration">
+        <predecessors>
+          <predecessor id="1" predecessor-id="14" type="FS"/>
+        </predecessors>
+      </task>
+    </task>
+    <task id="22" name="Realizaci&#xF3;n de tareas del caso de uso 2" note="" work="219600" duration="86400" start="20120531T160000Z" end="20120608T160000Z" work-start="20120601T120000Z" percent-complete="0" priority="500" type="normal" scheduling="fixed-duration">
+      <predecessors>
+        <predecessor id="1" predecessor-id="11" type="FS"/>
+        <predecessor id="1" predecessor-id="10" type="FS"/>
+        <predecessor id="1" predecessor-id="5" type="FS"/>
+        <predecessor id="1" predecessor-id="6" type="FS"/>
+        <predecessor id="1" predecessor-id="7" type="FS"/>
+        <predecessor id="1" predecessor-id="8" type="FS"/>
+      </predecessors>
+      <task id="23" name="Investigaci&#xF3;n sobre tecnolog&#xED;a de comunicaci&#xF3;n con dispositivos m&#xF3;viles" note="" work="14400" duration="28800" start="20120531T160000Z" end="20120604T160000Z" work-start="20120601T120000Z" percent-complete="0" priority="500" type="normal" scheduling="fixed-duration"/>
+      <task id="24" name="Implementaci&#xF3;n de infraestructura para testing de comunicaci&#xF3;n con dispositivos m&#xF3;viles" note="" work="18000" duration="28800" start="20120604T160000Z" end="20120606T160000Z" work-start="20120605T120000Z" percent-complete="0" priority="500" type="normal" scheduling="fixed-duration">
+        <predecessors>
+          <predecessor id="1" predecessor-id="23" type="FS"/>
+        </predecessors>
+      </task>
+      <task id="25" name="Implementaci&#xF3;n de la comunicaci&#xF3;n con dispositivos m&#xF3;viles" note="" work="25200" duration="28800" start="20120604T160000Z" end="20120606T160000Z" work-start="20120605T120000Z" percent-complete="0" priority="500" type="normal" scheduling="fixed-duration">
+        <predecessors>
+          <predecessor id="1" predecessor-id="23" type="FS"/>
+        </predecessors>
+      </task>
+      <task id="26" name="Pruebas de integraci&#xF3;n de los dispositivos m&#xF3;viles con el sistema" note="" work="18000" duration="28800" start="20120606T160000Z" end="20120608T160000Z" work-start="20120607T120000Z" percent-complete="0" priority="500" type="normal" scheduling="fixed-duration">
+        <predecessors>
+          <predecessor id="1" predecessor-id="25" type="FS"/>
+        </predecessors>
+      </task>
+      <task id="27" name="Investigaci&#xF3;n sobre tecnolog&#xED;as para el almacenamiento de datos" note="" work="32400" duration="28800" start="20120531T160000Z" end="20120604T160000Z" work-start="20120601T120000Z" percent-complete="0" priority="500" type="normal" scheduling="fixed-duration"/>
+      <task id="28" name="Dise&#xF1;o del modelo de datos" note="" work="25200" duration="28800" start="20120604T160000Z" end="20120606T160000Z" work-start="20120605T120000Z" percent-complete="0" priority="500" type="normal" scheduling="fixed-duration">
+        <predecessors>
+          <predecessor id="1" predecessor-id="27" type="FS"/>
+        </predecessors>
+      </task>
+      <task id="29" name="Dise&#xF1;o del modelo entidad-relaci&#xF3;n" note="" work="14400" duration="28800" start="20120531T160000Z" end="20120604T160000Z" work-start="20120601T120000Z" percent-complete="0" priority="500" type="normal" scheduling="fixed-duration"/>
+      <task id="30" name="Dise&#xF1;o del modelo relacional" note="" work="10800" duration="28800" start="20120531T160000Z" end="20120604T160000Z" work-start="20120601T120000Z" percent-complete="0" priority="500" type="normal" scheduling="fixed-duration"/>
+      <task id="31" name="Implementaci&#xF3;n f&#xED;sica de la base de datos" note="" work="10800" duration="28800" start="20120604T160000Z" end="20120606T160000Z" work-start="20120605T120000Z" percent-complete="0" priority="500" type="normal" scheduling="fixed-duration">
+        <predecessors>
+          <predecessor id="1" predecessor-id="30" type="FS"/>
+        </predecessors>
+      </task>
+      <task id="32" name="Implementaci&#xF3;n del m&#xF3;dulo de almacenamiento de datos" note="" work="14400" duration="28800" start="20120606T160000Z" end="20120608T160000Z" work-start="20120607T120000Z" percent-complete="0" priority="500" type="normal" scheduling="fixed-duration">
+        <predecessors>
+          <predecessor id="1" predecessor-id="31" type="FS"/>
+        </predecessors>
+      </task>
+      <task id="33" name="Testing del m&#xF3;dulo de almacenamiento de datos" note="" work="7200" duration="28800" start="20120606T160000Z" end="20120608T160000Z" work-start="20120607T120000Z" percent-complete="0" priority="500" type="normal" scheduling="fixed-duration">
+        <predecessors>
+          <predecessor id="1" predecessor-id="31" type="FS"/>
+        </predecessors>
+      </task>
+      <task id="34" name="Integraci&#xF3;n del m&#xF3;dulo de almacenamiento de datos con el resto del sistema" note="" work="14400" duration="28800" start="20120606T160000Z" end="20120608T160000Z" work-start="20120607T120000Z" percent-complete="0" priority="500" type="normal" scheduling="fixed-duration">
+        <predecessors>
+          <predecessor id="1" predecessor-id="31" type="FS"/>
+        </predecessors>
+      </task>
+      <task id="35" name="Dise&#xF1;o de demostraci&#xF3;n para la empresa de publicidad" note="" work="14400" duration="28800" start="20120606T160000Z" end="20120608T160000Z" work-start="20120607T120000Z" percent-complete="0" priority="500" type="normal" scheduling="fixed-duration">
+        <predecessors>
+          <predecessor id="1" predecessor-id="31" type="FS"/>
+        </predecessors>
+      </task>
+    </task>
+  </tasks>
+  <resource-groups/>
+  <resources/>
+  <allocations/>
+</project>

@@ -1175,6 +1175,38 @@ Mantenimiento y soporte
 \end_layout
 
 \begin_layout Subsection*
+Descripción de alto nivel de los casos de uso a desarrollar en la primera
+ iteración.
+\end_layout
+
+\begin_layout Subsubsection*
+CU01 - Autenticando usuario
+\end_layout
+
+\begin_layout Standard
+Se refiere a la acción de autenticar la identidad de un usuario del sistema
+ a través de Policía Científica.
+ Para el desarrollo de los protocolos de comunicación se priorizará la seguridad
+ y velocidad de la conexión.
+\end_layout
+
+\begin_layout Subsubsection*
+CU02 - Registrando información de GPS para estadísticas de viaje a nivel
+ masivo
+\end_layout
+
+\begin_layout Standard
+Se refiere a la acción de llevar cuenta de la información geográfica provista
+ por los usuarios a través de los dispositivos móviles y su almacenamiento
+ en un medio de persistencia.
+ Priorizando la seguridad e integridad de la información de los usuarios
+ del sistema, asegurando el anonimato de los mismos.
+ Este caso de uso incluye la realización de una demostración de la comunicación
+ con los dispositivos GPS para dar garantías a la empresa inversora.
+ 
+\end_layout
+
+\begin_layout Subsection*
 Tareas de la primera iteración
 \end_layout
 

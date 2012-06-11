@@ -807,7 +807,8 @@ Fases e iteraciones
 A partir de los riesgo de alta exposición, los únicos casos de usos asociados
  son el CU#01 y el CU#02.
  Por ello, se decidió implementar dichos casos de uso en la etapa de elaboración.
- 
+ De todas formas, en general se tratade realizar tareas con mayor riesgo
+ asociado antes de tareas con menor riesgo.
 \end_layout
 
 \begin_layout Standard

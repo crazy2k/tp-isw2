@@ -303,11 +303,11 @@ Fuente: externa
 \end_layout
 
 \begin_layout Standard
-Estímulo: llega una respuesta errónea por parte del servicio meteorológico.
+Estímulo: llega una mensaje erróneo por parte del servicio meteorológico.
 \end_layout
 
 \begin_layout Standard
-Artefacto: comunicación con el servicio meteorológico.
+Artefacto: módulo de comunicación con el servicio meteorológico.
 \end_layout
 
 \begin_layout Standard

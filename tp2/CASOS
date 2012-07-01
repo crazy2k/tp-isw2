@@ -1,0 +1,144 @@
+Autenticando usuario
+Registrando información de GPS para estadísticas de viaje a nivel masivo
+
+Obteniendo reporte de tránsito a nivel masivo
+
+Ofreciendo transporte para viaje
+- es extendido por Seleccionando amigos de redes sociales para compartir viajes
+Buscando combinación de transporte para viaje 
+- (acá hay que tener en cuenta crtierios de conf.)
+- es extendido por Seleccionando amigos de redes sociales para compartir viajes
+Agregando medio de transporte
+Agregando rutas habilitadas
+Modificando medio de transporte
+Modificando rutas habilitadas
+Eliminando medio de transporte
+Eliminando rutas habilitadas
+Visualizando mapas con alertas de tránsito
+Informando velocidad y posición actual
+Consultando velocidad vehículo
+Accediendo mediante API GIS
+Informando alertas
+Informando imprevistos
+Reasingando, replanificando o cancelando viaje
+- Incluido por Informando alertas e Informando imprevistos
+Obteniendo puntos de usuario
+Ingresando información para prevenir abusos
+Ingresando preferencias sobre música y temas de conversación
+Consultando preferencias sobre música y temas de conversación
+
+
+Riesgos:
+1- Conexión con la policía, que sea lenta o no disponible (no satisfaga la demanda) 	P:A, I:A
+2- No se hace la inversión por no llegar a tiempo con GPS				P:M, I:A
+3- Posible conflicto entre ministerios que el jefe de gabinete no puede resolver		P:M, I:A
+4- Compromiso de información personal de los usuarios					P:M, I:A
+
+5- Tener en cuenta redes sociales, o si no no nos aprueban el presupuesto		P:B, I:A
+6- Conexión con la policía, que sea insegura						P:B, I:A
+7- Refuerzo presupuestario se puede trabar y no ocurrir					P:B, I:A
+8- Conexión con SMN, inestabilidad							P:A, I:B
+
+9- Problemas de comunicación al monitorear velocidad y posición de los vehículos		P:B, I:B
+
+================================================================================
+
+Asignación de casos de uso a iteraciones:
+// contestar
+• ¿Qué factores tuvieron en cuenta para decidir
+la cantidad de iteraciones ?
+• ¿Cómo decidieron qué va en cada iteración?
+• ¿Cómo influyeron los riesgos?
+
+================================================================================
+
+Cronograma
+
+Primera iteración (Elaboración):
+// listar casos de uso
+
+Segunda iteración (//tipo):
+// listar casos de uso
+
+================================================================================
+
+Detalle Primera Iteración
+
+Descripción de alto nivel de los casos de uso a desarrollar durante la primera iteración
+
+// numerar casos de uso de primera iteración y describir empezando con "Se refiere a la acción/al proceso... 
+
+================================================================================
+
+Lista de tareas relacionadas con los casos de uso de la primera iteración
+
+// CU#01 - nombre del CU
+// Tareas:
+//		CU#01-T01 - nombre de la tarea
+// podría tener subtareas 
+
+================================================================================
+
+Estimación de tiempo en horas hombre (HH)
+
+// para cada caso de uso listar tareas y subtareas y asignar horas.
+// la suma de las horas de las subtareas dan las horas de la tarea y las de todas las tareas suman las de CU (TOTAL HH)
+
+================================================================================
+
+Grafo de dependencias entre tareas	
+
+// por lo visto esto es para cada CU
+
+================================================================================
+
+Tareas Primera Iteración
+
+Detalle de la primera iteración
+- Identificador de iteración: E01
+- Tipo de iteración: Elaboración
+- Tareas:
+// listar tareas... E01-T01, E01-T02, etc.
+// acá va la fruta de tareas que no entran en ningún CU de la iteración y luego los CU de la primera iteración como E01-T11 - Realización de las tareas del caso de uso CU#01-nombre del CU
+
+================================================================================
+
+Estimación
+
+Estimación de tiempo en horas hombre (HH)
+// de las tareas de arriba (notar que las tareas de realización de cada CU tiene que tener la misma cantidad de horas que la de la tabla de más arriba)
+
+================================================================================
+
+Gantt Primera Iteración
+
+// según este cuadro, cada día tiene 8 horas pero supongo que el nuestro tiene 4
+
+================================================================================
+
+Riesgos
+
+// tabla impacto (Alto/Medio/Bajo) x probabilidad (Alta/Media/Baja)
+
+================================================================================
+
+Descripción de Riesgos
+
+Riesgo 2:
+- Descripción: No se hace la inversión por no llegar a tiempo con GPS
+- Probabilidad: Alta
+- Impacto: Medio
+- Exposición: Alta
+- Mitigación: priorizar la finalización de este feature sobre el resto de los features, así como las tareas de las que el mismo depende, realizando una previa y rigurosa estimación de dichas tareas, asegurando la finalización en fecha de cada una controlando esto con el uso de herramientas de seguimiento de proyectos
+- Plan de contingencia: en caso de que en la etapa de estimación de las tareas asociadas al feature de GPS, se llegue a la conclusión de que se necesita más tiempo, informar de esto a los inversionistas para pedir una prórroga o la asignación de más recursos, según lo estimado.
+
+Riesgo 4:
+- Descripción: Compromiso de información personal de los usuarios
+- Probabilidad: Alta
+- Impacto: Medio
+- Exposición: Alta
+- Mitigación: investigar e implementar distintas formas para proteger la información de los usuarios.
+- Plan de contingencia: en caso de que la información personal de los usuarios se vea comprometida, terciarizar la seguridad de dicha información a empresas especializadas en el área.
+
+
+

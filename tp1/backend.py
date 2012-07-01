@@ -125,9 +125,8 @@ class Backend:
         interval_begin = datetime.datetime.now()
         interval_end = interval_begin + datetime.timedelta(days=int(days)+1)
         week_interval = tp.DateTimeInterval(interval_begin, interval_end)
-        organizer = tp.SimpleJourneyOrganizer(self.proposals, week_interval,
-            timedelta, distance_tolerance)
-        self.journey_schedule = organizer.organize()
+        organizer = tp.SimpleJourneyOrganizer(timedelta, distance_tolerance)
+        self.journey_schedule = organizer.organize(self.proposals, week_interval)
 
     def get_journeys_for(self, user):
         if not self.journey_schedule:

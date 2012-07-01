@@ -478,6 +478,44 @@ Medición: a lo sumo, 40 horas hombre.
 \end_layout
 
 \begin_layout Subsection*
+Portabilidad:
+\end_layout
+
+\begin_layout Subparagraph*
+Primer escenario:
+\end_layout
+
+\begin_layout Standard
+Breve descripción: el sistema debe correr sin problema en dispositivos móviles
+ con distintas tecnologías
+\end_layout
+
+\begin_layout Standard
+Fuente: Secretaría de Comunicaciones
+\end_layout
+
+\begin_layout Standard
+Estímulo: quiere que el sistema corra sin problemas en un dispositivo móvil
+ con una tecnologías aún no soportada.
+\end_layout
+
+\begin_layout Standard
+Artefacto: el sistema.
+\end_layout
+
+\begin_layout Standard
+Entorno: tiempo de desarrollo.
+\end_layout
+
+\begin_layout Standard
+Respuesta: el sistema podrá migrarse a dicha tecnología.
+\end_layout
+
+\begin_layout Standard
+Medición: a lo sumo, 240 hs hombre.
+\end_layout
+
+\begin_layout Subsection*
 Usabilidad:
 \end_layout
 
@@ -545,6 +583,45 @@ Respuesta: puede realizar satisfactoriamente el ofrecimiento de viaje.
 
 \begin_layout Standard
 Medición: menos de 2 minutos.
+\end_layout
+
+\begin_layout Section*
+Prioridades relativas:
+\end_layout
+
+\begin_layout Standard
+Luego de la votación de los distintos stakeholders en el QAW, se ordenó
+ según la prioridad relativa a los distintos atributos de calidad.
+\end_layout
+
+\begin_layout Enumerate
+Flexibilidad-Modificabilidad 
+\end_layout
+
+\begin_layout Enumerate
+a.
+ Performance b.
+ Disponibilidad 
+\end_layout
+
+\begin_layout Enumerate
+Seguridad 
+\end_layout
+
+\begin_layout Enumerate
+Integrabilidad 
+\end_layout
+
+\begin_layout Enumerate
+a.
+ Portabilidad b.
+ Usabilidad
+\end_layout
+
+\begin_layout Standard
+Este orden se refleja en la arquitectura elegida.
+ Es decir, a atributos como Modificabilidad, se le dió más importancia que
+ a atributos como Portabilidad.
 \end_layout
 
 \end_body

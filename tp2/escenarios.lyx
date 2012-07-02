@@ -172,51 +172,14 @@ Medición: menos de 24 horas hombre.
 Performance:
 \end_layout
 
-\begin_layout Subparagraph*
-Primer escenario:
-\end_layout
-
 \begin_layout Standard
-Breve descripción: el Ministro de Producción dice que el sistema tiene que
- andar rápido.
-\end_layout
-
-\begin_layout Standard
-Fuente: 
-\end_layout
-
-\begin_layout Standard
-Estímulo:
-\end_layout
-
-\begin_layout Standard
-Artefacto:
-\end_layout
-
-\begin_layout Standard
-Entorno: 
-\end_layout
-
-\begin_layout Standard
-Respuesta:
-\end_layout
-
-\begin_layout Standard
-Medición: 
+El Ministerio de producción dice que el sistema tiene que andar rápido.
+ Dado que esta descripción es muy general, se plantearon los siguientes
+ escenarios.
 \end_layout
 
 \begin_layout Subparagraph*
-Segundo escenario:
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-preguntar a Nico y ver enunciado
-\end_layout
-
-\end_inset
-
-
+Primer escenario:
 \end_layout
 
 \begin_layout Standard
@@ -226,41 +189,33 @@ Breve descripción: el Ministro de Producción dice que el sistema se integre
 \end_layout
 
 \begin_layout Standard
-Fuente: 
+Fuente: externo.
 \end_layout
 
 \begin_layout Standard
-Estímulo:
+Estímulo: quiere usar algún servicio del sistema que dependa de un sistema
+ externo (vialidad nacional, servicio meteorológico, etc).
 \end_layout
 
 \begin_layout Standard
-Artefacto:
+Artefacto: el sistema.
 \end_layout
 
 \begin_layout Standard
-Entorno: 
+Entorno: normal, on line.
 \end_layout
 
 \begin_layout Standard
-Respuesta:
+Respuesta: el usuario externo recibe respuesta del sistema satisfactoriamente.
 \end_layout
 
 \begin_layout Standard
-Medición: 
+Medición: en a los sumo 10 milisegundos extras de lo que tarda el servicio
+ del sistema externo.
 \end_layout
 
 \begin_layout Subparagraph*
-Tercer escenario:
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-preguntar a Nico y ver enunciado
-\end_layout
-
-\end_inset
-
-
+Segundo escenario:
 \end_layout
 
 \begin_layout Standard
@@ -270,27 +225,27 @@ Breve descripción: el Encargado Área de Desarrollo Técnico dice estar preocup
 \end_layout
 
 \begin_layout Standard
-Fuente: 
+Fuente: interna.
 \end_layout
 
 \begin_layout Standard
-Estímulo:
+Estímulo: se recibe la orden de armar viajes.
 \end_layout
 
 \begin_layout Standard
-Artefacto:
+Artefacto: módulo organizador de viajes.
 \end_layout
 
 \begin_layout Standard
-Entorno: 
+Entorno: normal, on line.
 \end_layout
 
 \begin_layout Standard
-Respuesta:
+Respuesta: los viajes son armados.
 \end_layout
 
 \begin_layout Standard
-Medición: 
+Medición: en menos de 1 segundo el sistema armará al menos 100 viajes.
 \end_layout
 
 \begin_layout Subsection*
@@ -321,7 +276,7 @@ Artefacto: canal de comunicación con el sistema de policía federal.
 \end_layout
 
 \begin_layout Standard
-Entorno: normal.
+Entorno: normal, on line.
 \end_layout
 
 \begin_layout Standard
@@ -348,15 +303,15 @@ Fuente: externa
 \end_layout
 
 \begin_layout Standard
-Estímulo: llega una respuesta errónea por parte del servicio meteorológico.
+Estímulo: llega una mensaje erróneo por parte del servicio meteorológico.
 \end_layout
 
 \begin_layout Standard
-Artefacto: comunicación con el servicio meteorológico.
+Artefacto: módulo de comunicación con el servicio meteorológico.
 \end_layout
 
 \begin_layout Standard
-Entorno: normal.
+Entorno: normal, on line.
 \end_layout
 
 \begin_layout Standard
@@ -399,7 +354,7 @@ Artefacto: módulo de autenticación del sistema.
 \end_layout
 
 \begin_layout Standard
-Entorno: normal.
+Entorno: normal, on line.
 \end_layout
 
 \begin_layout Standard
@@ -435,7 +390,7 @@ Artefacto: módulo de encriptación del sistema.
 \end_layout
 
 \begin_layout Standard
-Entorno: normal.
+Entorno: normal, on line.
 \end_layout
 
 \begin_layout Standard
@@ -489,16 +444,6 @@ Integrabilidad:
 
 \begin_layout Subparagraph*
 Primer escenario: 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-ver enunciado
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -507,41 +452,33 @@ Breve descripción: el Ministro de Producción quiere que se pueda utilizar
 \end_layout
 
 \begin_layout Standard
-Fuente: 
+Fuente: un desarrollador.
 \end_layout
 
 \begin_layout Standard
-Estímulo:
+Estímulo: quiere integrar un servicio externo que provee información de
+ las redes sociales al sistema.
+ 
 \end_layout
 
 \begin_layout Standard
-Artefacto:
+Artefacto: el sistema.
 \end_layout
 
 \begin_layout Standard
-Entorno: 
+Entorno: tiempo de desarrollo.
 \end_layout
 
 \begin_layout Standard
-Respuesta:
+Respuesta: se puede integrar el servicio sin afectar al resto del sistema.
 \end_layout
 
 \begin_layout Standard
-Medición: 
+Medición: a lo sumo, 40 horas hombre.
 \end_layout
 
 \begin_layout Subsection*
 Portabilidad:
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-ver enunciado
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Subparagraph*
@@ -549,31 +486,33 @@ Primer escenario:
 \end_layout
 
 \begin_layout Standard
-Breve descripción: 
+Breve descripción: el sistema debe correr sin problema en dispositivos móviles
+ con distintas tecnologías
 \end_layout
 
 \begin_layout Standard
-Fuente: 
+Fuente: Secretaría de Comunicaciones
 \end_layout
 
 \begin_layout Standard
-Estímulo:
+Estímulo: quiere que el sistema corra sin problemas en un dispositivo móvil
+ con una tecnologías aún no soportada.
 \end_layout
 
 \begin_layout Standard
-Artefacto:
+Artefacto: el sistema.
 \end_layout
 
 \begin_layout Standard
-Entorno: 
+Entorno: tiempo de desarrollo.
 \end_layout
 
 \begin_layout Standard
-Respuesta:
+Respuesta: el sistema podrá migrarse a dicha tecnología.
 \end_layout
 
 \begin_layout Standard
-Medición: 
+Medición: a lo sumo, 240 hs hombre.
 \end_layout
 
 \begin_layout Subsection*
@@ -602,7 +541,7 @@ Artefacto: el sistema.
 \end_layout
 
 \begin_layout Standard
-Entorno: normal.
+Entorno: normal, on line.
 \end_layout
 
 \begin_layout Standard
@@ -635,7 +574,7 @@ Artefacto: el sistema.
 \end_layout
 
 \begin_layout Standard
-Entorno: normal.
+Entorno: normal, on line.
 \end_layout
 
 \begin_layout Standard
@@ -644,6 +583,45 @@ Respuesta: puede realizar satisfactoriamente el ofrecimiento de viaje.
 
 \begin_layout Standard
 Medición: menos de 2 minutos.
+\end_layout
+
+\begin_layout Section*
+Prioridades relativas:
+\end_layout
+
+\begin_layout Standard
+Luego de la votación de los distintos stakeholders en el QAW, se ordenó
+ según la prioridad relativa a los distintos atributos de calidad.
+\end_layout
+
+\begin_layout Enumerate
+Flexibilidad-Modificabilidad 
+\end_layout
+
+\begin_layout Enumerate
+a.
+ Performance b.
+ Disponibilidad 
+\end_layout
+
+\begin_layout Enumerate
+Seguridad 
+\end_layout
+
+\begin_layout Enumerate
+Integrabilidad 
+\end_layout
+
+\begin_layout Enumerate
+a.
+ Portabilidad b.
+ Usabilidad
+\end_layout
+
+\begin_layout Standard
+Este orden se refleja en la arquitectura elegida.
+ Es decir, a atributos como Modificabilidad, se le dió más importancia que
+ a atributos como Portabilidad.
 \end_layout
 
 \end_body

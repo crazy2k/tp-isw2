@@ -275,11 +275,5 @@ es:
  ser resuelto a nivel aplicación y no en el protocolo.
 \end_layout
 
-\begin_layout Itemize
-.
- El protocolo utilizado en capa de usuario puede saldar el problema de la
- pérdida de paquetes de ser necesario.
-\end_layout
-
 \end_body
 \end_document

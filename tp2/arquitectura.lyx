@@ -246,11 +246,21 @@ Cliente-servidor encriptado para comunicación con clientes web:
 \begin_layout Itemize
 
 \series bold
-Asincrónico, con pérdida de paquetes y ordenado para comunicación con transmisor
-es/receptores:
+Asincrónico, con pérdida de paquetes para comunicación con transmisores/receptor
+es:
 \series default
- La comunicación con los vehículos es asincrónica con pérdida de paquetes
- porque la misma puede no ser confiable.
+ La comunicación con los vehículos consiste en un flujo de paquetes que
+ son enviados en forma asincrónica.
+ Cada paquete contiene toda la información necesaria para el mensaje que
+ quiere enviarse, por lo que no es necesario reconstruirlo cuando este llega
+ ni comprobar si algún fragmento del mismo se perdió.
+ Si bien algunos mensajes pueden perderse, en la moayoría de los casos,
+ este mensaje perdido puede ignorarse o de ser necesario el problema puede
+ ser resuelto a nivel aplicación y no en el protocolo.
+\end_layout
+
+\begin_layout Itemize
+.
  El protocolo utilizado en capa de usuario puede saldar el problema de la
  pérdida de paquetes de ser necesario.
 \end_layout

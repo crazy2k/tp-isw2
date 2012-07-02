@@ -476,8 +476,8 @@ Breve descripción:
 \end_inset
 
  el Encargado Área de Desarrollo Técnico dice estar preocupado por la integració
-n con sistemas externos que no esta seguro funcionene adecuadamente (polícia,
- servicio meteorólogico,etc).
+n con sistemas externos que no está seguro funcionen adecuadamente (servicio
+ meteorólogico, vialidad, etc).
 \end_layout
 
 \begin_layout Description
@@ -489,13 +489,13 @@ Fuente: externa
 \begin_layout Description
 
 \lang english
-Estímulo: llega una mensaje erróneo por parte del servicio meteorológico.
+Estímulo: se detecta la falta de respuesta por parte del servicio externo.
 \end_layout
 
 \begin_layout Description
 
 \lang english
-Artefacto: módulo de comunicación con el servicio meteorológico.
+Artefacto: módulo verificador de disponibilidad de servicios.
 \end_layout
 
 \begin_layout Description
@@ -580,7 +580,7 @@ Entorno: normal, on line.
 \begin_layout Description
 
 \lang english
-Respuesta: se crea una nueva entrada en el log del sistema con los datos
+Respuesta: se crea una nueva entrada en un log del sistema con los datos
  del intento fallido y el sistema sigue funcionando para los usuarios autenticad
 os.
 \end_layout

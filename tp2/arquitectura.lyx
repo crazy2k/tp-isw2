@@ -79,7 +79,55 @@ Decisiones de arquitectura
 \end_layout
 
 \begin_layout Standard
-Blah.
+Todas las decisiones de arquitectura tomadas para este proyecto fueron fuertemen
+te influenciadas por los requerimientos impuestos por las funcionalidades
+ descriptas en los casos de uso, por la evaluación de los riesgos realizada
+ y por los atributos de calidad identificados, junto con sus prioridades
+ relativas.
+ A continuación se describen las principales decisiones de arquitectura
+ tomadas.
+\end_layout
+
+\begin_layout Subsubsection*
+Utilización de un Publish/Subscribe Bus
+\end_layout
+
+\begin_layout Subsubsection*
+Utilización de pipe en las comunicaciones con el módulo de comunicación
+ con vehículos
+\end_layout
+
+\begin_layout Subsubsection*
+Mecanismo de heartbeat para verificación de disponibilidad de servicios
+\end_layout
+
+\begin_layout Subsubsection*
+Almacenamiento de autenticaciones infructuosas
+\end_layout
+
+\begin_layout Subsubsection*
+Almacenamiento de viajes planificados
+\end_layout
+
+\begin_layout Subsubsection*
+Almacenamiento de alertas
+\end_layout
+
+\begin_layout Subsubsection*
+Conectores especiales
+\end_layout
+
+\begin_layout Itemize
+Call-return con timeout y redundancia para comunicación con Policía Científica
+\end_layout
+
+\begin_layout Itemize
+Cliente-servidor encriptado para comunicación con clientes web
+\end_layout
+
+\begin_layout Itemize
+Asincrónico, con pérdida de paquetes y ordenado para comunicación con transmisor
+es/receptores
 \end_layout
 
 \end_body

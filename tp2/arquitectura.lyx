@@ -74,6 +74,28 @@ Vista de la arquitectura
 
 \end_layout
 
+\begin_layout Standard
+\begin_inset Graphics
+	filename Diagram1.png
+	width 70page%
+	rotateAngle 90
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename Diagram1.png
+	width 70page%
+	rotateAngle 90
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsection*
 Decisiones de arquitectura
 \end_layout
@@ -84,12 +106,60 @@ te influenciadas por los requerimientos impuestos por las funcionalidades
  descriptas en los casos de uso, por la evaluación de los riesgos realizada
  y por los atributos de calidad identificados, junto con sus prioridades
  relativas.
- A continuación se describen las principales decisiones de arquitectura
- tomadas.
+\end_layout
+
+\begin_layout Standard
+Es importante aclarar que en el diagrama nos referimos con "Red Social"
+ a cualquier red social (ya sea facebook, twitter, etc.) y el "Adaptador
+ de redes sociales" es el que sabrá conectarse a las redes sociales que
+ se le quiere dar soporte.
+ También, con "Transmisor y receptor de viaje" nos referimos a la parte
+ del sistema que corre en el vehiculo (posiblemente dispositivo movil) del
+ usuario.
+ 
+\end_layout
+
+\begin_layout Standard
+A continuación se describen las principales decisiones de arquitectura tomadas.
 \end_layout
 
 \begin_layout Subsubsection*
 Utilización de un Publish/Subscribe Bus
+\end_layout
+
+\begin_layout Standard
+Al usar un Bus Publish/Subscribe se logra que cada componente se suscriba
+ a los eventos que le interesan sin tener acoplamiento con quienes lo generan,
+ dado que muchos de estos pueden ser generados por más de un componente
+ y de interés para más de un componente también.
+ Esto resulta particularmente útil y fácilmente extensible para eventos
+ como el de una alerta meteorologica, que es de interés tanto como para
+ el planificador de viajes y para los servicios web de mapas como para el
+ Usuario del sistema con el "Transmisor y receptor de viaje".
+ Al usar un mecanismo Publish/Subscribe, esta alerta puede ser reportada
+ y se suscriben solo a los que les interesa.
+ También da flexibilidad para que esta alerta sea generada por otro componente,
+ si el sistema del servicio meteorológico no resulta confiable y se desea
+ tener un "fallback".
+ Analogamente, este razonamiento tambien aplica para otros mensajes que
+ se transmiten por el Bus.
+ Por ejemplo un desperfecto mecanico que es de interes para los "Servicios
+ web para viajantes y empresas de transporte" tanto como para el planificador
+ de viajes.
+\end_layout
+
+\begin_layout Subsubsection*
+Paralelizacion del planificador de viajes
+\end_layout
+
+\begin_layout Standard
+Se decidio paralelizar el planificador de viajes para poder satisfacer los
+ requerimientos de performance que preocupaban al Encargado del área de
+ desarrolo técnico.
+ Esto se vio simplificado por el hecho de que se use un Bus Publish/Subscribe
+ para notificarlo de alertas, ya que todas las instancias del mismo se suscriben
+ a lo que les es pertinente.
+ 
 \end_layout
 
 \begin_layout Subsubsection*
@@ -97,20 +167,51 @@ Utilización de pipe en las comunicaciones con el módulo de comunicación
  con vehículos
 \end_layout
 
+\begin_layout Standard
+El uso del pipe permite que los componentes implicados en la comunicación
+ puedan trabajar de manera concurrente.
+ De este modo, el módulo de comunicación con vehículos que, por su naturaleza,
+ puede trabajar a una velocidad distinta, no afectará al desarrollo normal
+ del sistema.
+\end_layout
+
 \begin_layout Subsubsection*
 Mecanismo de heartbeat para verificación de disponibilidad de servicios
+\end_layout
+
+\begin_layout Standard
+Se agregó un mecanismo de heartbeat con servicios externos para poder avisar
+ que el sistema está funcionando en modo degradado sin la funcionalidad
+ provista por estos sistemas.
 \end_layout
 
 \begin_layout Subsubsection*
 Almacenamiento de autenticaciones infructuosas
 \end_layout
 
+\begin_layout Standard
+Para satisfacer los escenarios motivados por Defensa del Consumidor, se
+ decidió almacenar las autenticaciones infructuosas.
+\end_layout
+
 \begin_layout Subsubsection*
 Almacenamiento de viajes planificados
 \end_layout
 
+\begin_layout Standard
+Se decidio almacenar los viajes planificados para que pueda ser auditado
+ luego para verificar que no se realiza ninguna asignación tendenciosa con
+ ninguna compañía.
+\end_layout
+
 \begin_layout Subsubsection*
 Almacenamiento de alertas
+\end_layout
+
+\begin_layout Standard
+Se decidio almacenar las alertas reportadas para que sean accesibles en
+ forma historica para el "Servicio GIS", el "Servicio a Seguridad Vial"
+ y el "Servicio web de mapas".
 \end_layout
 
 \begin_layout Subsubsection*
@@ -118,16 +219,40 @@ Conectores especiales
 \end_layout
 
 \begin_layout Itemize
-Call-return con timeout y redundancia para comunicación con Policía Científica
+
+\series bold
+Call-return con timeout y redundancia para comunicación con Policía Científica:
+\series default
+ para poder identificar cuando el sistema de Policia Cientifica no responde
+ se utiliza un timeout.
+ De esta forma, si el sistema no responde en como máximo este tiempo, se
+ asume que no funciona y se reporta que el sistema no podrá autenticar nuevos
+ usuarios.
+ También, para evitar un punto único de falla en la comunicación con Policía
+ Científica, se utiliza un canal que será redundante.
+ 
 \end_layout
 
 \begin_layout Itemize
-Cliente-servidor encriptado para comunicación con clientes web
+
+\series bold
+Cliente-servidor encriptado para comunicación con clientes web:
+\series default
+ para proteger la información de los usuarios se utilizará una conexión
+ encriptada con ellos, de modo de que no pueda ser comprometida la información
+ utilizada en la comunicación.
 \end_layout
 
 \begin_layout Itemize
+
+\series bold
 Asincrónico, con pérdida de paquetes y ordenado para comunicación con transmisor
-es/receptores
+es/receptores:
+\series default
+ La comunicación con los vehículos es asincrónica con pérdida de paquetes
+ porque la misma puede no ser confiable.
+ El protocolo utilizado en capa de usuario puede saldar el problema de la
+ pérdida de paquetes de ser necesario.
 \end_layout
 
 \end_body

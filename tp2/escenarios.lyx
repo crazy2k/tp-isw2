@@ -5,7 +5,7 @@
 \textclass article
 \use_default_options true
 \maintain_unincluded_children false
-\language english
+\language spanish
 \language_package default
 \inputencoding auto
 \fontencoding global
@@ -25,9 +25,10 @@
 \bibtex_command default
 \index_command default
 \paperfontsize default
+\spacing onehalf
 \use_hyperref false
 \papersize default
-\use_geometry false
+\use_geometry true
 \use_amsmath 1
 \use_esint 1
 \use_mhchem 1
@@ -44,12 +45,13 @@
 \end_index
 \secnumdepth 3
 \tocdepth 3
-\paragraph_separation indent
-\paragraph_indentation default
+\paragraph_separation skip
+\defskip bigskip
 \quotes_language english
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
+\bullet 0 2 29 -1
 \tracking_changes false
 \output_changes false
 \html_math_output 0
@@ -60,565 +62,999 @@
 \begin_body
 
 \begin_layout Section*
+
+\lang english
 Escenarios
 \end_layout
 
 \begin_layout Subsection*
+
+\lang english
 Modificabilidad
 \end_layout
 
-\begin_layout Subparagraph*
+\begin_layout Subsubsection*
+
+\lang english
 Primer escenario:
 \end_layout
 
-\begin_layout Standard
-Breve descripción: el Ministro de Producción dice que tiene que funcionar
- para todo: aviones, barcos, lanchas, taxis, todo.
+\begin_layout Description
+
+\lang english
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+Breve descripción:
 \end_layout
 
-\begin_layout Standard
+\end_inset
+
+ el Ministro de Producción dice que tiene que funcionar para todo: aviones,
+ barcos, lanchas, taxis, todo.
+\end_layout
+
+\begin_layout Description
+
+\lang english
 Fuente: ministerio de producción.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Description
+
+\lang english
 Estímulo: se quiere agregar un nuevo medio de transporte.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Description
+
+\lang english
 Artefacto: el sistema.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Description
+
+\lang english
 Entorno: tiempo de diseño.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Description
+
+\lang english
 Respuesta: se agrega un nuevo transporte al sistema sin efectos secundarios.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Description
+
+\lang english
 Medición: menos de 20 horas hombre.
 \end_layout
 
-\begin_layout Subparagraph*
+\begin_layout Subsubsection*
+
+\lang english
 Segundo escenario:
 \end_layout
 
-\begin_layout Standard
-Breve descripción: el representante de Defensa del Consumidor dice querer
- flexibilidad para personalizar los viajes: seleccionar medios de transporte,
- escalas, música, temas de conversación, etc.
+\begin_layout Description
+
+\lang english
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+Breve descripción:
 \end_layout
 
-\begin_layout Standard
+\end_inset
+
+ el representante de Defensa del Consumidor dice querer flexibilidad para
+ personalizar los viajes: seleccionar medios de transporte, escalas, música,
+ temas de conversación, etc.
+\end_layout
+
+\begin_layout Description
+
+\lang english
 Fuente: desarrollador.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Description
+
+\lang english
 Estímulo: se quiere agregar una nueva preferencia para los viajes.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Description
+
+\lang english
 Artefacto: el sistema.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Description
+
+\lang english
 Entorno: tiempo de diseño.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Description
+
+\lang english
 Respuesta: se agrega una ueva preferencia al sistema sin efectos secundarios.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Description
+
+\lang english
 Medición: menos de 20 horas hombre.
 \end_layout
 
-\begin_layout Subparagraph*
+\begin_layout Subsubsection*
+
+\lang english
 Tercer escenario:
 \end_layout
 
-\begin_layout Standard
-Breve descripción: el Encargado Área de Desarrollo Técnico dice que quisiera
- poder ir probando distintas estrategias de matching.
+\begin_layout Description
+
+\lang english
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+Breve descripción:
+\end_layout
+
+\end_inset
+
+ el Encargado Área de Desarrollo Técnico dice que quisiera poder ir probando
+ distintas estrategias de matching.
  
 \end_layout
 
-\begin_layout Standard
+\begin_layout Description
+
+\lang english
 Fuente: encargado del área de desarrollo técnico.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Description
+
+\lang english
 Estímulo: se quiere probar una estrategia de matching.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Description
+
+\lang english
 Artefacto: módulo de estrategia de matching.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Description
+
+\lang english
 Entorno: tiempo de diseño.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Description
+
+\lang english
 Respuesta: se puede probar una estrategia de matching distinta.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Description
+
+\lang english
 Medición: menos de 24 horas hombre.
 \end_layout
 
 \begin_layout Subsection*
+
+\lang english
 Performance:
 \end_layout
 
 \begin_layout Standard
+
+\lang english
 El Ministerio de producción dice que el sistema tiene que andar rápido.
  Dado que esta descripción es muy general, se plantearon los siguientes
  escenarios.
 \end_layout
 
-\begin_layout Subparagraph*
+\begin_layout Subsubsection*
+
+\lang english
 Primer escenario:
 \end_layout
 
-\begin_layout Standard
-Breve descripción: el Ministro de Producción dice que el sistema se integre
- con los sistemas de vialidad nacional, del servicio meteorológico, etc.
+\begin_layout Description
+
+\lang english
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+Breve descripción:
+\end_layout
+
+\end_inset
+
+ el Ministro de Producción dice que el sistema se integre con los sistemas
+ de vialidad nacional, del servicio meteorológico, etc.
  Todo debe funcionar perfecto y rápido.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Description
+
+\lang english
 Fuente: externo.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Description
+
+\lang english
 Estímulo: quiere usar algún servicio del sistema que dependa de un sistema
  externo (vialidad nacional, servicio meteorológico, etc).
 \end_layout
 
-\begin_layout Standard
+\begin_layout Description
+
+\lang english
 Artefacto: el sistema.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Description
+
+\lang english
 Entorno: normal, on line.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Description
+
+\lang english
 Respuesta: el usuario externo recibe respuesta del sistema satisfactoriamente.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Description
+
+\lang english
 Medición: en a los sumo 10 milisegundos extras de lo que tarda el servicio
  del sistema externo.
 \end_layout
 
-\begin_layout Subparagraph*
+\begin_layout Subsubsection*
+
+\lang english
 Segundo escenario:
 \end_layout
 
-\begin_layout Standard
-Breve descripción: el Encargado Área de Desarrollo Técnico dice estar preocupado
- porque los tiempos que puede llevar lograr armar los viajes (performance)
- con tanta flexiblidad y posibilidad de cambios.
+\begin_layout Description
+
+\lang english
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+Breve descripción:
 \end_layout
 
-\begin_layout Standard
+\end_inset
+
+ el Encargado Área de Desarrollo Técnico dice estar preocupado porque los
+ tiempos que puede llevar lograr armar los viajes (performance) con tanta
+ flexiblidad y posibilidad de cambios.
+\end_layout
+
+\begin_layout Description
+
+\lang english
 Fuente: interna.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Description
+
+\lang english
 Estímulo: se recibe la orden de armar viajes.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Description
+
+\lang english
 Artefacto: módulo organizador de viajes.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Description
+
+\lang english
 Entorno: normal, on line.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Description
+
+\lang english
 Respuesta: los viajes son armados.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Description
+
+\lang english
 Medición: en menos de 1 segundo el sistema armará al menos 100 viajes.
 \end_layout
 
 \begin_layout Subsection*
+
+\lang english
 Disponibilidad:
 \end_layout
 
-\begin_layout Subparagraph*
+\begin_layout Subsubsection*
+
+\lang english
 Primer escenario:
 \end_layout
 
-\begin_layout Standard
-Breve descripción: el Ministro de Producción dice que es importante que
- el sistema de la policía funcione perfectamente.
+\begin_layout Description
+
+\lang english
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+Breve descripción:
+\end_layout
+
+\end_inset
+
+ el Ministro de Producción dice que es importante que el sistema de la policía
+ funcione perfectamente.
  
 \end_layout
 
-\begin_layout Standard
+\begin_layout Description
+
+\lang english
 Fuente: interna.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Description
+
+\lang english
 Estímulo: el sistema de la policía federal no responde.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Description
+
+\lang english
 Artefacto: canal de comunicación con el sistema de policía federal.
  
 \end_layout
 
-\begin_layout Standard
+\begin_layout Description
+
+\lang english
 Entorno: normal, on line.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Description
+
+\lang english
 Respuesta: el sistema sigue funcionando para los usuarios ya autenticados
  y se notificará a los que intenten autenticarse, que lo intenten más tarde.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Description
+
+\lang english
 Medición: el 99,9999% de las veces.
 \end_layout
 
-\begin_layout Subparagraph*
+\begin_layout Subsubsection*
+
+\lang english
 Segundo escenario:
 \end_layout
 
-\begin_layout Standard
-Breve descripción: el Encargado Área de Desarrollo Técnico dice estar preocupado
- por la integración con sistemas externos que no esta seguro funcionene
- adecuadamente (polícia, servicio meteorólogico,etc).
+\begin_layout Description
+
+\lang english
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+Breve descripción:
 \end_layout
 
-\begin_layout Standard
+\end_inset
+
+ el Encargado Área de Desarrollo Técnico dice estar preocupado por la integració
+n con sistemas externos que no esta seguro funcionene adecuadamente (polícia,
+ servicio meteorólogico,etc).
+\end_layout
+
+\begin_layout Description
+
+\lang english
 Fuente: externa
 \end_layout
 
-\begin_layout Standard
+\begin_layout Description
+
+\lang english
 Estímulo: llega una mensaje erróneo por parte del servicio meteorológico.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Description
+
+\lang english
 Artefacto: módulo de comunicación con el servicio meteorológico.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Description
+
+\lang english
 Entorno: normal, on line.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Description
+
+\lang english
 Respuesta: el sistema pasa a modo degradado informando al usuario al respecto.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Description
+
+\lang english
 Medición: el 99,9999% de las veces.
 \end_layout
 
 \begin_layout Subsection*
+
+\lang english
 Seguridad:
 \end_layout
 
 \begin_layout Standard
+
+\lang english
 El Ministro de Producción dice que quiere que el sistema sea seguro, pero
  dado que esta descripción es muy general, se plantearon los siguientes
  escenarios.
 \end_layout
 
-\begin_layout Subparagraph*
+\begin_layout Subsubsection*
+
+\lang english
 Primer escenario: 
 \end_layout
 
-\begin_layout Standard
-Breve descripción: el representante de Defensa del Consumidor dijo que espera
- se garantice la seguridad de las personas involucradas.
+\begin_layout Description
+
+\lang english
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+Breve descripción:
 \end_layout
 
-\begin_layout Standard
+\end_inset
+
+ el representante de Defensa del Consumidor dijo que espera se garantice
+ la seguridad de las personas involucradas.
+\end_layout
+
+\begin_layout Description
+
+\lang english
 Fuente: persona no autenticada.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Description
+
+\lang english
 Estímulo: intenta autenticarse en el sistema con datos ilegítimos.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Description
+
+\lang english
 Artefacto: módulo de autenticación del sistema.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Description
+
+\lang english
 Entorno: normal, on line.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Description
+
+\lang english
 Respuesta: se crea una nueva entrada en el log del sistema con los datos
  del intento fallido y el sistema sigue funcionando para los usuarios autenticad
 os.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Description
+
+\lang english
 Medición: el 99,99% de las veces, según asegura el servicio de policía federal.
 \end_layout
 
-\begin_layout Subparagraph*
+\begin_layout Subsubsection*
+
+\lang english
 Segundo escenario:
 \end_layout
 
-\begin_layout Standard
-Breve descripción: el ViceMinistro de Economía dijo que se necesita que
- el sistema proteja los datos de los usuarios.
+\begin_layout Description
+
+\lang english
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+Breve descripción:
 \end_layout
 
-\begin_layout Standard
+\end_inset
+
+ el ViceMinistro de Economía dijo que se necesita que el sistema proteja
+ los datos de los usuarios.
+\end_layout
+
+\begin_layout Description
+
+\lang english
 Fuente: atacante externo.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Description
+
+\lang english
 Estímulo: se captura un mensaje encriptado e intenta vulnerar la seguridad
  del mismo para obtener información de los usuarios.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Description
+
+\lang english
 Artefacto: módulo de encriptación del sistema.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Description
+
+\lang english
 Entorno: normal, on line.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Description
+
+\lang english
 Respuesta: los datos no son accesibles al atacante en tiempo razonable (miles
  de años).
 \end_layout
 
-\begin_layout Standard
+\begin_layout Description
+
+\lang english
 Medición: el 99,9999% de los casos.
 \end_layout
 
-\begin_layout Subparagraph*
+\begin_layout Subsubsection*
+
+\lang english
 Tercero escenario:
 \end_layout
 
-\begin_layout Standard
-Breve descripción: el Representante de Cámara del Transporte exige poder
- auditar los viajes planeados para poder controlar que los viajes se reparten
- entre las empresas de manera equitativa.
+\begin_layout Description
+
+\lang english
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+Breve descripción:
 \end_layout
 
-\begin_layout Standard
+\end_inset
+
+ el Representante de Cámara del Transporte exige poder auditar los viajes
+ planeados para poder controlar que los viajes se reparten entre las empresas
+ de manera equitativa.
+\end_layout
+
+\begin_layout Description
+
+\lang english
 Fuente: atacante externo
 \end_layout
 
-\begin_layout Standard
+\begin_layout Description
+
+\lang english
 Estímulo: quiere targiversar el log encriptado de viajes planeados por el
  sistema.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Description
+
+\lang english
 Artefacto: módulo de encriptación del sistema.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Description
+
+\lang english
 Entorno: normal.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Description
+
+\lang english
 Respuesta: los datos no son accesibles al atacante en tiempo razonable (miles
  de años).
 \end_layout
 
-\begin_layout Standard
+\begin_layout Description
+
+\lang english
 Medición: el 99,9999% de los casos.
 \end_layout
 
 \begin_layout Subsection*
+
+\lang english
 Integrabilidad:
 \end_layout
 
-\begin_layout Subparagraph*
+\begin_layout Subsubsection*
+
+\lang english
 Primer escenario: 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Description
+
+\lang english
 Breve descripción: el Ministro de Producción quiere que se pueda utilizar
  información de las redes sociales.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Description
+
+\lang english
 Fuente: un desarrollador.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Description
+
+\lang english
 Estímulo: quiere integrar un servicio externo que provee información de
  las redes sociales al sistema.
  
 \end_layout
 
-\begin_layout Standard
+\begin_layout Description
+
+\lang english
 Artefacto: el sistema.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Description
+
+\lang english
 Entorno: tiempo de desarrollo.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Description
+
+\lang english
 Respuesta: se puede integrar el servicio sin afectar al resto del sistema.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Description
+
+\lang english
 Medición: a lo sumo, 40 horas hombre.
 \end_layout
 
 \begin_layout Subsection*
+
+\lang english
 Portabilidad:
 \end_layout
 
-\begin_layout Subparagraph*
+\begin_layout Subsubsection*
+
+\lang english
 Primer escenario:
 \end_layout
 
-\begin_layout Standard
-Breve descripción: el sistema debe correr sin problema en dispositivos móviles
- con distintas tecnologías
+\begin_layout Description
+
+\lang english
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+Breve descripción:
 \end_layout
 
-\begin_layout Standard
+\end_inset
+
+ el sistema debe correr sin problema en dispositivos móviles con distintas
+ tecnologías
+\end_layout
+
+\begin_layout Description
+
+\lang english
 Fuente: Secretaría de Comunicaciones
 \end_layout
 
-\begin_layout Standard
+\begin_layout Description
+
+\lang english
 Estímulo: quiere que el sistema corra sin problemas en un dispositivo móvil
  con una tecnologías aún no soportada.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Description
+
+\lang english
 Artefacto: el sistema.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Description
+
+\lang english
 Entorno: tiempo de desarrollo.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Description
+
+\lang english
 Respuesta: el sistema podrá migrarse a dicha tecnología.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Description
+
+\lang english
 Medición: a lo sumo, 240 hs hombre.
 \end_layout
 
 \begin_layout Subsection*
+
+\lang english
 Usabilidad:
 \end_layout
 
-\begin_layout Subparagraph*
+\begin_layout Subsubsection*
+
+\lang english
 Primer escenario:
 \end_layout
 
-\begin_layout Standard
-Breve descripción: debe ser fácil para los usuarios el realizar un pedido
- de viaje.
+\begin_layout Description
+
+\lang english
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+Breve descripción:
 \end_layout
 
-\begin_layout Standard
+\end_inset
+
+ debe ser fácil para los usuarios el realizar un pedido de viaje.
+\end_layout
+
+\begin_layout Description
+
+\lang english
 Fuente: usuario autenticado del sistema que ingresa por primera vez.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Description
+
+\lang english
 Estímulo: quiere hacer un pedido de viaje.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Description
+
+\lang english
 Artefacto: el sistema.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Description
+
+\lang english
 Entorno: normal, on line.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Description
+
+\lang english
 Respuesta: puede realizar satisfactoriamente el pedido de viaje.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Description
+
+\lang english
 Medición: menos de 2 minutos.
 \end_layout
 
-\begin_layout Subparagraph*
+\begin_layout Subsubsection*
+
+\lang english
 Segundo escenario:
 \end_layout
 
-\begin_layout Standard
-Breve descripción: debe ser fácil para los usuarios el realizar un ofrecimiento
- de viaje.
+\begin_layout Description
+
+\lang english
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+Breve descripción:
 \end_layout
 
-\begin_layout Standard
+\end_inset
+
+ debe ser fácil para los usuarios el realizar un ofrecimiento de viaje.
+\end_layout
+
+\begin_layout Description
+
+\lang english
 Fuente: usuario autenticado del sistema que ingresa por primera vez.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Description
+
+\lang english
 Estímulo: quiere hacer ofrecer un viaje.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Description
+
+\lang english
 Artefacto: el sistema.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Description
+
+\lang english
 Entorno: normal, on line.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Description
+
+\lang english
 Respuesta: puede realizar satisfactoriamente el ofrecimiento de viaje.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Description
+
+\lang english
 Medición: menos de 2 minutos.
 \end_layout
 
 \begin_layout Section*
-Prioridades relativas:
+
+\lang english
+Prioridades relativas
 \end_layout
 
 \begin_layout Standard
-Luego de la votación de los distintos stakeholders en el QAW, se ordenó
- según la prioridad relativa a los distintos atributos de calidad.
+
+\lang english
+Luego de la votación de los distintos 
+\emph on
+stakeholders
+\emph default
+ en el QAW, se ordenó según la prioridad relativa a los distintos atributos
+ de calidad.
 \end_layout
 
 \begin_layout Enumerate
+
+\lang english
 Flexibilidad-Modificabilidad 
 \end_layout
 
 \begin_layout Enumerate
-a.
- Performance b.
- Disponibilidad 
+
+\lang english
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+
+\lang english
+Performance
 \end_layout
 
 \begin_layout Enumerate
+
+\lang english
+Disponibilidad 
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+
+\lang english
 Seguridad 
 \end_layout
 
 \begin_layout Enumerate
+
+\lang english
 Integrabilidad 
 \end_layout
 
 \begin_layout Enumerate
-a.
- Portabilidad b.
- Usabilidad
+
+\lang english
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+
+\lang english
+Portabilidad
+\end_layout
+
+\begin_layout Enumerate
+
+\lang english
+Usabilidad
+\end_layout
+
+\end_deeper
 \begin_layout Standard
+
+\lang english
 Este orden se refleja en la arquitectura elegida.
  Es decir, a atributos como Modificabilidad, se le dió más importancia que
  a atributos como Portabilidad.

@@ -60,7 +60,7 @@
 \begin_body
 
 \begin_layout Subsection*
-Up vs Ágil
+UP vs Ágil
 \end_layout
 
 \begin_layout Standard
@@ -188,7 +188,13 @@ La arquitectura se va definiendo y mejorando mientras avanza el proyecto.
 \end_layout
 
 \begin_layout Subsection*
-Programming in the small vs programming in the large
+
+\emph on
+Programming in the small
+\emph default
+ vs 
+\emph on
+programming in the large
 \end_layout
 
 \begin_layout Standard

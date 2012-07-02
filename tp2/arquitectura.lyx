@@ -63,12 +63,9 @@
 Vista de la arquitectura
 \end_layout
 
-\begin_layout Standard
-\begin_inset Graphics
-	filename Diagram1.png
-	width 70page%
-	rotateAngle 90
-
+\begin_layout Subsubsection*
+Vista general
+\begin_inset Newpage newpage
 \end_inset
 
 
@@ -77,6 +74,21 @@ Vista de la arquitectura
 \begin_layout Standard
 \begin_inset Graphics
 	filename Diagram1.png
+	width 65page%
+	rotateAngle 90
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Transmisor y receptor de viaje
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename Diagram1Zoom.png
 	width 70page%
 	rotateAngle 90
 
@@ -85,9 +97,13 @@ Vista de la arquitectura
 
 \end_layout
 
+\begin_layout Subsection*
+Comunicación sistema central
+\end_layout
+
 \begin_layout Standard
 \begin_inset Graphics
-	filename Diagram1.png
+	filename ZoomCommSistemaCentral.png
 	width 70page%
 	rotateAngle 90
 

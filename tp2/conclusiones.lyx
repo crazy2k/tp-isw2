@@ -70,7 +70,7 @@ A lo largo de este cuatrimestre, pudimos trabajar con ambas metodologías
 \end_layout
 
 \begin_layout Standard
-Cada uno tuvo distintas experiencias laborales.
+Cada integrante del equipo tuvo distintas experiencias laborales.
  Algunos usaban alguna metodología con el agregado de algunos cambios para
  adaptarlas a sus necesidades y otros solo usaban una lista de tareas a
  realizar intentando tener una mínima organización de lo que se esperaba
@@ -85,7 +85,8 @@ o.
 \begin_layout Standard
 Encontramos ventajas y desventajas en cada metodología de desarrollo de
  software, pero pudimos encontrar gran ayuda en el uso de alguna metodología
- a la hora de empezar a desarrollar.
+ a la hora de empezar a desarrollar, por lo que promovemos el uso de alguna
+ de estas metodologías.
  
 \end_layout
 
@@ -94,16 +95,16 @@ Ventajas y desventajas que notamos en UP
 \end_layout
 
 \begin_layout Enumerate
-Es fácil pensar que la documentación es algo superfluo en lo que se pierde
+Es fácil pensar que la documentación es algo superfluo en la que se pierde
  mucho tiempo en documentos para que nadie los lea.
- Ambas metodologías tienen mucha documentación, sobretodo UP.
+ Ambas metodologías tienen mucha documentación, pero sobretodo UP.
  
 \end_layout
 
 \begin_layout Enumerate
 En el caso de UP, hay que capacitar a los stakeholders para que entiendan
- cómo es el proceso de desarrollo y por qué es tan importante el trabajo
- previo a empezar a desarrollar.
+ cómo es el proceso y por qué es tan importante el trabajo previo a empezar
+ a desarrollar.
  
 \end_layout
 
@@ -112,14 +113,14 @@ Una ventaja de UP es que se muestra a los stakeholders un panorama completo
  de lo que se va a desarrollar, haciendo que intervengan en las decisiones
  para el desarrollo del proyecto (QAW, por ejemplo) y mostrandoles de distintas
  maneras cómo sus pedidos son tenidos en cuenta.
- Sin embargo, hay que tener en cuenta que el proceso debe agregar valor
- a los stakeholders del proyecto, sin usar de más a la metodología.
+ Sin embargo, hay que tener en mente que el proceso debe agregar valor a
+ los stakeholders del proyecto, sin terminar usando de más la metodología.
 \end_layout
 
 \begin_layout Enumerate
 Utilizamos UP cuando el proyecto a desarrollar es grande, aunque esto puede
  terminar en la necesidad de tener un experto en UP para poder seguir bien
- la metodología y asegurar que el proceso está definido y usado correctamente.
+ la metodología y asegurar que el proceso esté definido y usado correctamente.
 \end_layout
 
 \begin_layout Enumerate
@@ -136,9 +137,13 @@ Intuitivamente, pareciera que UP se centra en pensar y analizar mucho más
  Además, notamos que uno tiene que conocer y analizar mejor el dominio del
  problema en etapas previas al desarrollo del sistema.
  Esta característica puede tener aspectos muy buenos, pero puede no funcionar
- con ciertos proyectos que cambian muy seguido y varias veces durante su
- desarrollo.
+ con ciertos proyectos que cambian muy seguido durante su desarrollo.
  
+\end_layout
+
+\begin_layout Enumerate
+Se establece una base sólida de arquitectura, se la prueba y se la documenta.
+ UP se centra en la arquitectura.
 \end_layout
 
 \begin_layout Subsubsection*
@@ -163,6 +168,10 @@ Utilizamos Ágil cuando el proyecto a desarrollar es chico o mediano.
 \end_layout
 
 \begin_layout Enumerate
+Es una metodología muy sensilla, fácil de aprender y de aplicar.
+\end_layout
+
+\begin_layout Enumerate
 En este trabajo, notamos que durante cada iteración de Ágil, cada uno puede
  concentrarse en terminar una parte atómica y pequeña según se le haya asignado,
  sin tener en cuenta el entregable final, que al pasar las iteraciones podría
@@ -171,7 +180,43 @@ En este trabajo, notamos que durante cada iteración de Ágil, cada uno puede
 \end_layout
 
 \begin_layout Enumerate
-Es una metodología muy sensilla, fácil de aprender y de aplicar.
+Ágil impulsa el trabajo en equipo.
+\end_layout
+
+\begin_layout Enumerate
+La arquitectura se va definiendo y mejorando mientras avanza el proyecto.
+\end_layout
+
+\begin_layout Subsection*
+Programming in the small vs programming in the large
+\end_layout
+
+\begin_layout Standard
+Según vimos en la materia, la arquitectura de software de un sistema de
+ computación es la estructura o estructuras del sistema, que abarcan elementos
+ de software, las propiedades externamente visibles de estos elementos y
+ las relaciones entre ellos.
+ 
+\end_layout
+
+\begin_layout Standard
+La arquitectura de un sistema de software es el conjunto de “decisiones
+ principales de diseño”.
+\end_layout
+
+\begin_layout Standard
+La arquitectura es una parte del diseño.
+\end_layout
+
+\begin_layout Standard
+Diseño: “Formar un plan o esquema en la mente, para ejecución posterior”.
+ 
+\end_layout
+
+\begin_layout Standard
+Hay decisiones de diseño “no arquitectónicas”.
+ Y además, lo que no es arquitectónico ahora, puede ser lo más tarde (depende
+ de la visibilidad de los módulos).
 \end_layout
 
 \begin_layout Subsection*
@@ -192,15 +237,6 @@ La idea que nos queda es que, antes de empezar un proyecto, hay que analizarlo
  y decidir qué metodología vamos a usar, según esas características, como
  ser recursos técnicos, recursos humanos, tiempo de desarrollo, tipo de
  sistema, etc.
-\end_layout
-
-\begin_layout Standard
-Sabemos que se recomienda usar Scrum si se nos presenta un proyecto que
- va a cambiar mucho sus requisitos.
- En cambio, se recomienda usar UP como metodología de desarrollo de software
- cuándo el proyecto a desarrollar es complejo y de larga duración, por ejemplo.
- Además, es de gran ayuda cuando el cliente no tiene una relación directa
- con el equipo de desarrollo.
 \end_layout
 
 \end_body

@@ -1,0 +1,279 @@
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
+\begin_document
+\begin_header
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_amsmath 1
+\use_esint 1
+\use_mhchem 1
+\use_mathdots 1
+\cite_engine basic
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Subsection*
+Vista de la arquitectura
+\end_layout
+
+\begin_layout Subsubsection*
+Vista general
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename Diagram1.png
+	width 65page%
+	rotateAngle 90
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Transmisor y receptor de viaje
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename Diagram1Zoom.png
+	width 70page%
+	rotateAngle 90
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+Comunicación sistema central
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename ZoomCommSistemaCentral.png
+	width 70page%
+	rotateAngle 90
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+Decisiones de arquitectura
+\end_layout
+
+\begin_layout Standard
+Todas las decisiones de arquitectura tomadas para este proyecto fueron fuertemen
+te influenciadas por los requerimientos impuestos por las funcionalidades
+ descriptas en los casos de uso, por la evaluación de los riesgos realizada
+ y por los atributos de calidad identificados, junto con sus prioridades
+ relativas.
+\end_layout
+
+\begin_layout Standard
+Es importante aclarar que en el diagrama nos referimos con "Red Social"
+ a cualquier red social (ya sea facebook, twitter, etc.) y el "Adaptador
+ de redes sociales" es el que sabrá conectarse a las redes sociales que
+ se le quiere dar soporte.
+ También, con "Transmisor y receptor de viaje" nos referimos a la parte
+ del sistema que corre en el vehiculo (posiblemente dispositivo movil) del
+ usuario.
+ 
+\end_layout
+
+\begin_layout Standard
+A continuación se describen las principales decisiones de arquitectura tomadas.
+\end_layout
+
+\begin_layout Subsubsection*
+Utilización de un Publish/Subscribe Bus
+\end_layout
+
+\begin_layout Standard
+Al usar un Bus Publish/Subscribe se logra que cada componente se suscriba
+ a los eventos que le interesan sin tener acoplamiento con quienes lo generan,
+ dado que muchos de estos pueden ser generados por más de un componente
+ y de interés para más de un componente también.
+ Esto resulta particularmente útil y fácilmente extensible para eventos
+ como el de una alerta meteorologica, que es de interés tanto como para
+ el planificador de viajes y para los servicios web de mapas como para el
+ Usuario del sistema con el "Transmisor y receptor de viaje".
+ Al usar un mecanismo Publish/Subscribe, esta alerta puede ser reportada
+ y se suscriben solo a los que les interesa.
+ También da flexibilidad para que esta alerta sea generada por otro componente,
+ si el sistema del servicio meteorológico no resulta confiable y se desea
+ tener un "fallback".
+ Analogamente, este razonamiento tambien aplica para otros mensajes que
+ se transmiten por el Bus.
+ Por ejemplo un desperfecto mecanico que es de interes para los "Servicios
+ web para viajantes y empresas de transporte" tanto como para el planificador
+ de viajes.
+\end_layout
+
+\begin_layout Subsubsection*
+Paralelizacion del planificador de viajes
+\end_layout
+
+\begin_layout Standard
+Se decidio paralelizar el planificador de viajes para poder satisfacer los
+ requerimientos de performance que preocupaban al Encargado del área de
+ desarrolo técnico.
+ Esto se vio simplificado por el hecho de que se use un Bus Publish/Subscribe
+ para notificarlo de alertas, ya que todas las instancias del mismo se suscriben
+ a lo que les es pertinente.
+ 
+\end_layout
+
+\begin_layout Subsubsection*
+Utilización de pipe en las comunicaciones con el módulo de comunicación
+ con vehículos
+\end_layout
+
+\begin_layout Standard
+El uso del pipe permite que los componentes implicados en la comunicación
+ puedan trabajar de manera concurrente.
+ De este modo, el módulo de comunicación con vehículos que, por su naturaleza,
+ puede trabajar a una velocidad distinta, no afectará al desarrollo normal
+ del sistema.
+\end_layout
+
+\begin_layout Subsubsection*
+Mecanismo de heartbeat para verificación de disponibilidad de servicios
+\end_layout
+
+\begin_layout Standard
+Se agregó un mecanismo de heartbeat con servicios externos para poder avisar
+ que el sistema está funcionando en modo degradado sin la funcionalidad
+ provista por estos sistemas.
+\end_layout
+
+\begin_layout Subsubsection*
+Almacenamiento de autenticaciones infructuosas
+\end_layout
+
+\begin_layout Standard
+Para satisfacer los escenarios motivados por Defensa del Consumidor, se
+ decidió almacenar las autenticaciones infructuosas.
+\end_layout
+
+\begin_layout Subsubsection*
+Almacenamiento de viajes planificados
+\end_layout
+
+\begin_layout Standard
+Se decidio almacenar los viajes planificados para que pueda ser auditado
+ luego para verificar que no se realiza ninguna asignación tendenciosa con
+ ninguna compañía.
+\end_layout
+
+\begin_layout Subsubsection*
+Almacenamiento de alertas
+\end_layout
+
+\begin_layout Standard
+Se decidio almacenar las alertas reportadas para que sean accesibles en
+ forma historica para el "Servicio GIS", el "Servicio a Seguridad Vial"
+ y el "Servicio web de mapas".
+\end_layout
+
+\begin_layout Subsubsection*
+Conectores especiales
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Call-return con timeout y redundancia para comunicación con Policía Científica:
+\series default
+ para poder identificar cuando el sistema de Policia Cientifica no responde
+ se utiliza un timeout.
+ De esta forma, si el sistema no responde en como máximo este tiempo, se
+ asume que no funciona y se reporta que el sistema no podrá autenticar nuevos
+ usuarios.
+ También, para evitar un punto único de falla en la comunicación con Policía
+ Científica, se utiliza un canal que será redundante.
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Cliente-servidor encriptado para comunicación con clientes web:
+\series default
+ para proteger la información de los usuarios se utilizará una conexión
+ encriptada con ellos, de modo de que no pueda ser comprometida la información
+ utilizada en la comunicación.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Asincrónico, con pérdida de paquetes para comunicación con transmisores/receptor
+es:
+\series default
+ La comunicación con los vehículos consiste en un flujo de paquetes que
+ son enviados en forma asincrónica.
+ Cada paquete contiene toda la información necesaria para el mensaje que
+ quiere enviarse, por lo que no es necesario reconstruirlo cuando este llega
+ ni comprobar si algún fragmento del mismo se perdió.
+ Si bien algunos mensajes pueden perderse, en la moayoría de los casos,
+ este mensaje perdido puede ignorarse o de ser necesario el problema puede
+ ser resuelto a nivel aplicación y no en el protocolo.
+\end_layout
+
+\end_body
+\end_document

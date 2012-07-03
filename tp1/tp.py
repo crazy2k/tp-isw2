@@ -359,6 +359,9 @@ class JourneySchedule:
 
         return journeys[0]
 
+    def __repr__(self):
+        return repr(self.journeys)
+
 class NotScheduledJourney(Exception):
     pass
 
